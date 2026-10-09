@@ -14,7 +14,7 @@ skill folder.
 ### One skill
 
 ```bash
-npx skillloom install <slug>
+npx skillloom-cli install <slug>
 ```
 
 ### As a Claude Code plugin
