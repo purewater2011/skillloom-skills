@@ -1,0 +1,15 @@
+{
+  "name": "skillloom",
+  "description": "Free SkillLoom skills: slide decks, landing pages and motion clips, rendered locally.",
+  "owner": {
+    "name": "SkillLoom",
+    "url": "https://skillloom.dev"
+  },
+  "plugins": [
+    {
+      "name": "skillloom",
+      "source": "./",
+      "description": "34 MIT-licensed skills for Claude Code, Codex and Cursor."
+    }
+  ]
+}

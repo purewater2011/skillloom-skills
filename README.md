@@ -11,9 +11,22 @@ skill folder.
 
 ## Install
 
+### One skill
+
 ```bash
 npx skillloom install <slug>
 ```
+
+### As a Claude Code plugin
+
+All 34 at once, kept up to date:
+
+```bash
+claude plugin marketplace add purewater2011/skillloom-skills
+claude plugin install skillloom@skillloom
+```
+
+### By hand
 
 Or copy the folder straight into your agent's skills directory — these are plain files.
 

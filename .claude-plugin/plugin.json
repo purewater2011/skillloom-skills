@@ -1,0 +1,11 @@
+{
+  "name": "skillloom",
+  "description": "34 skills that render slide decks, landing pages and motion clips locally. No API key.",
+  "version": "1.0.0",
+  "author": {
+    "name": "SkillLoom",
+    "url": "https://skillloom.dev"
+  },
+  "homepage": "https://skillloom.dev",
+  "license": "MIT"
+}
