@@ -1,0 +1,52 @@
+{
+  "name": "Project Knowledge Graph Web Page",
+  "description": "A source-faithful web page for turning project evidence into an executive-readable knowledge graph. It combines claim cards, entity relationships, milestone context, confidence signals, and citation trails in a distinctive dark constellation canvas.",
+  "whatYouGet": [
+    "A central project thesis with connected evidence clusters and dependency paths.",
+    "Citation-led claim cards with source, date, owner, and confidence context.",
+    "Responsive relationship blocks for milestones, risks, decisions, and technical entities.",
+    "Executive summary language that preserves the distinction between fact, inference, and open question.",
+    "A self-contained page structure that can be ported to React, Vue, or utility CSS."
+  ],
+  "goodFit": [
+    "Client or executive reporting where decisions need traceable evidence.",
+    "Research and technical communication with many linked sources and dependencies.",
+    "Project status pages that must expose assumptions, risks, and lineage clearly."
+  ],
+  "notFor": [
+    "Unverified content with no source inventory or evidence trail.",
+    "Brand-led campaign pages focused on visual emotion instead of project reasoning.",
+    "Private graph exploration tools requiring authentication, editing, or live collaboration."
+  ],
+  "requiredInputs": [
+    "A project question or executive decision context.",
+    "A source list with claims, quotations, dates, and provenance.",
+    "The key entities, dependencies, milestones, risks, and unresolved questions.",
+    "The intended audience and any terminology or confidentiality requirements."
+  ],
+  "faq": [
+    {
+      "q": "Can the page show uncertainty instead of presenting every claim as fact?",
+      "a": "Yes. The structure supports confidence labels, unresolved question blocks, and explicit distinctions between sourced facts, analyst interpretation, and pending validation."
+    },
+    {
+      "q": "What makes this different from a generic project dashboard?",
+      "a": "The page is organized around relationships and provenance. Each important statement has a visible route to its source, while dependencies and decisions explain why the information matters."
+    },
+    {
+      "q": "Can a large source set be summarized for executives?",
+      "a": "Yes. Lead with a concise thesis and implications, then expose selected evidence clusters and source keys so readers can move from decision context to technical detail."
+    }
+  ],
+  "demoPrompt": "/sl-project-knowledge-graph-web-page Create an Axiom Atlas page for executives exploring HelioGrid evidence: navigation, split hero, six-source register, four evidence features, a thesis, four program stats, four source-to-decision steps, four evidence clusters, three open questions, CTA, and footer, in that order. Use headline “Every decision has a trace.” and closing CTA “Make the evidence legible.” Style: dark canvas, mint facts, blue relationship lines, [S1]-[S6] claim markers.",
+  "followUpPrompts": [
+    "Add a technical lineage section showing how ingestion, validation, modeling, and reporting depend on one another.",
+    "Rewrite the evidence clusters for a board audience while keeping every source key and uncertainty label intact.",
+    "Create a mobile-first version where the graph becomes a numbered evidence trail with expandable source details."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

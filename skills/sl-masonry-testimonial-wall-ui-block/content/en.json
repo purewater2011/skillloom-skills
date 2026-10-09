@@ -1,0 +1,48 @@
+{
+  "name": "Masonry Testimonial Wall UI Block",
+  "description": "A responsive, editorial testimonial section with varied quote heights, warm paper surfaces, and restrained teal details. Designed for product launches and marketing pages that need customer proof to feel human and easy to scan.",
+  "whatYouGet": [
+    "One focused, reusable testimonials section",
+    "Responsive masonry-inspired card layout",
+    "Editable quotes and speaker attributions",
+    "Accessible semantic markup and warm-neutral styling"
+  ],
+  "goodFit": [
+    "A product launch page with approved customer quotes",
+    "A marketing site that needs a more editorial review layout",
+    "A campaign page with a small set of varied testimonials"
+  ],
+  "notFor": [
+    "Fabricating customer stories or performance claims",
+    "Building a complete multi-section website"
+  ],
+  "requiredInputs": [
+    "Approved quote text and attribution for each speaker",
+    "Product context and page audience"
+  ],
+  "faq": [
+    {
+      "q": "Can the agent write testimonials for us?",
+      "a": "No. Provide approved customer statements. The agent can make light length edits only when they preserve the original meaning and approval."
+    },
+    {
+      "q": "Will this work on mobile?",
+      "a": "Yes. The layout should collapse to one column while keeping the source order and readable attribution."
+    },
+    {
+      "q": "Can I change the accent color?",
+      "a": "Yes. The block uses editable CSS values; keep text contrast and the warm paper foundation intact."
+    }
+  ],
+  "demoPrompt": "/sl-masonry-testimonial-wall-ui-block Create a warm, responsive masonry wall for a fictional project-planning tool titled \"Small teams, steadier days\". Show three approved small-business testimonials, preserving their wording and attributions. Opening line: \"We stopped losing decisions in long message threads.\" Closing line: \"That small change has made handoffs much less stressful.\" Use Paper Current style and make it mobile-scannable.",
+  "followUpPrompts": [
+    "Make the quote cards denser while keeping the same reading order.",
+    "Adapt the teal accent to a supplied brand color and retain accessible contrast.",
+    "Create a second version with shorter quotes for a campaign page."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

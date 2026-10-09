@@ -1,0 +1,51 @@
+{
+  "name": "Consulting Storyline Deck",
+  "description": "Build an executive presentation around a clear decision. Each slide states a conclusion, supports it with focused evidence, and advances a coherent business case in a distinctive teal-and-amber visual system.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck",
+    "An action-title storyline from problem to decision",
+    "Charts and comparisons with source or assumption notes",
+    "A closing slide with a concrete approval request"
+  ],
+  "goodFit": [
+    "Executive steering committee updates",
+    "Client strategy recommendations",
+    "Software investment business cases",
+    "Fundraising narratives grounded in operating evidence"
+  ],
+  "notFor": [
+    "Image-first keynote presentations",
+    "Exact reproduction of a corporate template",
+    "Unsupported market or financial claims"
+  ],
+  "requiredInputs": [
+    "Audience and decision sought",
+    "Available evidence and its sources",
+    "Options, recommendation, and constraints"
+  ],
+  "faq": [
+    {
+      "q": "Can I provide rough notes instead of a finished outline?",
+      "a": "Yes. The skill organizes the notes into a decision-led storyline and flags evidence gaps or assumptions that need confirmation."
+    },
+    {
+      "q": "Will it calculate a business case?",
+      "a": "It can calculate from figures you provide and show the assumptions. It will not invent verified results or imply that illustrative figures are actuals."
+    },
+    {
+      "q": "Can I export the deck to PDF?",
+      "a": "The HTML deck is designed for 16:9 presentation and print-to-PDF output without external assets."
+    }
+  ],
+  "demoPrompt": "/sl-consulting-storyline-deck Create a 9-slide board deck for Fictional Software Company, moving from the automation decision and 38-day/22% baseline to a phased-vs-full-replacement comparison, pilot gates, value tests, risks, and approval. Title: “A phased onboarding upgrade can shorten time to value.” Close: “Approve the pilot and require evidence before a scale decision.” Keep it crisp and evidence-led in Verdict Margin style.",
+  "followUpPrompts": [
+    "Make the recommendation legible from the slide titles alone.",
+    "Add a sensitivity view for the savings estimate.",
+    "Tighten the deck for a ten-minute executive discussion."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

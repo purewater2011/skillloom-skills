@@ -1,0 +1,51 @@
+{
+  "name": "Editable Visual Deck",
+  "description": "An offline-ready HTML presentation with a dark modular-grid look, sharp action headlines, and editable charts and diagrams. Built for product launches and executive updates that need both polish and fast revision.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck",
+    "Editable text, charts, diagrams, and visual blocks",
+    "A consistent grid, color system, and slide hierarchy",
+    "Navigation and print-ready slide styling"
+  ],
+  "goodFit": [
+    "A product launch narrative for internal or client stakeholders",
+    "An executive update that turns evidence into decisions",
+    "A presentation that will undergo several content revisions"
+  ],
+  "notFor": [
+    "Recreating an existing deck pixel for pixel",
+    "Producing only flattened slide images",
+    "Delivering only a native presentation file"
+  ],
+  "requiredInputs": [
+    "Audience and presentation objective",
+    "Source notes, claims, and figures",
+    "Product or project name",
+    "Required sections or target slide count"
+  ],
+  "faq": [
+    {
+      "q": "Can I edit the charts after delivery?",
+      "a": "Yes. Chart labels, values, and shapes are built as editable HTML, CSS, or SVG elements rather than a single slide image."
+    },
+    {
+      "q": "What happens if my notes lack numbers?",
+      "a": "The deck can use qualitative comparisons and process visuals. It will not present invented metrics as facts."
+    },
+    {
+      "q": "Can the deck work without an internet connection?",
+      "a": "Yes. The deliverable uses system fonts and is designed to be self-contained."
+    }
+  ],
+  "demoPrompt": "/sl-editable-visual-deck Create exactly 9 slides for Workspace Hub, a fictional Sample Software Studio product, helping department leads decide on a pilot. Cover the coordination problem, product approach and capabilities, illustrative adoption, pilot plan, and approval. Title: “One workspace can make team decisions easier to find.” Close: “Approve the pilot to validate the launch case.” Use editable Signal Blocks visuals.",
+  "followUpPrompts": [
+    "Replace the illustrative adoption model with these approved pilot figures and update the chart takeaway.",
+    "Adapt this deck for a five-minute executive presentation without changing its visual system.",
+    "Add speaker notes that explain the evidence behind each slide's claim."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

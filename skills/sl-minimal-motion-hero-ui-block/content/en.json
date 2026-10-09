@@ -1,0 +1,42 @@
+{
+  "name": "Minimal Motion Hero UI Block",
+  "description": "A reusable hero section for software launches and product sites, styled with a saturated teal ground, warm editorial typography, and restrained, accessible motion.",
+  "whatYouGet": [
+    "One responsive hero section with a focused product message",
+    "Warm-neutral editorial styling on a saturated teal canvas",
+    "One clear primary action and optional secondary action",
+    "A small, reduced-motion-aware kinetic detail"
+  ],
+  "goodFit": [
+    "A solo founder announcing a product or new release",
+    "A product team refreshing its website’s first impression"
+  ],
+  "notFor": [
+    "A multi-section marketing website or complete homepage",
+    "A motion-led brand campaign requiring elaborate animation"
+  ],
+  "requiredInputs": [
+    "Product name and a one-sentence description",
+    "Target audience and most important benefit"
+  ],
+  "faq": [
+    {
+      "q": "Does this build a complete landing page?",
+      "a": "No. It creates one reusable hero section, without navigation, footer, or unrelated supporting sections."
+    },
+    {
+      "q": "Can the motion be disabled?",
+      "a": "Yes. The hero should respect reduced-motion preferences and remain visually complete without animation."
+    }
+  ],
+  "demoPrompt": "/sl-minimal-motion-hero-ui-block Create a launch page for a fictional service that helps product teams gather customer feedback, spot patterns, and decide what to build next. Show one split hero with “A clearer way to listen,” the headline “Make every customer note count,” supporting copy about keeping the team close to product users, and the actions “Join the early list” and “See how it works.” Use a calm teal canvas, warm editorial type, and subtle motion.",
+  "followUpPrompts": [
+    "Make the product benefit more specific while keeping the headline under eight words.",
+    "Adapt the hero for mobile and retain a clear product visual without adding sections."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

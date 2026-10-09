@@ -1,0 +1,51 @@
+{
+  "name": "Liquid-Rupture Logo Reveal Story Film",
+  "description": "A cinematic social brand film that turns a fictional logo reveal into a short narrative: tension gathers in liquid colour fields, the system finds form, one rupture exposes the identity, and the final lockup lands with editorial restraint.",
+  "whatYouGet": [
+    "A 20–45 second wide narrative video with six to ten orchestrated scenes",
+    "Warm paper composition with glass-fringe refraction and metaball-style colour merging",
+    "A single controlled rupture that reveals the final fictional identity lockup",
+    "Offline-safe HTML/CSS animation rendered to a local MP4",
+    "A proof beat and end card designed for social-feed readability"
+  ],
+  "goodFit": [
+    "Brand launches that need a distinctive identity moment",
+    "Art-direction tests for social campaigns and motion systems",
+    "Fictional product concepts requiring a polished reveal film"
+  ],
+  "notFor": [
+    "Detailed software tutorials or feature-heavy product explainers",
+    "Exact reproduction or animation of an existing trademarked logo"
+  ],
+  "requiredInputs": [
+    "Fictional brand name and exact lockup text",
+    "Short campaign promise or positioning line",
+    "Optional proof point, metric, or launch message"
+  ],
+  "faq": [
+    {
+      "q": "Can I use an existing logo file?",
+      "a": "Use the skill for a fictional or rights-cleared identity lockup supplied as text or simple shape guidance. It does not trace, modify, or reproduce trademarked logo artwork."
+    },
+    {
+      "q": "How is the liquid effect created?",
+      "a": "The renderer builds it locally with layered HTML/CSS shapes, gradients, blur, border highlights, transforms, and timed easing. No image or video generation model is required."
+    },
+    {
+      "q": "Can the rupture happen more than once?",
+      "a": "The signature direction is strongest with one decisive rupture. Additional small transitions are acceptable, but they should not read as separate impact events."
+    }
+  ],
+  "demoPrompt": "/sl-liquid-rupture-logo-reveal-story-film Create a 29-second 16:9 social film for fictional brand Rillform. Open with “Before the signal” and “Every identity starts as a pressure in the field.” Move through separation and tension, a system finding shape, rising clarity, a launch-note quote, and gather-to-resolve beats. Close with “Shape finds signal.” Use a restrained paper-rupture style.",
+  "followUpPrompts": [
+    "Make the rupture slower and more sculptural while keeping the final lockup on screen for four seconds.",
+    "Replace the proof beat with a compact three-step checklist for a launch campaign.",
+    "Create a calmer version with less blur, more visible paper grain, and a smaller wordmark."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

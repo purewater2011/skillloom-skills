@@ -1,0 +1,77 @@
+{
+  "slug": "sl-code-change-explainer-story-film",
+  "version": "1.0.4",
+  "output": "video",
+  "family": "video-narrative",
+  "engine": "video-orchestrated",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "product-manager",
+      "technical-writer"
+    ],
+    "task": [
+      "create-explainer-video",
+      "create-social-brand-video",
+      "create-changelog-film"
+    ],
+    "scenario": [
+      "product-launch",
+      "research-technical"
+    ],
+    "domain": [
+      "media-publishing",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "evidence-first",
+      "guided-workflow",
+      "fast-turnaround"
+    ],
+    "style": [
+      "dark-terminal-inset",
+      "fast-cut-capability-tiles",
+      "rationed-clay-accent",
+      "syntax-tinted-diff-rows",
+      "warm-paper-ground"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Code-Change Explainer Story Film",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-code-change-explainer-story-film"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "鼠尾草网格手记",
+  "description": "将出版与媒体业务材料制作成可离线使用的高管汇报演示文稿。深绿色底色、精细网格、衬线字体和清晰图表形成统一的田野笔记风格，适合定期向客户报告成果并提出决策请求。",
+  "whatYouGet": [
+    "独立运行的 16:9 HTML 演示文稿",
+    "以结论为标题、风格统一的页面",
+    "标明单位、周期与目标值的易读图表",
+    "键盘翻页和逐页打印样式"
+  ],
+  "goodFit": [
+    "出版或媒体团队的客户业绩汇报",
+    "课程表现或内容项目复盘",
+    "需要保持系列视觉一致的定期演示"
+  ],
+  "notFor": [
+    "以大幅摄影为核心的品牌宣传",
+    "需要编造数据来填补证据空缺的报告"
+  ],
+  "requiredInputs": [
+    "受众和需要作出的决策",
+    "已确认的文案与指标",
+    "报告周期和机构名称"
+  ],
+  "faq": [
+    {
+      "q": "可以保留我提供的原文吗？",
+      "a": "可以。请标出必须逐字保留的内容；如文字无法清晰排入页面，会明确提示。"
+    },
+    {
+      "q": "指标缺少来源时会怎样处理？",
+      "a": "会标记为待确认，不会当作已核实的结果呈现。"
+    }
+  ],
+  "demoPrompt": "/sl-field-notes-deck 为虚构机构 North District Publishing 制作九页高管汇报，依次呈现季度读者增长、新闻简报引荐贡献、两项实验和审批决策。封面标题：“Qualified readership grew, and the next test is ready.” 结尾标题：“Approve the tests and review the results in four weeks.” 采用 Sage Grid Notes 风格。",
+  "followUpPrompts": [
+    "在保留全部已确认指标的前提下，将演示文稿缩减为七页。",
+    "用我提供的修订数字替换第四季度目标，并更新所有相关页面。"
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Activity Calendar Chart UI Block",
+  "description": "Create a reusable activity calendar chart section that makes daily patterns legible at a glance. Its warm-neutral editorial styling combines an ink canvas, clay surfaces, and teal intensity cells for product analytics and executive reporting.",
+  "whatYouGet": [
+    "A responsive, date-aligned daily activity grid",
+    "Readable intensity legend and range labels",
+    "Accessible per-day names and values",
+    "Editable component styling and sample data"
+  ],
+  "goodFit": [
+    "Product usage and contribution summaries",
+    "Executive reports embedded in web pages",
+    "Reusable analytics sections in an existing app"
+  ],
+  "notFor": [
+    "Hourly scheduling or appointment booking",
+    "A complete dashboard with filters and navigation"
+  ],
+  "requiredInputs": [
+    "Daily values associated with calendar dates",
+    "Date range and week-start preference",
+    "Framework and styling constraints"
+  ],
+  "faq": [
+    {
+      "q": "Can the displayed period be changed?",
+      "a": "Yes. Keep the date range configurable and derive the displayed weeks from the supplied dates and week-start setting."
+    },
+    {
+      "q": "How should intensity thresholds work?",
+      "a": "Use explicit, documented value bands and make them configurable when the data scale varies between uses."
+    }
+  ],
+  "demoPrompt": "/sl-activity-calendar-chart-ui-block Create a SaaS usage report section for readers to scan yearly activity, with the headline “A Year Of Steady Activity” and three summary stats: 1,284 active projects, 312 days with activity, and the busiest day, Sep 12, with 18. Use the skill’s restrained Clay Ledger style.",
+  "followUpPrompts": [
+    "Add a configurable comparison period and a small previous-year summary.",
+    "Adapt the activity values and labels for weekly publishing frequency."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

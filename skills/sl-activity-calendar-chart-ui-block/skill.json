@@ -1,0 +1,71 @@
+{
+  "slug": "sl-activity-calendar-chart-ui-block",
+  "version": "1.0.9",
+  "output": "html",
+  "family": "web-block",
+  "engine": "web-block",
+  "styleFamily": "warm-neutral",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "app-developer",
+      "product-manager",
+      "ui-designer"
+    ],
+    "task": [
+      "create-infographic",
+      "create-ui-visuals",
+      "build-website-page"
+    ],
+    "scenario": [
+      "client-executive-reporting",
+      "research-technical",
+      "web-publishing"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "editable-output",
+      "visually-polished",
+      "beginner-friendly"
+    ],
+    "style": [
+      "warm-neutral",
+      "teal-accent",
+      "editorial"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Activity Calendar Chart UI Block",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-activity-calendar-chart-ui-block"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "sl-synchronized-action-checklist-motion-clip",
+  "version": "1.0.3",
+  "output": "video",
+  "family": "video-broll",
+  "engine": "video-generator",
+  "styleFamily": "minimalist",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "social-media-creator"
+    ],
+    "task": [
+      "create-broll-animation"
+    ],
+    "scenario": [
+      "content-publishing"
+    ],
+    "domain": [
+      "media-publishing",
+      "education"
+    ],
+    "highlight": [
+      "style-locked",
+      "series-consistent",
+      "editable-output"
+    ],
+    "style": [
+      "minimalist",
+      "editorial",
+      "typographic"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Synchronized Action Checklist Motion Clip",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-synchronized-action-checklist-motion-clip"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

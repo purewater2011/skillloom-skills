@@ -1,0 +1,72 @@
+{
+  "slug": "sl-minimal-motion-hero-ui-block",
+  "version": "1.0.8",
+  "output": "html",
+  "family": "web-block",
+  "engine": "web-block",
+  "styleFamily": "warm-neutral",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "app-developer",
+      "ui-designer"
+    ],
+    "task": [
+      "create-ui-visuals",
+      "build-website-page",
+      "build-landing-page"
+    ],
+    "scenario": [
+      "brand-identity",
+      "product-launch",
+      "web-publishing"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "editable-output",
+      "visually-polished",
+      "beginner-friendly"
+    ],
+    "style": [
+      "warm-neutral",
+      "teal-accent",
+      "editorial",
+      "kinetic"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Minimal Motion Hero UI Block",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-minimal-motion-hero-ui-block"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

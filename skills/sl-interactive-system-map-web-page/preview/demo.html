@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactive System Map Web Page — demo</title>
+<style>
+:root {
+  --bg: #07111F; --surface: #10233A; --fg: #F4F7FB; --muted: #B7C5D8;
+  --accent: #2ED6C5; --accent-2: #F3B562; --rule: #29405B;
+  --font-display: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif; --font-body: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --display-weight: 800; --display-case: uppercase; --tracking: 0.06em;
+  --radius: 8px; --radius-ctl: 8px; --border: 1px solid #29405B; --shadow: none;
+  --space: 0.8;
+  --type-scale: 1.3;
+}
+:root { --on-accent: #111111; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.section{padding-block:calc(88px * var(--space))}
+.section + .section{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.sec-head{display:grid;gap:14px;margin-bottom:calc(44px * var(--space));max-width:720px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--radius-ctl);font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:inherit}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--fg);border:var(--border-strong)}
+.card{background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.icon-tile{display:grid;place-items:center;width:44px;height:44px;border-radius:calc(var(--radius) * .6 + 4px);background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent)}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:calc(22px * var(--space))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:var(--tracking)}
+.brand-mark{width:28px;height:28px;border-radius:calc(var(--radius) * .5 + 3px);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.nav-links{display:flex;gap:24px;margin:0 0 0 auto;padding:0;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.95rem}
+.nav-links a:hover{color:var(--fg)}
+.nav .btn{min-height:40px;padding:0 16px}
+.nav-toggle{display:none;margin-left:auto;background:none;border:var(--border-strong);border-radius:var(--radius);width:42px;height:42px;color:var(--fg)}
+.hero{position:relative;overflow:hidden;padding-block:calc(96px * var(--space)) calc(88px * var(--space))}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:22px;align-content:start}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero.stacked h1{font-size:clamp(2.8rem,8vw,6.2rem);max-width:14ch}
+.hero.stacked .hero-grid{grid-template-columns:1fr}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split-copy{display:grid;gap:18px}
+.checks{display:grid;gap:10px;margin:6px 0 0;padding:0;list-style:none}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks svg{flex:none;color:var(--accent);margin-top:2px}
+.split-visual{aspect-ratio:5/4;border-radius:calc(var(--radius) + 4px);background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 22%,var(--surface)),color-mix(in srgb,var(--accent-2) 18%,var(--bg)));border:var(--border);position:relative;overflow:hidden}
+.split-visual .float{position:absolute;background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}
+.split-visual .f1{left:8%;top:12%;width:56%}
+.split-visual .f2{right:7%;bottom:10%;width:46%}
+.split-visual .float b{height:9px;border-radius:5px;background:color-mix(in srgb,var(--muted) 28%,transparent)}
+.split-visual .float b.a{background:var(--accent);width:40%}
+.stat{display:grid;gap:6px;padding:calc(22px * var(--space)) 0;border-top:2px solid var(--fg)}
+.stat strong{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(2.2rem,4.4vw,3.4rem);letter-spacing:var(--tracking);line-height:1;color:var(--fg)}
+.stat span{color:var(--muted)}
+.steps{counter-reset:step}
+.step{padding:calc(26px * var(--space));display:grid;gap:10px;align-content:start;position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:.95rem;letter-spacing:.08em}
+.faq-list{display:grid;gap:12px;max-width:820px}
+.faq-list details{background:var(--surface);border:var(--border);border-radius:var(--radius);padding:4px 22px}
+.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font-weight:600}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--accent);transition:transform .2s ease}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list details p{padding:0 0 18px;color:var(--muted)}
+.tile{overflow:hidden;display:grid}
+.tile-art{aspect-ratio:4/3;position:relative;overflow:hidden}
+.tile-body{padding:16px 18px;display:grid;gap:4px}
+.tile-body small{color:var(--muted)}
+.footer{padding-block:calc(64px * var(--space)) 36px;border-top:1px solid var(--rule)}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(4,minmax(0,1fr));gap:32px}
+.footer h3{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-family:var(--font-body);font-weight:600}
+.footer ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.footer a{text-decoration:none;color:var(--fg);opacity:.85}
+.footer a:hover{opacity:1;color:var(--accent)}
+.legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);overflow:hidden}
+.block-stage .section{padding-block:calc(72px * var(--space))}
+@media (max-width:900px){.hero-grid,.split-grid{grid-template-columns:1fr}
+.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-grid > :first-child{grid-column:1/-1}
+}
+@media (max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}
+.nav-links,.nav .btn{display:none}
+.nav-toggle{display:grid;place-items:center}
+.nav.open .nav-links{display:grid;position:absolute;top:68px;left:0;right:0;padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--rule)}
+.section{padding-block:calc(64px * var(--space))}
+[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+.brand{min-width:0;overflow-wrap:anywhere}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+.block-stage .section h1{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+@keyframes sheen{to{background-position:-150% 0}}
+.graph{position:relative;aspect-ratio:16/10;border-radius:calc(var(--radius) + 6px);background:var(--surface);border:var(--border);overflow:hidden}
+.graph svg.links{position:absolute;inset:0;width:100%;height:100%;color:var(--rule)}
+.gnode{position:absolute;transform:translate(-50%,-50%);display:grid;gap:4px;justify-items:center;text-align:center;width:150px}
+.gnode .icon-tile{box-shadow:var(--shadow);border:var(--border)}
+.gnode b{font-size:.85rem}
+.gnode small{font-size:.72rem;color:var(--muted);line-height:1.3}
+.gnode.core .icon-tile{background:var(--accent);color:var(--on-accent);width:60px;height:60px}
+.graph-legend{display:grid;gap:12px;margin-top:22px}
+@media (max-width:900px){.gnode{width:110px}
+.gnode small{display:none}
+}
+.img-slot{margin:0;position:relative;display:grid;place-items:center;align-content:center;gap:10px;min-height:180px;aspect-ratio:4/3;border-radius:var(--radius);border:1.5px dashed color-mix(in srgb,var(--fg) 30%,transparent);background:color-mix(in srgb,var(--accent) 7%,var(--surface));color:var(--muted);text-align:center;padding:16px;overflow:hidden}
+.img-slot figcaption{font-size:.8rem;letter-spacing:.04em;max-width:26ch;color:var(--fg);opacity:.75}
+.img-slot svg{color:var(--accent)}
+.hv-hero-slot{aspect-ratio:4/3;min-height:320px}
+.hero:not(.split) .hv-hero-slot{aspect-ratio:16/7;max-width:1000px;margin-inline:auto}
+.tile-art .img-slot{border-radius:0;border-width:0 0 1.5px 0;aspect-ratio:4/3;min-height:0}
+.graph-tools{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px;font-size:.88rem}
+button.gnode{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer}
+.gnode[aria-pressed="true"] .icon-tile{outline:3px solid var(--accent);outline-offset:2px}
+.graph.hide-links .links{display:none}
+.graph.hide-labels .gnode small{display:none}
+.graph-detail{margin-top:16px;padding:18px;display:grid;gap:6px}
+.graph-legend-key{list-style:none;display:flex;flex-wrap:wrap;gap:16px;margin:0 0 12px;padding:0;font-size:.82rem;color:var(--muted)}
+.graph-legend-key span{display:inline-block;width:26px;height:0;margin-right:6px;vertical-align:middle;border-top:2px solid var(--fg)}
+.graph-legend-key .key-dashed{border-top-style:dashed}
+.graph-legend-key .key-ring{width:14px;height:14px;border:2px solid var(--accent);border-radius:50%}
+.conf-badge{display:inline-grid;place-items:center;min-width:1.4em;height:1.4em;margin-left:4px;border:1px solid currentColor;border-radius:4px;font-size:.7em}
+.graph.show-path .links line:not([stroke-dasharray]){stroke:var(--accent);stroke-width:.9}
+.path-toggle[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.graph-conf{color:var(--muted)}
+.graph.hide-layer-0 .layer-0,.graph.hide-layer-1 .layer-1{display:none}
+body{ background-image: linear-gradient(#29405B66 1px, transparent 1px), linear-gradient(90deg, #29405B66 1px, transparent 1px); background-size: 48px 48px; }
+
+</style>
+</head>
+<body>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Aster Archive</a>
+    <nav aria-label="Primary"><ul class="nav-links"><li><a href="#aster-archive-system">Map</a></li><li><a href="#work">Evidence</a></li><li><a href="#features">Layers</a></li></ul></nav>
+    <a class="btn btn-primary" href="#main">Open map</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero stacked" id="aster-archive-system" aria-label="Introduction"><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">DOCUMENT FLOW / SYSTEM MAP</span><h1>Aster Archive system map</h1><p class="lede">Inspect how a document moves from intake to retrieval. Select components, change layers, trace the request path, and check the evidence behind each claim.</p><div class="hero-actions"><a class="btn btn-primary" href="#main">Explore map</a><a class="btn btn-ghost" href="#work">View evidence</a></div></div></div><figure class="img-slot hv-hero-slot" role="img" aria-label="Image placeholder: Hero image"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Hero image</figcaption></figure></div></section>
+<section class="section" id="features"><div class="wrap"><div class="sec-head"><h2>Map controls</h2></div>
+<script type="application/json" id="map-data">{"nodes":[{"id":"n0","label":"Select a component","detail":"Click or focus a node and press Enter to show its role, inputs, outputs, owner, citations, and open questions.","confidence":"Verified","links":["n1","n2","n3"]},{"id":"n1","label":"Change layers","detail":"Runtime and failure controls change visible nodes and edges while keeping their positions stable.","confidence":"Inferred","links":["n0"]},{"id":"n2","label":"Trace a path","detail":"Highlight the document route from intake through indexing to retrieval; retain direction and edge labels.","confidence":"Verified","links":["n0"]},{"id":"n3","label":"Check evidence","detail":"Verified, inferred, warning, and unresolved claims each have a text label as well as a visual signal.","confidence":"Inferred","links":["n0"]}]}</script>
+<div class="graph-tools" role="group" aria-label="Map controls"><label><input type="checkbox" class="layer-toggle" data-layer="layer-0" aria-label="Show Runtime layer" checked> Runtime layer</label><label><input type="checkbox" class="layer-toggle" data-layer="layer-1" aria-label="Show Failure layer" checked> Failure layer</label><label><input type="checkbox" class="layer-toggle" data-layer="links" aria-label="Show connections layer" checked> Connections</label><label><input type="checkbox" class="layer-toggle" data-layer="labels" aria-label="Show node summaries layer" checked> Node summaries</label><button class="btn btn-ghost path-toggle" type="button" aria-pressed="false">Highlight path from the core</button></div>
+<ul class="graph-legend-key" aria-label="Legend"><li><span class="key-solid" aria-hidden="true"></span>Solid line: direct dependency</li><li><span class="key-dashed" aria-hidden="true"></span>Dashed line: inferred relationship</li><li><span class="key-ring" aria-hidden="true"></span>Ring: selected node</li><li><b>V</b> Verified · <b>I</b> Inferred (text badge on every node)</li></ul>
+<div class="graph" role="group" aria-label="Map controls: select a node to see its detail"><svg class="links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="50" y1="50" x2="50.0" y2="16.0" stroke="currentColor" stroke-width=".35"/><line x1="50.0" y1="16.0" x2="79.4" y2="67.0" stroke="currentColor" stroke-width=".2" stroke-dasharray="1 1.2"/><line x1="50" y1="50" x2="79.4" y2="67.0" stroke="currentColor" stroke-width=".35"/><line x1="79.4" y1="67.0" x2="20.6" y2="67.0" stroke="currentColor" stroke-width=".2" stroke-dasharray="1 1.2"/><line x1="50" y1="50" x2="20.6" y2="67.0" stroke="currentColor" stroke-width=".35"/><line x1="20.6" y1="67.0" x2="50.0" y2="16.0" stroke="currentColor" stroke-width=".2" stroke-dasharray="1 1.2"/></svg><button type="button" class="gnode graph-node core" data-detail="Click or focus a node and press Enter to show its role, inputs, outputs, owner, citations, and open questions." data-title="Select a component" aria-pressed="true" style="left:50.0%;top:50.0%"><span class="icon-tile"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 6 6-2 6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v14M15 6v14"/></svg></span><b>Select a component <span class="conf-badge" title="Verified">V</span></b><small>Click or focus a node and press Enter to show its role, inputs, outputs, owner, citations, and open questions</small></button><button type="button" class="gnode graph-node layer-0" data-detail="Runtime and failure controls change visible nodes and edges while keeping their positions stable." data-title="Change layers" aria-pressed="false" style="left:50.0%;top:16.0%"><span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><b>Change layers <span class="conf-badge" title="Inferred">I</span></b><small>Runtime and failure controls change visible nodes and edges while keeping their positions stable</small></button><button type="button" class="gnode graph-node layer-1" data-detail="Highlight the document route from intake through indexing to retrieval; retain direction and edge labels." data-title="Trace a path" aria-pressed="false" style="left:79.4%;top:67.0%"><span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span><b>Trace a path <span class="conf-badge" title="Verified">V</span></b><small>Highlight the document route from intake through indexing to retrieval</small></button><button type="button" class="gnode graph-node layer-0" data-detail="Verified, inferred, warning, and unresolved claims each have a text label as well as a visual signal." data-title="Check evidence" aria-pressed="false" style="left:20.6%;top:67.0%"><span class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Check evidence <span class="conf-badge" title="Inferred">I</span></b><small>Verified, inferred, warning, and unresolved claims each have a text label as well as a visual signal</small></button></div>
+<div class="card graph-detail" aria-live="polite"><h3>Select a component</h3><p>Click or focus a node and press Enter to show its role, inputs, outputs, owner, citations, and open questions.</p><small class="graph-conf">Confidence: Verified · Evidence: sample note, replace with the source citation</small></div>
+<div class="graph-legend grid g3"><div><h3>Select a component</h3><p class="muted">Click or focus a node and press Enter to show its role, inputs, outputs, owner, citations, and open questions.</p></div><div><h3>Change layers</h3><p class="muted">Runtime and failure controls change visible nodes and edges while keeping their positions stable.</p></div><div><h3>Trace a path</h3><p class="muted">Highlight the document route from intake through indexing to retrieval; retain direction and edge labels.</p></div><div><h3>Check evidence</h3><p class="muted">Verified, inferred, warning, and unresolved claims each have a text label as well as a visual signal.</p></div></div></div></section>
+<section class="section split" id="split"><div class="wrap split-grid">
+<div class="split-copy"><h2>Selected component: Indexer</h2><p class="lede">Role: build searchable records. Input: extracted text. Output: search index. Owner: Search Operations. Confidence: verified. Citation: architecture note AN-04, section 2. Open question: how long are failed jobs retained?</p><ul class="checks"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Incoming: Extractor to Indexer</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Outgoing: Indexer to Search Store</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Runtime path: Intake to Retrieval</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Failure layer: retry queue</span></li></ul></div>
+<div class="split-visual" aria-hidden="true"><div class="float f1"><b class="a"></b><b></b><b></b></div><div class="float f2"><b></b><b class="a"></b><b></b></div></div></div></section>
+<section class="section steps" id="steps"><div class="wrap"><div class="sec-head"><h2>Document path</h2></div>
+<ol class="grid g4" style="list-style:none;margin:0;padding:0"><li class="card step"><h3>Intake</h3><p class="muted">Receives the document and issues a stable job ID. Evidence: interface note IN-01.</p></li><li class="card step"><h3>Extractor</h3><p class="muted">Produces text for indexing. The retry limit is inferred from a review note, not confirmed.</p></li><li class="card step"><h3>Indexer</h3><p class="muted">Writes searchable records to Search Store. Evidence: architecture note AN-04.</p></li><li class="card step"><h3>Retrieval</h3><p class="muted">Reads indexed records for an analyst query. Failure behavior remains unresolved.</p></li></ol></div></section>
+<section class="section" id="map-inventory"><div class="wrap"><div class="sec-head"><h2>Map inventory</h2></div>
+<div class="grid g4"><div class="stat"><strong>8</strong><span>Components</span></div><div class="stat"><strong>12</strong><span>Directed relationships</span></div><div class="stat"><strong>2</strong><span>Available layers</span></div><div class="stat"><strong>3</strong><span>Open questions</span></div></div></div></section>
+<section class="section" id="work"><div class="wrap"><div class="sec-head"><h2>Evidence register</h2></div>
+<div class="grid g2"><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Image: IN-01"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Image: IN-01</figcaption></figure></div><div class="tile-body"><h3>IN-01</h3><small>Intake · Verified · Interface note</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Image: AN-04"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Image: AN-04</figcaption></figure></div><div class="tile-body"><h3>AN-04</h3><small>Indexer · Verified · Architecture note</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Image: RV-02"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Image: RV-02</figcaption></figure></div><div class="tile-body"><h3>RV-02</h3><small>Retry queue · Inferred · Review note</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Image: UQ-03"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Image: UQ-03</figcaption></figure></div><div class="tile-body"><h3>UQ-03</h3><small>Retrieval · Unresolved · No citation</small></div></article></div></div></section>
+<section class="section" id="faq"><div class="wrap"><div class="sec-head"><h2>Reading the map</h2></div>
+<div class="faq-list"><details open><summary>What happens after document intake?</summary><p>Follow the runtime path through extraction, indexing, Search Store, and analyst retrieval. Each edge shows its direction and relationship.</p></details><details><summary>Which claims are confirmed?</summary><p>The legend names every evidence state. Selecting a node shows its confidence, citation, and any unresolved question.</p></details><details><summary>What changes in the failure layer?</summary><p>The layer control reveals retry relationships and their evidence states without moving the core runtime components.</p></details></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Aster Archive</a></div>
+<div class="footer-col"><h3>Views</h3><ul><li><a href="#steps">Runtime path</a></li><li><a href="#top">Failure layer</a></li></ul></div><div class="footer-col"><h3>Reference</h3><ul><li><a href="#work">Evidence register</a></li><li><a href="#faq">Open questions</a></li></ul></div></div>
+<p class="legal">Fictional architecture example. Confirm claims against system evidence before reuse.</p></div></footer>
+<script>
+document.querySelectorAll(".nav-toggle").forEach(function (b) {
+  var nav = b.closest(".nav");
+  function set(open) {
+    nav.classList.toggle("open", open);
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  b.addEventListener("click", function () { set(!nav.classList.contains("open")); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && nav.classList.contains("open")) { set(false); b.focus(); }
+  });
+  document.addEventListener("click", function (e) {
+    if (nav.classList.contains("open") && !nav.contains(e.target)) set(false);
+  });
+});
+</script><script>
+var mapData = JSON.parse(document.getElementById("map-data").textContent);
+document.querySelectorAll(".graph-node").forEach(function (n, i) {
+  n.addEventListener("click", function () {
+    var node = mapData.nodes[i];
+    document.querySelectorAll(".graph-node").forEach(function (o) { o.setAttribute("aria-pressed", o === n ? "true" : "false"); });
+    var panel = document.querySelector(".graph-detail");
+    panel.querySelector("h3").textContent = node.label;
+    panel.querySelector("p").textContent = node.detail;
+    panel.querySelector(".graph-conf").textContent = "Confidence: " + node.confidence + " · Links: " + node.links.length;
+  });
+});
+document.querySelectorAll(".path-toggle").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var on = b.getAttribute("aria-pressed") !== "true";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    document.querySelector(".graph").classList.toggle("show-path", on);
+  });
+});
+document.querySelectorAll(".layer-toggle").forEach(function (t) {
+  t.addEventListener("change", function () {
+    document.querySelector(".graph").classList.toggle("hide-" + t.getAttribute("data-layer"), !t.checked);
+  });
+});
+</script>
+</body>
+</html>

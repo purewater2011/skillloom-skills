@@ -1,0 +1,51 @@
+{
+  "name": "Inclusive Cutpaper Deck",
+  "description": "Create a client-ready executive presentation with layered cutpaper forms, editorial image windows, and exact, readable reporting. Built for course creators and designers presenting publishing work, audience insights, and decisions.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck",
+    "A consistent cutpaper layout system across varied slide types",
+    "Readable charts, decisions, and evidence with preserved source wording",
+    "Presentation-ready navigation and print-friendly slides"
+  ],
+  "goodFit": [
+    "Publishing performance reviews for client leadership",
+    "Course or content-program updates with clear next decisions",
+    "Editorial strategy presentations using approved photography"
+  ],
+  "notFor": [
+    "Dense financial statements that must reproduce every table",
+    "Decks that depend on unlicensed third-party photography",
+    "Reports requiring demographic claims unsupported by source data"
+  ],
+  "requiredInputs": [
+    "Audience and decision to be made",
+    "Source copy, metrics, and dates",
+    "Target slide count and required sections",
+    "Approved visual assets or permission to use abstract paper shapes"
+  ],
+  "faq": [
+    {
+      "q": "Will the deck preserve my figures and wording?",
+      "a": "Yes. Supplied metrics, quotes, units, and caveats should remain exact; missing evidence is flagged rather than invented."
+    },
+    {
+      "q": "Can it work without photographs?",
+      "a": "Yes. The cutpaper system supports abstract silhouettes and color fields without implying that fictional images show real participants."
+    },
+    {
+      "q": "Is the output usable offline?",
+      "a": "Yes. The deliverable is a self-contained HTML deck using system fonts and embedded styling."
+    }
+  ],
+  "demoPrompt": "/sl-inclusive-cutpaper-deck Create exactly 9 slides for fictional independent publisher Fieldnote Publishing: review course reach and completion, identify reader drop-off, compare current and proposed formats, and decide on a six-week pilot. Title: “Our learning titles are reaching more readers.” Close: “We can approve the pilot and review the evidence in six weeks.” Use candid, accessible language and abstract cutpaper shapes.",
+  "followUpPrompts": [
+    "Reframe the findings for a 10-minute leadership meeting without changing any figures.",
+    "Add source notes and caveats to each slide that contains a metric.",
+    "Make the decision slide more direct while preserving the approved wording."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

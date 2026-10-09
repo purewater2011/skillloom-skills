@@ -1,0 +1,46 @@
+{
+  "name": "Ochre Editorial Deck",
+  "description": "A style-locked HTML deck for publishing reviews and executive reporting. It pairs assertive editorial headlines with precise charts, cool-paper layouts, and restrained ochre accents.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML presentation",
+    "Consistent editorial layouts across the full deck",
+    "Action-led headlines and clearly labeled evidence",
+    "Readable charts, figures, captions, and source notes"
+  ],
+  "goodFit": [
+    "Quarterly publishing or audience reports",
+    "Course performance presentations",
+    "Executive reviews built from verified source material"
+  ],
+  "notFor": [
+    "Inventing data to fill reporting gaps",
+    "Highly animated product demonstrations",
+    "Native editable slide-file delivery"
+  ],
+  "requiredInputs": [
+    "Audience and decision to support",
+    "Verified source material and figures",
+    "Required sections or preferred slide count"
+  ],
+  "faq": [
+    {
+      "q": "Can I provide rough notes instead of a slide outline?",
+      "a": "Yes. Provide the notes and identify the audience and decision. The deck will organize the material into an evidence-led narrative without changing verified facts."
+    },
+    {
+      "q": "What happens when a figure has no source?",
+      "a": "It is flagged for confirmation or omitted. The deck does not present invented figures as reported results."
+    }
+  ],
+  "demoPrompt": "/sl-ochre-editorial-deck Create exactly 9 slides for North District Publishing, a fictional regional studio. Frame Q2 around paid-readership growth, retention risk, editorial findings, and a three-step retention test, ending with three editorial choices and next-cycle actions. Use Ochre Margin style. Quote the title “PAID READERSHIP GREW, BUT RETENTION NEEDS ATTENTION.” and closing title “APPROVE THE RETENTION TEST BEFORE THE NEXT CYCLE.”",
+  "followUpPrompts": [
+    "Make the chart takeaway more explicit without changing the figures.",
+    "Shorten the copy for a five-minute executive readout.",
+    "Add source notes to each slide that uses the subscriber table."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

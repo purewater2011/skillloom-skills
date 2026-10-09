@@ -1,0 +1,51 @@
+{
+  "name": "Scrapbook Resume Site",
+  "description": "Turn a creative professional's resume into a responsive portfolio site with a lanyard-style profile badge, paper-like project previews, cobalt highlights, and clear career history.",
+  "whatYouGet": [
+    "Responsive resume homepage with a distinctive profile badge",
+    "Editable project previews and career timeline",
+    "Accessible navigation, contact action, and optional resume download",
+    "Self-contained HTML ready to adapt to a frontend framework"
+  ],
+  "goodFit": [
+    "Independent designers presenting selected work and experience",
+    "Creative founders who need a personal site with a clear contact path",
+    "Editors or art directors balancing personality with credentials"
+  ],
+  "notFor": [
+    "Plain-text or applicant-tracking-system resumes",
+    "Large team directories",
+    "Sites bound to an existing corporate design system"
+  ],
+  "requiredInputs": [
+    "Name, role, location, and contact address",
+    "Biography and work history with dates",
+    "Project titles, descriptions, and available images or links",
+    "Optional resume file and social profiles"
+  ],
+  "faq": [
+    {
+      "q": "Can I edit the resume after delivery?",
+      "a": "Yes. Names, dates, project descriptions, links, and contact details are standard page content rather than text embedded in images."
+    },
+    {
+      "q": "What happens if I do not have project images?",
+      "a": "The page uses clearly labeled typographic project previews. Real images can replace them later without changing the content structure."
+    },
+    {
+      "q": "Does the site need a hosting service?",
+      "a": "The self-contained HTML can be published on any host that serves static files. Hosting and a domain are not included."
+    }
+  ],
+  "demoPrompt": "/sl-scrapbook-resume-site Create a responsive portfolio and resume for fictional Portland independent brand designer Tavi Mercer, for prospective clients. In order: navigation, stacked hero, three selected projects, about with three bullets, three quick stats, three capabilities, reverse-chronological experience, project inquiry CTA, footer. Quote “Tavi Mercer” and “Have a project in mind?” Keep the Cobalt Field Notes scrapbook style.",
+  "followUpPrompts": [
+    "Add a project detail page using the same badge and paper-block visual language.",
+    "Replace the placeholder previews with these images and preserve their captions.",
+    "Make the experience timeline more compact on mobile."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

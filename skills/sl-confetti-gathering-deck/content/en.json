@@ -1,0 +1,46 @@
+{
+  "name": "Confetti Gathering Deck",
+  "description": "A colorful editorial HTML deck for event concepts, guest journeys, program reveals, and recaps, built around slanted serif headlines and tactile confetti-paper details.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML presentation with a cohesive visual system.",
+    "A clear event narrative with scannable program and guest experience slides.",
+    "A distinctive dark-ink, cut-paper confetti look with controlled color accents."
+  ],
+  "goodFit": [
+    "Event planners presenting a gathering concept, schedule, or guest experience.",
+    "Designers creating a memorable event deck that still keeps logistics readable."
+  ],
+  "notFor": [
+    "Dense operational reports dominated by tables and fine-print data.",
+    "High-stakes decks that require a neutral, conservative corporate style."
+  ],
+  "requiredInputs": [
+    "Event purpose, audience, date, venue, and confirmed logistics.",
+    "Approved copy, schedules, names, numbers, and any required calls to action."
+  ],
+  "faq": [
+    {
+      "q": "Can the deck include details that are not finalized?",
+      "a": "Yes. Mark open items clearly as proposed or to be confirmed, and keep them distinct from approved event facts."
+    },
+    {
+      "q": "Can I provide brand colors?",
+      "a": "Yes. Treat supplied colors as constraints, preserve readable contrast, and use them selectively alongside the signature paper shapes."
+    },
+    {
+      "q": "Does the deck use external fonts or images?",
+      "a": "No external dependencies are required. The visual identity is built from system fonts and CSS-rendered paper shapes."
+    }
+  ],
+  "demoPrompt": "/sl-confetti-gathering-deck Create an 8-slide presentation for fictional community arts group Lantern Assembly about a one-day neighborhood celebration, covering why it matters, who to welcome, the guest journey, an art, food, and music program, an achievable format, and next steps. Title it “Bring the whole neighborhood to one table.” and close with “Confirm the essentials and invite the neighborhood in.” Use a warm, participatory Confetti Gathering style.",
+  "followUpPrompts": [
+    "Make the program slide easier to scan while preserving every confirmed time and activity.",
+    "Create a post-event recap version using the same visual identity and only the metrics I provide.",
+    "Adapt the deck for a smaller indoor gathering without changing approved names or dates."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

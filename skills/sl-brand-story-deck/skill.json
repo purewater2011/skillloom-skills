@@ -1,0 +1,67 @@
+{
+  "slug": "sl-brand-story-deck",
+  "version": "1.0.4",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "color-block",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "brand-marketer",
+      "product-marketing-manager",
+      "brand-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "brand-identity",
+      "product-launch"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "startup"
+    ],
+    "highlight": [
+      "editable-output",
+      "guided-workflow",
+      "visually-polished"
+    ],
+    "style": [
+      "bold-editorial",
+      "brand-system",
+      "color-block"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Brand Story Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-brand-story-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

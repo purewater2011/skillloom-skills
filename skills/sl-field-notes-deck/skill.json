@@ -1,0 +1,64 @@
+{
+  "slug": "sl-field-notes-deck",
+  "version": "2.0.6",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "course-creator",
+      "graphic-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "client-executive-reporting"
+    ],
+    "domain": [
+      "media-publishing"
+    ],
+    "highlight": [
+      "style-locked",
+      "series-consistent",
+      "text-accurate"
+    ],
+    "style": [
+      "field-notes",
+      "sage-glass",
+      "sports-editorial"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Field Notes Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-field-notes-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

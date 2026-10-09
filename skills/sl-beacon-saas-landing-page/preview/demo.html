@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beacon SaaS Landing Page — demo</title>
+<style>
+:root {
+  --bg: #111315; --surface: #202326; --fg: #F5F7F6; --muted: #BBC3BF;
+  --accent: #B7F36B; --accent-2: #8EDFC8; --rule: #414744;
+  --font-display: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", ui-sans-serif, sans-serif; --font-body: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", ui-sans-serif, sans-serif;
+  --display-weight: 700; --display-case: none; --tracking: -0.02em;
+  --radius: 14px; --radius-ctl: 14px; --border: 1px solid #414744; --shadow: 0 10px 30px -12px rgba(0,0,0,.25);
+  --space: 1.35;
+  --type-scale: 1;
+}
+:root { --on-accent: #111111; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.section{padding-block:calc(88px * var(--space))}
+.section + .section{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.sec-head{display:grid;gap:14px;margin-bottom:calc(44px * var(--space));max-width:720px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--radius-ctl);font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:inherit}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--fg);border:var(--border-strong)}
+.card{background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.icon-tile{display:grid;place-items:center;width:44px;height:44px;border-radius:calc(var(--radius) * .6 + 4px);background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent)}
+.muted{color:var(--muted)}
+.sample-note{font-size:.78rem;color:var(--muted);margin-top:18px}
+.grid{display:grid;gap:calc(22px * var(--space))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:var(--tracking)}
+.brand-mark{width:28px;height:28px;border-radius:calc(var(--radius) * .5 + 3px);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.nav-links{display:flex;gap:24px;margin:0 0 0 auto;padding:0;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.95rem}
+.nav-links a:hover{color:var(--fg)}
+.nav .btn{min-height:40px;padding:0 16px}
+.nav-toggle{display:none;margin-left:auto;background:none;border:var(--border-strong);border-radius:var(--radius);width:42px;height:42px;color:var(--fg)}
+.hero{position:relative;overflow:hidden;padding-block:calc(96px * var(--space)) calc(88px * var(--space))}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:22px;align-content:start}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.mock{border-radius:calc(var(--radius) + 6px);background:var(--surface);border:var(--border);box-shadow:0 30px 70px -30px color-mix(in srgb,var(--fg) 45%,transparent);overflow:hidden}
+.mock-bar{display:flex;gap:6px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--rule)}
+.mock-bar i{width:10px;height:10px;border-radius:50%;background:var(--rule)}
+.mock-bar span{margin-left:10px;height:10px;width:38%;border-radius:6px;background:color-mix(in srgb,var(--rule) 70%,transparent)}
+.mock-body{display:grid;grid-template-columns:120px 1fr;min-height:300px}
+.mock-side{border-right:1px solid var(--rule);padding:16px 12px;display:grid;gap:10px;align-content:start}
+.mock-side b{height:9px;border-radius:5px;background:color-mix(in srgb,var(--muted) 30%,transparent)}
+.mock-side b:first-child{background:var(--accent);width:70%}
+.mock-main{padding:18px;display:grid;gap:14px;align-content:start}
+.mock-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mock-kpi{border:1px solid var(--rule);border-radius:calc(var(--radius) * .6 + 2px);padding:10px}
+.mock-kpi small{display:block;font-size:.66rem;color:var(--muted)}
+.mock-kpi strong{font-family:var(--font-display);font-size:1.15rem}
+.mock-chart{display:flex;align-items:flex-end;gap:7px;height:118px;padding:10px;border:1px solid var(--rule);border-radius:calc(var(--radius) * .6 + 2px)}
+.mock-chart u{flex:1;border-radius:4px 4px 0 0;background:color-mix(in srgb,var(--accent) 35%,var(--surface))}
+.mock-chart u:nth-child(3n){background:var(--accent)}
+.mock-rows{display:grid;gap:8px}
+.mock-rows p{height:10px;border-radius:5px;background:color-mix(in srgb,var(--rule) 80%,transparent)}
+.mock-rows p:nth-child(2){width:80%}
+.mock-rows p:nth-child(3){width:60%}
+.logos .wrap{display:grid;gap:22px;justify-items:center}
+.logos p{font-size:.85rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.logo-row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 44px;margin:0;padding:0;list-style:none}
+.logo-row li{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:color-mix(in srgb,var(--fg) 55%,transparent);letter-spacing:var(--tracking)}
+.feature{padding:calc(26px * var(--space));display:grid;gap:12px;align-content:start}
+.feature p{color:var(--muted)}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split-copy{display:grid;gap:18px}
+.checks{display:grid;gap:10px;margin:6px 0 0;padding:0;list-style:none}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks svg{flex:none;color:var(--accent);margin-top:2px}
+.split-visual{aspect-ratio:5/4;border-radius:calc(var(--radius) + 4px);background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 22%,var(--surface)),color-mix(in srgb,var(--accent-2) 18%,var(--bg)));border:var(--border);position:relative;overflow:hidden}
+.split-visual .float{position:absolute;background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}
+.split-visual .f1{left:8%;top:12%;width:56%}
+.split-visual .f2{right:7%;bottom:10%;width:46%}
+.split-visual .float b{height:9px;border-radius:5px;background:color-mix(in srgb,var(--muted) 28%,transparent)}
+.split-visual .float b.a{background:var(--accent);width:40%}
+.steps{counter-reset:step}
+.step{padding:calc(26px * var(--space));display:grid;gap:10px;align-content:start;position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:.95rem;letter-spacing:.08em}
+.quote-card{padding:calc(28px * var(--space));display:grid;gap:18px;align-content:space-between}
+.quote-card blockquote{margin:0;font-size:1.08rem;line-height:1.55}
+.person{display:flex;align-items:center;gap:12px}
+.avatar{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;font-weight:700;font-size:.9rem;color:var(--on-accent);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.person b{display:block;font-size:.95rem}
+.person small{color:var(--muted)}
+.faq-list{display:grid;gap:12px;max-width:820px}
+.faq-list details{background:var(--surface);border:var(--border);border-radius:var(--radius);padding:4px 22px}
+.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font-weight:600}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--accent);transition:transform .2s ease}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list details p{padding:0 0 18px;color:var(--muted)}
+.cta-band{border-radius:calc(var(--radius) + 8px);padding:calc(64px * var(--space)) clamp(24px,6vw,72px);background:var(--fg);color:var(--bg);display:grid;grid-template-columns:1.4fr auto;gap:32px;align-items:center;position:relative;overflow:hidden}
+.cta-band p{opacity:.78;margin-top:12px;max-width:52ch}
+.cta-band .btn-primary{min-height:52px;padding:0 28px}
+.cta-form{display:flex;gap:10px;flex-wrap:wrap;min-width:0}
+.cta-form input{flex:1 1 220px;min-width:0;min-height:52px;padding:0 16px;border-radius:var(--radius-ctl);border:1px solid color-mix(in srgb,var(--bg) 45%,transparent);background:color-mix(in srgb,var(--bg) 10%,transparent);color:var(--bg);font:inherit}
+.cta-form input::placeholder{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.mock-kpi .sk{display:block;height:.9em;margin-top:6px;width:70%;border-radius:4px;background:color-mix(in srgb,var(--fg) 14%,transparent)}
+.footer{padding-block:calc(64px * var(--space)) 36px;border-top:1px solid var(--rule)}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(4,minmax(0,1fr));gap:32px}
+.footer h3{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-family:var(--font-body);font-weight:600}
+.footer ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.footer a{text-decoration:none;color:var(--fg);opacity:.85}
+.footer a:hover{opacity:1;color:var(--accent)}
+.legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{border-radius:calc(var(--radius) + 10px);width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);border:1px solid var(--rule);overflow:hidden}
+.block-stage .section{padding-block:calc(72px * var(--space))}
+@media (max-width:900px){.hero-grid,.split-grid,.cta-band{grid-template-columns:1fr}
+.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-grid > :first-child{grid-column:1/-1}
+}
+@media (max-width:640px){.g2,.g3{grid-template-columns:1fr}
+.nav-links,.nav .btn{display:none}
+.nav-toggle{display:grid;place-items:center}
+.nav.open .nav-links{display:grid;position:absolute;top:68px;left:0;right:0;padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--rule)}
+.mock-body{grid-template-columns:1fr}
+.mock-side{display:none}
+.section{padding-block:calc(64px * var(--space))}
+[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+.brand{min-width:0;overflow-wrap:anywhere}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+.quote-card{margin:0}
+.block-stage .section h1{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+@keyframes sheen{to{background-position:-150% 0}}
+body{ background-image: linear-gradient(90deg, #B7F36B22 0 18%, transparent 18%), linear-gradient(0deg, #8EDFC81f 0 12%, transparent 12%); }
+
+</style>
+</head>
+<body>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Luma Desk</a>
+    <nav aria-label="Primary"><ul class="nav-links"><li><a href="#customers">Product</a></li><li><a href="#steps">How it works</a></li><li><a href="#split">Pricing</a></li></ul></nav>
+    <a class="btn btn-primary" href="#get-started">Join the waitlist</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero split" id="split" aria-label="Introduction"><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">A shared inbox for small software teams</span><h1>Every customer question, in the right hands.</h1><p class="lede">Luma Desk helps independent studios sort incoming requests, assign the next reply, and keep important conversations from going quiet.</p><div class="hero-actions"><a class="btn btn-primary" href="#get-started">Join the waitlist</a><a class="btn btn-ghost" href="#steps">See how it works</a></div></div><div class="mock" aria-hidden="true">
+  <div class="mock-bar"><i></i><i></i><i></i><span></span></div>
+  <div class="mock-body">
+    <div class="mock-side"><b></b><b></b><b></b><b></b><b></b></div>
+    <div class="mock-main">
+      <div class="mock-kpis"><div class="mock-kpi"><small>Active</small><strong class="sk"></strong></div><div class="mock-kpi"><small>Trend</small><strong class="sk"></strong></div><div class="mock-kpi"><small>Saved</small><strong class="sk"></strong></div></div>
+      <div class="mock-chart"><u style="height:42%"></u><u style="height:64%"></u><u style="height:50%"></u><u style="height:78%"></u><u style="height:58%"></u><u style="height:90%"></u><u style="height:70%"></u><u style="height:84%"></u></div>
+      <div class="mock-rows"><p></p><p></p><p></p></div>
+    </div>
+  </div>
+</div></div></div></section>
+<section class="section logos" id="logos" aria-label="Designed for teams that care about every reply"><div class="wrap"><p>Designed for teams that care about every reply</p><ul class="logo-row"><li>Northline</li><li>Fieldnote</li><li>Brightpath</li><li>Morrow</li><li>Openlane</li></ul></div></section>
+<section class="section" id="features"><div class="wrap"><div class="sec-head"><h2>A calmer way to keep conversations moving</h2></div>
+<div class="grid g3"><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>One shared queue</h3><p>Bring customer email into a single team view, so requests do not stay hidden in personal inboxes.</p></article><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.8c1.6.8 2.7 2.5 3 5.2"/></svg></span><h3>Clear ownership</h3><p>Assign each conversation to a teammate and see who is responsible for the next response.</p></article><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><h3>A visible next step</h3><p>Mark what is waiting, in progress, or ready to close without adding a complicated ticket process.</p></article></div></div></section>
+<section class="section split" id="split-2"><div class="wrap split-grid">
+<div class="split-copy"><h2>Know what needs attention before the day gets away</h2><p class="lede">Luma Desk gives a small team a shared picture of incoming customer questions. Start with the oldest unanswered message, hand off a thread with context, and leave the queue clearer than you found it.</p><ul class="checks"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>See unassigned messages at a glance</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Leave a private note for a teammate</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Keep the original conversation together</span></li></ul></div>
+<div class="split-visual" aria-hidden="true"><div class="float f1"><b class="a"></b><b></b><b></b></div><div class="float f2"><b></b><b class="a"></b><b></b></div></div></div></section>
+<section class="section steps" id="steps"><div class="wrap"><div class="sec-head"><h2>From first message to a confident handoff</h2></div>
+<ol class="grid g3" style="list-style:none;margin:0;padding:0"><li class="card step"><h3>Bring it together</h3><p class="muted">Connect the support address your team already uses and review new conversations in one place.</p></li><li class="card step"><h3>Choose an owner</h3><p class="muted">Assign the thread to the teammate best placed to answer, with context attached.</p></li><li class="card step"><h3>Close the loop</h3><p class="muted">Reply, resolve the request, and leave a clear queue for the next person.</p></li></ol></div></section>
+<section class="section tv-grid" id="customers"><div class="wrap"><div class="sec-head"><h2>Built for the people behind the product</h2></div><div class="t-list grid g2"><figure class="card quote-card"><blockquote>We needed a shared view of support, not another system to manage. The useful part is knowing which conversations still need an owner.</blockquote><figcaption><div class="person"><span class="avatar" role="img" aria-label="Portrait placeholder: Mira Chen"><span aria-hidden="true">MC</span></span><div><b>Mira Chen</b><small>Co-founder, Cedar Stack</small></div></div></figcaption></figure><figure class="card quote-card"><blockquote>It gives our small team a simple handoff. I can see what is waiting and pick up a thread without asking who last touched it.</blockquote><figcaption><div class="person"><span class="avatar" role="img" aria-label="Portrait placeholder: Jon Bell"><span aria-hidden="true">JB</span></span><div><b>Jon Bell</b><small>Product lead, Kiteframe</small></div></div></figcaption></figure></div><p class="sample-note">Sample testimonials for layout preview. Replace with real, attributed quotes.</p></div></section>
+<section class="section" id="faq"><div class="wrap"><div class="sec-head"><h2>A few things you may be wondering</h2></div>
+<div class="faq-list"><details open><summary>Who is Luma Desk for?</summary><p>It is designed for small software teams that share responsibility for customer questions and want a simple view of assignments and replies.</p></details><details><summary>Is Luma Desk available now?</summary><p>The product is preparing for launch. Join the waitlist to hear when early access opens.</p></details><details><summary>Do I need to replace my existing support process?</summary><p>The launch page describes a shared inbox workflow. Confirm supported email connections and migration details before making implementation claims.</p></details><details><summary>How much will it cost?</summary><p>Pricing has not been announced. The team will share plan details with waitlist members when they are confirmed.</p></details></div></div></section>
+<section class="section" id="get-started"><div class="wrap"><div class="cta-band"><div><h2>Keep the next customer reply from getting lost.</h2><p>Join the Luma Desk waitlist for a launch update and early access news.</p></div><form class="cta-form" action="mailto:hello@example.com" method="post" enctype="text/plain" aria-label="Join the waitlist"><label class="sr-only" for="cta-email">Email address</label><input id="cta-email" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn btn-primary" type="submit">Join the waitlist</button></form></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Luma Desk</a></div>
+<div class="footer-col"><h3>Explore</h3><ul><li><a href="#customers">Product</a></li><li><a href="#steps">How it works</a></li><li><a href="#top">Pricing</a></li></ul></div><div class="footer-col"><h3>Updates</h3><ul><li><a href="#top">Launch notes</a></li><li><a href="mailto:hello@example.com">Contact</a></li></ul></div></div>
+<p class="legal">© 2025 Luma Desk. Product details are subject to change before launch.</p></div></footer>
+<script>
+document.querySelectorAll(".nav-toggle").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var nav = b.closest(".nav");
+    var open = nav.classList.toggle("open");
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+});
+</script>
+</body>
+</html>

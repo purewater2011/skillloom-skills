@@ -1,0 +1,67 @@
+{
+  "slug": "sl-editable-visual-deck",
+  "version": "1.0.7",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "brand-marketer",
+      "product-manager",
+      "graphic-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "product-launch",
+      "client-executive-reporting"
+    ],
+    "domain": [
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "editable-output",
+      "guided-workflow",
+      "visually-polished"
+    ],
+    "style": [
+      "construction-grid",
+      "modular-vector",
+      "native-object"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Editable Visual Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-editable-visual-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

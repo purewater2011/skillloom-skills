@@ -1,0 +1,45 @@
+{
+  "name": "Scattered-Cards Magazine Site",
+  "description": "An editable, multi-page editorial site with a lively card-led homepage, browsable topics, and distraction-free articles.",
+  "whatYouGet": [
+    "Responsive homepage with a distinctive offset-story layout",
+    "Linked topic, archive, article, and about pages",
+    "Reusable story cards and article typography",
+    "Newsletter section with a configurable destination"
+  ],
+  "goodFit": [
+    "Independent publishers building a recognizable editorial home",
+    "Founders publishing substantial stories around their work",
+    "Small teams organizing articles by topic"
+  ],
+  "notFor": [
+    "A one-page promotion with no ongoing publishing plan",
+    "A product catalog or checkout experience"
+  ],
+  "requiredInputs": [
+    "Publication name and editorial focus",
+    "Topics and initial article content",
+    "Images or a placeholder policy"
+  ],
+  "faq": [
+    {
+      "q": "Can I add stories later?",
+      "a": "Yes. Story cards and article layouts are reusable, so new pieces can follow the same structure and visual rules."
+    },
+    {
+      "q": "Does it need a content management system?",
+      "a": "No. The initial deliverable works as editable static pages; its structure can be ported to a content system later."
+    }
+  ],
+  "demoPrompt": "/sl-scattered-cards-magazine-site Build The Side Margin, an independent journal for people doing creative work. In order, show an intro, latest stories, a shared-studio feature, three topic threads, archive picks, a monthly newsletter, journal FAQs, and reading/contact links. Open with “The Side Margin” and end with “Subscribe.” Use a stacked, cool-paper layout with restrained offset cards and readable type.",
+  "followUpPrompts": [
+    "Add a new topic for independent workshops and two linked articles.",
+    "Make the article template support pull quotes and photo captions.",
+    "Replace the newsletter placeholder with my signup endpoint."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

@@ -1,0 +1,68 @@
+{
+  "slug": "sl-beacon-saas-landing-page",
+  "version": "1.0.8",
+  "output": "html",
+  "family": "web-landing",
+  "engine": "web-site",
+  "styleFamily": "minimalist",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "indie-hacker",
+      "product-manager"
+    ],
+    "task": [
+      "build-landing-page"
+    ],
+    "scenario": [
+      "product-launch",
+      "web-publishing"
+    ],
+    "domain": [
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "style-locked",
+      "editable-output",
+      "fast-turnaround"
+    ],
+    "style": [
+      "minimalist",
+      "glow-accent",
+      "gradient-typography",
+      "soft-neutral"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Beacon SaaS Landing Page",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-beacon-saas-landing-page"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

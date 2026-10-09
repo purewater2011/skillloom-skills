@@ -1,0 +1,68 @@
+{
+  "slug": "sl-sage-sneaker-store-site",
+  "version": "1.0.9",
+  "output": "html",
+  "family": "web-site",
+  "engine": "web-site",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "shopify-seller",
+      "dtc-operator",
+      "brand-designer"
+    ],
+    "task": [
+      "build-ecommerce-storefront"
+    ],
+    "scenario": [
+      "brand-identity",
+      "ecommerce-listing",
+      "web-publishing"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "ecommerce-retail"
+    ],
+    "highlight": [
+      "style-locked",
+      "editable-output"
+    ],
+    "style": [
+      "hero-search",
+      "sneaker-hero",
+      "sneaker-model",
+      "sneaker-proof"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Sage Sneaker Store Site",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-sage-sneaker-store-site"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

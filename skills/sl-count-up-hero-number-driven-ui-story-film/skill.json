@@ -1,0 +1,76 @@
+{
+  "slug": "sl-count-up-hero-number-driven-ui-story-film",
+  "version": "1.0.5",
+  "output": "video",
+  "family": "video-narrative",
+  "engine": "video-orchestrated",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "product-manager",
+      "product-marketing-manager"
+    ],
+    "task": [
+      "create-explainer-video",
+      "create-social-brand-video",
+      "create-product-launch-film"
+    ],
+    "scenario": [
+      "teaching-explainer",
+      "product-launch"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "style-locked",
+      "guided-workflow"
+    ],
+    "style": [
+      "count-up-hero-number",
+      "cursor-driven-ui",
+      "editorial-serif-answers",
+      "monochrome-chrome",
+      "near-black-app-ui"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Count Up Hero Number Driven Ui Story Film",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-count-up-hero-number-driven-ui-story-film"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

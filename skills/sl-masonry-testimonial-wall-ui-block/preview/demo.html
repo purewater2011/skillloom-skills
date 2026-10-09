@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masonry Testimonial Wall UI Block — demo</title>
+<style>
+:root {
+  --bg: #f5f0e6; --surface: #fffdf8; --fg: #282922; --muted: #57584f;
+  --accent: #176b61; --accent-2: #b9d8ca; --rule: #c9c2b5;
+  --font-display: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --display-weight: 700; --display-case: none; --tracking: 0;
+  --radius: 28px; --radius-ctl: 999px; --border: 1px solid #c9c2b5; --shadow: 0 10px 30px -12px rgba(0,0,0,.25);
+  --space: 1;
+  --type-scale: 1;
+}
+:root { --on-accent: #ffffff; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.section{padding-block:calc(88px * var(--space))}
+.section + .section{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.sec-head{display:grid;gap:14px;margin-bottom:calc(44px * var(--space));max-width:720px}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.card{background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.quote-card{padding:calc(28px * var(--space));display:grid;gap:18px;align-content:space-between}
+.quote-card blockquote{margin:0;font-size:1.08rem;line-height:1.55}
+.person{display:flex;align-items:center;gap:12px}
+.avatar{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;font-weight:700;font-size:.9rem;color:var(--on-accent);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.person b{display:block;font-size:.95rem}
+.person small{color:var(--muted)}
+.block-frame{padding:clamp(20px,4vw,48px) 0}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{border-radius:calc(var(--radius) + 10px);width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);border:1px solid var(--rule);overflow:hidden}
+.block-stage .section{padding-block:calc(72px * var(--space))}
+@media (max-width:640px){.section{padding-block:calc(64px * var(--space))}
+[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+.quote-card{margin:0}
+.block-stage .section h1{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+.tv-masonry .t-list{columns:3 280px;column-gap:22px}
+.tv-masonry .quote-card{break-inside:avoid;margin-bottom:22px}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+@keyframes sheen{to{background-position:-150% 0}}
+.block-stage{ background-image: radial-gradient(#c9c2b555 1px, transparent 1px); background-size: 4px 4px; }
+
+</style>
+</head>
+<body class="block-frame">
+<div class="block-label"><span>Masonry Testimonial Wall UI Block</span><span>Block preview</span></div><div class="block-stage">
+<main id="main">
+<section class="section tv-masonry" id="customers"><div class="wrap"><div class="sec-head"><h1>Small teams, steadier days</h1></div><div class="t-list "><figure class="card quote-card"><blockquote>We stopped losing decisions in long message threads. The whole team knows what is moving and what needs attention.</blockquote><figcaption><div class="person"><span class="avatar" role="img" aria-label="Portrait placeholder: Maya Chen"><span aria-hidden="true">MC</span></span><div><b>Maya Chen</b><small>Studio co-founder</small></div></div></figcaption></figure><figure class="card quote-card"><blockquote>Setup took an afternoon, and our weekly planning finally fits into one clear place. It feels calm even when work gets busy.</blockquote><figcaption><div class="person"><span class="avatar" role="img" aria-label="Portrait placeholder: Owen Patel"><span aria-hidden="true">OP</span></span><div><b>Owen Patel</b><small>Operations lead</small></div></div></figcaption></figure><figure class="card quote-card"><blockquote>I can see what is blocked before it turns into a surprise. That small change has made handoffs much less stressful.</blockquote><figcaption><div class="person"><span class="avatar" role="img" aria-label="Portrait placeholder: Leah Brooks"><span aria-hidden="true">LB</span></span><div><b>Leah Brooks</b><small>Independent consultant</small></div></div></figcaption></figure></div></div></section>
+</main>
+</div>
+
+</body>
+</html>

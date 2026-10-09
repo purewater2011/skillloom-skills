@@ -1,0 +1,64 @@
+{
+  "slug": "sl-ochre-editorial-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "editorial",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "course-creator",
+      "graphic-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "client-executive-reporting"
+    ],
+    "domain": [
+      "media-publishing"
+    ],
+    "highlight": [
+      "style-locked",
+      "series-consistent",
+      "text-accurate"
+    ],
+    "style": [
+      "editorial",
+      "analog-collage",
+      "condensed-type"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Ochre Editorial Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-ochre-editorial-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

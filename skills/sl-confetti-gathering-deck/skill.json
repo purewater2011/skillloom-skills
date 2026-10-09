@@ -1,0 +1,62 @@
+{
+  "slug": "sl-confetti-gathering-deck",
+  "version": "1.0.4",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "event-planner",
+      "graphic-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [],
+    "domain": [
+      "events-entertainment"
+    ],
+    "highlight": [
+      "style-locked",
+      "series-consistent",
+      "text-accurate"
+    ],
+    "style": [
+      "colorful-editorial",
+      "confetti-gathering",
+      "slanted-display"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Confetti Gathering Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-confetti-gathering-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

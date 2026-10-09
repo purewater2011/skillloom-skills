@@ -1,0 +1,46 @@
+{
+  "name": "Learning Loop Deck",
+  "description": "A presentation skill for explaining a learning cycle or reporting a training pilot. It turns source material into action-titled 16:9 slides with a consistent four-stage loop, bright editorial typography, learner activities, and clearly labeled evidence.",
+  "whatYouGet": [
+    "A self-contained HTML slide deck",
+    "A consistent Notice–Try–Feedback–Revise visual system",
+    "Action titles and varied slide layouts",
+    "Clear labeling for measured, proposed, and illustrative claims"
+  ],
+  "goodFit": [
+    "Explaining a new learning approach to facilitators",
+    "Reporting a training pilot to program sponsors",
+    "Turning a curriculum outline into a workshop briefing"
+  ],
+  "notFor": [
+    "Verbatim policy training",
+    "Dense academic research presentations",
+    "Decks requiring an established brand template"
+  ],
+  "requiredInputs": [
+    "Audience and purpose",
+    "Source material or key messages",
+    "Learner group and delivery setting",
+    "Evidence and its source, if available"
+  ],
+  "faq": [
+    {
+      "q": "Can I use it without pilot results?",
+      "a": "Yes. The deck can explain a proposed learning cycle, but it will label goals and example figures as proposed or illustrative rather than measured outcomes."
+    },
+    {
+      "q": "Will it preserve my terminology?",
+      "a": "Yes. Provide required terms and definitions. The loop labels can be adapted while their order and visual treatment stay consistent."
+    }
+  ],
+  "demoPrompt": "/sl-learning-loop-deck Create exactly 9 slides for the fictional Regional Training Office: a four-week onboarding pilot for new service coordinators, moving from the learning gap through the practice-feedback loop and illustrative results to a scale decision. Title: “A shorter learning loop can make onboarding practice stick.” Close: “Approve a small pilot and review the evidence before scaling.” Use the Loop in Motion style.",
+  "followUpPrompts": [
+    "Replace the illustrative numbers with these measured results and add the cohort definition.",
+    "Adapt the deck for a 20-minute facilitator briefing with one practice activity."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

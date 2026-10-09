@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrapbook Resume Site — demo</title>
+<style>
+:root {
+  --bg: #151719; --surface: #282C2F; --fg: #F8F4E9; --muted: #BCC5C6;
+  --accent: #83A5FF; --accent-2: #EADDBB; --rule: #626A6D;
+  --font-display: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", Quicksand, Nunito, ui-sans-serif, sans-serif; --font-body: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", Quicksand, Nunito, ui-sans-serif, sans-serif;
+  --display-weight: 800; --display-case: none; --tracking: 0;
+  --radius: 14px; --radius-ctl: 14px; --border: 1px solid #626A6D; --shadow: 6px 6px 0 #F8F4E9;
+  --space: 1;
+  --type-scale: 1;
+}
+:root { --on-accent: #ffffff; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.section{padding-block:calc(88px * var(--space))}
+.section + .section{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.sec-head{display:grid;gap:14px;margin-bottom:calc(44px * var(--space));max-width:720px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--radius-ctl);font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:inherit}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--fg);border:var(--border-strong)}
+.card{background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.icon-tile{display:grid;place-items:center;width:44px;height:44px;border-radius:calc(var(--radius) * .6 + 4px);background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent)}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:calc(22px * var(--space))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:var(--tracking)}
+.brand-mark{width:28px;height:28px;border-radius:calc(var(--radius) * .5 + 3px);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.nav-links{display:flex;gap:24px;margin:0 0 0 auto;padding:0;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.95rem}
+.nav-links a:hover{color:var(--fg)}
+.nav .btn{min-height:40px;padding:0 16px}
+.nav-toggle{display:none;margin-left:auto;background:none;border:var(--border-strong);border-radius:var(--radius);width:42px;height:42px;color:var(--fg)}
+.hero{position:relative;overflow:hidden;padding-block:calc(96px * var(--space)) calc(88px * var(--space))}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:22px;align-content:start}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero.stacked h1{font-size:clamp(2.8rem,8vw,6.2rem);max-width:14ch}
+.hero.stacked .hero-grid{grid-template-columns:1fr}
+.feature{padding:calc(26px * var(--space));display:grid;gap:12px;align-content:start}
+.feature p{color:var(--muted)}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split-copy{display:grid;gap:18px}
+.checks{display:grid;gap:10px;margin:6px 0 0;padding:0;list-style:none}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks svg{flex:none;color:var(--accent);margin-top:2px}
+.split-visual{aspect-ratio:5/4;border-radius:calc(var(--radius) + 4px);background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 22%,var(--surface)),color-mix(in srgb,var(--accent-2) 18%,var(--bg)));border:var(--border);position:relative;overflow:hidden}
+.split-visual .float{position:absolute;background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:8px}
+.split-visual .f1{left:8%;top:12%;width:56%}
+.split-visual .f2{right:7%;bottom:10%;width:46%}
+.split-visual .float b{height:9px;border-radius:5px;background:color-mix(in srgb,var(--muted) 28%,transparent)}
+.split-visual .float b.a{background:var(--accent);width:40%}
+.stat{display:grid;gap:6px;padding:calc(22px * var(--space)) 0;border-top:2px solid var(--fg)}
+.stat strong{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(2.2rem,4.4vw,3.4rem);letter-spacing:var(--tracking);line-height:1;color:var(--fg)}
+.stat span{color:var(--muted)}
+.steps{counter-reset:step}
+.step{padding:calc(26px * var(--space));display:grid;gap:10px;align-content:start;position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:.95rem;letter-spacing:.08em}
+.tile{overflow:hidden;display:grid}
+.tile-art{aspect-ratio:4/3;position:relative;overflow:hidden}
+.tile-body{padding:16px 18px;display:grid;gap:4px}
+.tile-body small{color:var(--muted)}
+.cta-band{border-radius:calc(var(--radius) + 8px);padding:calc(64px * var(--space)) clamp(24px,6vw,72px);background:var(--fg);color:var(--bg);display:grid;grid-template-columns:1.4fr auto;gap:32px;align-items:center;position:relative;overflow:hidden}
+.cta-band p{opacity:.78;margin-top:12px;max-width:52ch}
+.cta-band .btn-primary{min-height:52px;padding:0 28px}
+.cta-form{display:flex;gap:10px;flex-wrap:wrap;min-width:0}
+.cta-form input{flex:1 1 220px;min-width:0;min-height:52px;padding:0 16px;border-radius:var(--radius-ctl);border:1px solid color-mix(in srgb,var(--bg) 45%,transparent);background:color-mix(in srgb,var(--bg) 10%,transparent);color:var(--bg);font:inherit}
+.cta-form input::placeholder{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.footer{padding-block:calc(64px * var(--space)) 36px;border-top:1px solid var(--rule)}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(4,minmax(0,1fr));gap:32px}
+.footer h3{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-family:var(--font-body);font-weight:600}
+.footer ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.footer a{text-decoration:none;color:var(--fg);opacity:.85}
+.footer a:hover{opacity:1;color:var(--accent)}
+.legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{border-radius:calc(var(--radius) + 10px);width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);border:1px solid var(--rule);overflow:hidden}
+.block-stage .section{padding-block:calc(72px * var(--space))}
+@media (max-width:900px){.hero-grid,.split-grid,.cta-band{grid-template-columns:1fr}
+.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-grid > :first-child{grid-column:1/-1}
+}
+@media (max-width:640px){.g3{grid-template-columns:1fr}
+.nav-links,.nav .btn{display:none}
+.nav-toggle{display:grid;place-items:center}
+.nav.open .nav-links{display:grid;position:absolute;top:68px;left:0;right:0;padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--rule)}
+.section{padding-block:calc(64px * var(--space))}
+[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+.brand{min-width:0;overflow-wrap:anywhere}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+.block-stage .section h1{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+@keyframes sheen{to{background-position:-150% 0}}
+.img-slot{margin:0;position:relative;display:grid;place-items:center;align-content:center;gap:10px;min-height:180px;aspect-ratio:4/3;border-radius:var(--radius);border:1.5px dashed color-mix(in srgb,var(--fg) 30%,transparent);background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--surface)) 0 14px,color-mix(in srgb,var(--accent) 4%,var(--surface)) 14px 28px);color:var(--muted);text-align:center;padding:16px;overflow:hidden}
+.img-slot figcaption{font-size:.8rem;letter-spacing:.04em;max-width:26ch;color:var(--fg);opacity:.75}
+.img-slot svg{color:var(--accent)}
+.hv-slots{display:grid;gap:14px}
+.hv-slots-3{grid-template-columns:repeat(3,1fr)}
+.hv-slots-3 .img-slot{aspect-ratio:3/4;min-height:0}
+.hero.split .hv-tilt .img-slot:nth-child(2){transform:translateY(-22px)}
+.hero:not(.split) .hv-slots{margin-top:clamp(28px,4vw,48px);max-width:1000px;margin-inline:auto}
+.hero:not(.split) .hv-slots-3 .img-slot{aspect-ratio:4/3}
+.tile-art .img-slot{border-radius:0;border-width:0 0 1.5px 0;aspect-ratio:4/3;min-height:0}
+@media (max-width:900px){.hv-slots-3{grid-template-columns:repeat(2,1fr)}
+.hv-slots-3 .img-slot:nth-child(3){display:none}
+}
+body{ background-image: linear-gradient(90deg, #83A5FF22 0 18%, transparent 18%), linear-gradient(0deg, #EADDBB1f 0 12%, transparent 12%); }
+
+</style>
+</head>
+<body>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Tavi Mercer</a>
+    <nav aria-label="Primary"><ul class="nav-links"><li><a href="#work">Work</a></li><li><a href="#split">About</a></li><li><a href="#steps">Experience</a></li><li><a href="#get-started">Contact</a></li></ul></nav>
+    <a class="btn btn-primary" href="#get-started">Email Tavi</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero stacked" id="tavi-mercer" aria-label="Introduction"><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">Independent brand designer · Portland</span><h1>Tavi Mercer</h1><p class="lede">I build identities and editorial systems for people with something worth saying. Available for select projects this autumn.</p><div class="hero-actions"><a class="btn btn-primary" href="#get-started">View selected work</a><a class="btn btn-ghost" href="#get-started">Get in touch</a></div></div></div><div class="hv-slots hv-slots-3 hv-tilt"><figure class="img-slot" role="img" aria-label="Image placeholder: Portrait"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Portrait</figcaption></figure><figure class="img-slot" role="img" aria-label="Image placeholder: Project image 1"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Project image 1</figcaption></figure><figure class="img-slot" role="img" aria-label="Image placeholder: Project image 2"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Project image 2</figcaption></figure></div></div></section>
+<section class="section" id="work"><div class="wrap"><div class="sec-head"><h2>Selected work</h2></div>
+<div class="grid g3"><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Project image: Fieldwork Journal"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Project image: Fieldwork Journal</figcaption></figure></div><div class="tile-body"><h3>Fieldwork Journal</h3><small>Editorial identity · 2025</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Project image: Common Table"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Project image: Common Table</figcaption></figure></div><div class="tile-body"><h3>Common Table</h3><small>Community campaign · 2024</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Project image: Northline Press"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Project image: Northline Press</figcaption></figure></div><div class="tile-body"><h3>Northline Press</h3><small>Publishing system · 2023</small></div></article></div></div></section>
+<section class="section split" id="split"><div class="wrap split-grid">
+<div class="split-copy"><h2>A little about me</h2><p class="lede">I am a Portland-based designer working across identity, print, and digital. My practice starts with listening, then finding a visual language that feels specific to the people behind the work.</p><ul class="checks"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Independent since 2022</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Previously an in-house designer at a regional publisher</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Most at home with small, collaborative teams</span></li></ul></div>
+<div class="split-visual" aria-hidden="true"><div class="float f1"><b class="a"></b><b></b><b></b></div><div class="float f2"><b></b><b class="a"></b><b></b></div></div></div></section>
+<section class="section" id="glance"><div class="wrap"><div class="sec-head"><h2>At a glance</h2></div>
+<div class="grid g3"><div class="stat"><strong>8</strong><span>Years in design</span></div><div class="stat"><strong>3</strong><span>Core disciplines</span></div><div class="stat"><strong>2022</strong><span>Independent practice began</span></div></div></div></section>
+<section class="section" id="features"><div class="wrap"><div class="sec-head"><h2>What I bring to the table</h2></div>
+<div class="grid g3"><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>Identity systems</h3><p>Flexible marks, typography, and guidelines that hold together across formats.</p></article><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5v-15z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></span><h3>Editorial design</h3><p>Publications and stories shaped for careful reading, in print or on screen.</p></article><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h3>Art direction</h3><p>A clear visual point of view carried from early concepts through production.</p></article></div></div></section>
+<section class="section steps" id="steps"><div class="wrap"><div class="sec-head"><h2>Experience</h2></div>
+<ol class="grid g3" style="list-style:none;margin:0;padding:0"><li class="card step"><h3>Independent designer</h3><p class="muted">2022–now. Identity and editorial work for small organizations and independent publishers.</p></li><li class="card step"><h3>Designer, Alder House Editions</h3><p class="muted">2019–2022. Designed publication templates, campaign materials, and seasonal catalogs.</p></li><li class="card step"><h3>Junior designer, Paperline Studio</h3><p class="muted">2017–2019. Supported identity projects from research and layout through final artwork.</p></li></ol></div></section>
+<section class="section" id="get-started"><div class="wrap"><div class="cta-band"><div><h2>Have a project in mind?</h2><p>Tell me what you are making, where you are in the process, and when you hope to begin.</p></div><form class="cta-form" action="mailto:hello@example.com" method="post" enctype="text/plain" aria-label="Email Tavi"><label class="sr-only" for="cta-email">Email address</label><input id="cta-email" type="email" required placeholder="you@example.com" autocomplete="email"><button class="btn btn-primary" type="submit">Email Tavi</button></form></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Tavi Mercer</a></div>
+<div class="footer-col"><h3>Explore</h3><ul><li><a href="#work">Work</a></li><li><a href="#split">About</a></li><li><a href="#steps">Experience</a></li></ul></div><div class="footer-col"><h3>Connect</h3><ul><li><a href="mailto:hello@example.com">Email</a></li><li><a href="mailto:hello@example.com">Contact</a></li></ul></div></div>
+<p class="legal">© 2026 Tavi Mercer. Portfolio content shown as a fictional example.</p></div></footer>
+<script>
+document.querySelectorAll(".nav-toggle").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var nav = b.closest(".nav");
+    var open = nav.classList.toggle("open");
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+});
+</script>
+</body>
+</html>

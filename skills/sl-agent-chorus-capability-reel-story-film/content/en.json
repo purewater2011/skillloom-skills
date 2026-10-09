@@ -1,0 +1,46 @@
+{
+  "name": "Agent-Chorus Capability Reel Story Film",
+  "description": "A short launch film that repeats one prompt across four product surfaces, turning a request into visible work. Built for social feeds with hard cuts, readable interface moments, and proof grounded in the material you provide.",
+  "whatYouGet": [
+    "A 20-45 second wide MP4",
+    "An editable HTML/CSS scene composition",
+    "Scene timing, on-screen copy, and an evidence ledger"
+  ],
+  "goodFit": [
+    "A founder introducing a workflow product",
+    "An app developer showing a new capability",
+    "A marketing manager preparing a social launch"
+  ],
+  "notFor": [
+    "A live-action commercial",
+    "A step-by-step product tutorial",
+    "A reel built around unverified metrics"
+  ],
+  "requiredInputs": [
+    "Product name and core promise",
+    "A representative user request",
+    "Four product states or enough verified detail to depict them",
+    "A real artifact or outcome and a call to action"
+  ],
+  "faq": [
+    {
+      "q": "Do I need recordings of every screen?",
+      "a": "No. Screenshots or verified interface details are enough for an HTML/CSS reconstruction. Any invented details are identified as illustrative."
+    },
+    {
+      "q": "Can the film include results or customer quotes?",
+      "a": "Yes, when you provide the source and approve the wording. Otherwise the film uses a visible workflow artifact as proof."
+    }
+  ],
+  "demoPrompt": "/sl-agent-chorus-capability-reel-story-film Make a 29-second 16:9 social launch film for fictional workspace Project Desk. Open with “One request. Four surfaces.” and “A launch update is waiting.” Show a feature request moving through Capture, Plan, Build, and Publish, then an illustrative release checklist. Close with “View the workflow.” Use the skill’s Four-Surface Chorus style.",
+  "followUpPrompts": [
+    "Make the first three seconds clearer without adding another scene.",
+    "Replace the illustrative proof with this approved release screenshot and update the evidence ledger."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

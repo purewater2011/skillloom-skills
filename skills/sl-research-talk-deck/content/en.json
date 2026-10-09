@@ -1,0 +1,46 @@
+{
+  "name": "Research Talk Deck",
+  "description": "An editable HTML deck for explaining a research question, method, evidence, and limitations in a conference-minimal warm-neutral style. Designed for talks where accuracy and legibility matter as much as visual polish.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck",
+    "Editable charts, equations, and slide text",
+    "Action-title narrative with readable methods and findings",
+    "Source notes and clear labels for illustrative material"
+  ],
+  "goodFit": [
+    "Conference and lab-meeting research talks",
+    "Graduate seminars and technical explainers",
+    "Presentations built from a paper or structured study notes"
+  ],
+  "notFor": [
+    "Inventing results or citations for an unfinished study",
+    "Designing a research poster or journal manuscript"
+  ],
+  "requiredInputs": [
+    "Paper, abstract, or structured research notes",
+    "Audience and target talk length",
+    "Methods, results, and source figures or values",
+    "Known limitations and citation requirements"
+  ],
+  "faq": [
+    {
+      "q": "Can I edit the slides afterward?",
+      "a": "Yes. The deck is a single HTML file, and its text, charts, labels, and equations remain editable in the source."
+    },
+    {
+      "q": "What happens when a result is missing?",
+      "a": "The deck marks the gap or uses an explicitly labeled illustrative example. It does not present invented results as study findings."
+    }
+  ],
+  "demoPrompt": "/sl-research-talk-deck Create a 9-slide Emberline Research-style graduate seminar deck for Northfield Learning Lab about an illustrative pilot on spaced retrieval in introductory science courses. Arc: study question, equal-time review schedules, Day 21 recall comparison, illustrative scores, design limits, and next steps. Title it \"Spaced retrieval may improve retention in introductory science courses.\" Close with \"A larger study should test whether the pattern persists.\"",
+  "followUpPrompts": [
+    "Shorten this to eight minutes while preserving the methods and main limitation.",
+    "Replace the illustrative chart with these verified values and update its takeaway.",
+    "Add speaker notes explaining the equation and its assumptions."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

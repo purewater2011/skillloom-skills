@@ -1,0 +1,49 @@
+{
+  "name": "Interactive System Map Web Page",
+  "description": "A web-page skill for turning architecture evidence into a navigable system map with editable nodes, directed relationships, semantic states, and inspectable citations. Designed for teaching, research, design review, and durable engineering documentation.",
+  "whatYouGet": [
+    "A responsive dark-grid system map with stable, editable component nodes",
+    "Interactive selection, path highlighting, layer filtering, and evidence-aware details",
+    "A clear legend for verified, inferred, warning, and unresolved relationships",
+    "Technical copy explaining flow, ownership, boundaries, and failure modes",
+    "A self-contained deliverable adaptable to HTML, React, Vue, or Tailwind"
+  ],
+  "goodFit": [
+    "Explaining a request path across services, queues, stores, and external actors",
+    "Teaching a technical audience how a system behaves and where evidence comes from"
+  ],
+  "notFor": [
+    "Decorative diagrams with no source data or explanatory objective",
+    "Large-scale graph analysis needing automatic layout and query tooling"
+  ],
+  "requiredInputs": [
+    "A component inventory with stable names and responsibilities",
+    "Directed relationships, layers, and the primary path to explain",
+    "Evidence references, confidence levels, or explicit unknowns",
+    "Audience and teaching objective for the page"
+  ],
+  "faq": [
+    {
+      "q": "Can the map show uncertainty?",
+      "a": "Yes. Store confidence and evidence with the map data, then expose them through text labels, the legend, and the selected-node detail panel rather than color alone."
+    },
+    {
+      "q": "How should a very large system be handled?",
+      "a": "Choose one primary scenario, focus the initial view on its critical path, and expose secondary domains through working layer controls."
+    },
+    {
+      "q": "Can users edit the resulting map?",
+      "a": "Yes. Keep map data separate from rendering so labels, edges, annotations, confidence, and citations can be updated without rewriting layout code."
+    }
+  ],
+  "demoPrompt": "/sl-interactive-system-map-web-page Build a Signal Blueprint-style Aster Archive page for analysts tracing document flow. In order: navigation with “Open map”; hero “Aster Archive system map” and “Explore map”; four map-control guides; selected Indexer details; four document-path steps; four inventory stats; evidence register; reading FAQ; footer links. Cover runtime and failure layers, citations, and open questions. Keep it crisp and technical.",
+  "followUpPrompts": [
+    "Add a failure layer for retries, dead-letter handling, and data-loss boundaries.",
+    "Port the map to a reusable React component while preserving keyboard navigation and evidence labels."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

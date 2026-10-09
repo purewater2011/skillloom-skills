@@ -1,0 +1,47 @@
+{
+  "name": "Masonry Testimonial Wall（界面组件）",
+  "description": "适用于产品发布页和营销页面的响应式客户评价区块，采用错落有致的卡片高度、温暖纸感底色与克制的青绿色细节，让真实评价更亲切、更易浏览。",
+  "whatYouGet": [
+    "一个可复用的客户评价区块",
+    "响应式瀑布流风格卡片布局",
+    "可编辑的评价内容与署名",
+    "语义化且易访问的温暖中性色样式"
+  ],
+  "goodFit": [
+    "包含已获批准客户评价的产品发布页",
+    "需要更具编辑感评价布局的营销网站",
+    "展示少量不同长度评价的活动页面"
+  ],
+  "notFor": [
+    "编造客户故事或效果数据",
+    "构建完整的多区块网站"
+  ],
+  "requiredInputs": [
+    "每条评价的已批准原文及署名",
+    "产品背景与页面受众"
+  ],
+  "faq": [
+    {
+      "q": "智能体可以替我们编写客户评价吗？",
+      "a": "不可以。请提供已获批准的客户原话。只有在不改变原意且符合授权的情况下，智能体才能做少量精简。"
+    },
+    {
+      "q": "手机上也能正常显示吗？",
+      "a": "可以。窄屏下布局会变为单列，并保留原始阅读顺序和清晰的署名。"
+    },
+    {
+      "q": "可以更换强调色吗？",
+      "a": "可以。区块使用可编辑的 CSS 颜色值；请保留温暖纸感底色并确保文本对比度。"
+    }
+  ],
+  "demoPrompt": "/sl-masonry-testimonial-wall-ui-block 为虚构的项目规划工具制作温暖、响应式的瀑布流评价墙，标题为 \"Small teams, steadier days\"。展示三条已批准的小企业客户评价，保留原文和署名。开头句：\"We stopped losing decisions in long message threads.\" 结尾句：\"That small change has made handoffs much less stressful.\" 采用 Paper Current 风格，便于手机浏览。",
+  "followUpPrompts": [
+    "保持阅读顺序不变，让评价卡片布局更紧凑。",
+    "将青绿色强调色替换为提供的品牌色，同时保持对比度达标。",
+    "为活动页面制作一版更适合短评价的布局。"
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Beacon SaaS Landing Page",
+  "description": "Create a responsive launch page for a focused software product, with clear positioning, concise proof, and an editable dark minimalist design.",
+  "whatYouGet": [
+    "A complete landing page from navigation through footer, with one hero and a deliberate section sequence.",
+    "Specific product copy for a fictional software business, without placeholder text or invented proof.",
+    "Responsive layout and clear calls to action, ready to adapt as HTML or a frontend component."
+  ],
+  "goodFit": [
+    "A solo founder preparing a focused product launch.",
+    "A product manager publishing a concise page for a new software tool."
+  ],
+  "notFor": [
+    "A full marketing site with multiple page templates.",
+    "Products needing extensive compliance language or verified case studies."
+  ],
+  "requiredInputs": [
+    "Product name, audience, and the main job it helps them complete.",
+    "Confirmed features, call to action, and any pricing details to publish."
+  ],
+  "faq": [
+    {
+      "q": "Can I use this for a product that is not launched yet?",
+      "a": "Yes. Use accurate preview or waitlist language, and avoid implying the product is generally available if it is not."
+    },
+    {
+      "q": "Will the page work on mobile?",
+      "a": "The layout should adapt to narrow screens, with readable type, stacked content, and controls that remain easy to use."
+    },
+    {
+      "q": "Can I change the section order?",
+      "a": "Yes. Keep navigation first, exactly one hero, and the footer last; arrange the remaining sections around the product's strongest evidence."
+    }
+  ],
+  "demoPrompt": "/sl-beacon-saas-landing-page Build a quiet, clear launch page for Luma Desk, a shared inbox for small software teams. Open with “Every customer question, in the right hands.” Include team names, three inbox features, an attention overview, three workflow steps, two testimonials, an FAQ, then close with “Keep the next customer reply from getting lost.” Use a waitlist CTA; avoid unconfirmed product and pricing claims.",
+  "followUpPrompts": [
+    "Make the hero more direct and keep the rest of the page structure unchanged.",
+    "Add a short pricing section using only these confirmed plan details.",
+    "Adapt the copy for a mobile-first audience without changing the visual style."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

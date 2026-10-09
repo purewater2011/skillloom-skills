@@ -1,0 +1,69 @@
+{
+  "slug": "sl-slate-admin-console-ui-block",
+  "version": "1.0.18",
+  "output": "html",
+  "family": "web-block",
+  "engine": "web-block",
+  "styleFamily": "minimalist",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "indie-hacker",
+      "product-manager"
+    ],
+    "task": [
+      "build-website-page",
+      "build-admin-dashboard"
+    ],
+    "scenario": [
+      "product-launch",
+      "web-publishing"
+    ],
+    "domain": [
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "style-locked",
+      "editable-output",
+      "fast-turnaround"
+    ],
+    "style": [
+      "minimalist",
+      "data-dense",
+      "monochrome-neutral",
+      "console-grammar"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Slate Admin Console UI Block",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-slate-admin-console-ui-block"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

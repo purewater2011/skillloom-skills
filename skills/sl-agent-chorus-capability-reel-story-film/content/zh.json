@@ -1,0 +1,45 @@
+{
+  "name": "Agent-Chorus 能力展示叙事短片",
+  "description": "让同一句指令依次出现在四个产品界面中，把用户请求变成看得见的工作进展。适合社交平台发布，以硬切、清晰可读的界面和有依据的成果完成短片。",
+  "whatYouGet": [
+    "一支 20 至 45 秒的宽屏 MP4 短片",
+    "可编辑的 HTML/CSS 场景文件",
+    "分镜时长、画面文案及证据清单"
+  ],
+  "goodFit": [
+    "创始人发布工作流产品",
+    "应用开发者展示新能力",
+    "营销负责人制作社交平台发布素材"
+  ],
+  "notFor": [
+    "真人实拍广告",
+    "逐步讲解操作的产品教程",
+    "依赖未经核实数据的展示片"
+  ],
+  "requiredInputs": [
+    "产品名称与核心价值",
+    "一个有代表性的用户请求",
+    "四个产品状态或足以准确呈现它们的资料",
+    "真实成果材料与行动号召"
+  ],
+  "faq": [
+    {
+      "q": "每个界面都需要录屏吗？",
+      "a": "不需要。截图或经过确认的界面信息即可用于 HTML/CSS 重建；自行补充的细节会标注为示意。"
+    },
+    {
+      "q": "可以加入效果数据或客户评价吗？",
+      "a": "可以，但需要提供来源并确认措辞。没有依据时，短片会用可见的工作成果作为证明。"
+    }
+  ],
+  "demoPrompt": "/sl-agent-chorus-capability-reel-story-film 为虚构工作空间 Project Desk 制作一支 29 秒、16:9 的社交平台发布短片。开场呈现 “One request. Four surfaces.” 和 “A launch update is waiting.” 展示一项功能请求依次经过 Capture、Plan、Build 和 Publish，再呈现一份示意性的发布清单。结尾为 “View the workflow.” 采用技能的 Four-Surface Chorus 风格。",
+  "followUpPrompts": [
+    "不增加场景，让开头三秒更容易看懂。",
+    "用这张已确认的发布截图替换示意成果，并更新证据清单。"
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ]
+}

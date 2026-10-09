@@ -1,0 +1,67 @@
+{
+  "slug": "sl-scattered-cards-magazine-site",
+  "version": "1.0.18",
+  "output": "html",
+  "family": "web-site",
+  "engine": "web-site",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "blogger",
+      "solo-founder",
+      "small-business-owner"
+    ],
+    "task": [
+      "build-blog-site"
+    ],
+    "scenario": [
+      "brand-identity",
+      "web-publishing"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "media-publishing"
+    ],
+    "highlight": [
+      "style-locked",
+      "editable-output"
+    ],
+    "style": [
+      "article-body",
+      "editorial-fan",
+      "editorial-hero",
+      "topic-index"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Scattered-Cards Magazine Site",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-scattered-cards-magazine-site"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "slug": "sl-consulting-storyline-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "executive",
+      "strategy-consultant",
+      "business-analyst"
+    ],
+    "task": [
+      "create-presentation",
+      "build-business-case",
+      "prepare-client-deck"
+    ],
+    "scenario": [
+      "client-executive-reporting",
+      "sales-fundraising"
+    ],
+    "domain": [
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "logic-first",
+      "evidence-first",
+      "visually-polished"
+    ],
+    "style": [
+      "action-title",
+      "consulting",
+      "corporate",
+      "minimal"
+    ],
+    "model": [
+      "gpt-image"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Consulting Storyline Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-consulting-storyline-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

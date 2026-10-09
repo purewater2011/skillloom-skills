@@ -1,0 +1,77 @@
+{
+  "slug": "sl-device-canvas-product-story-film",
+  "version": "1.0.4",
+  "output": "video",
+  "family": "video-narrative",
+  "engine": "video-orchestrated",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "app-developer",
+      "product-marketing-manager"
+    ],
+    "task": [
+      "create-social-brand-video",
+      "create-product-launch-film",
+      "create-product-demo-video"
+    ],
+    "scenario": [
+      "social-campaign",
+      "product-launch"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "evidence-first",
+      "guided-workflow",
+      "visually-polished"
+    ],
+    "style": [
+      "chromatic-split-reveal",
+      "css-perspective-slab",
+      "dark-studio-device",
+      "interface-zoom-through",
+      "oversized-cursor"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Device-Canvas Product Story Film",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-device-canvas-product-story-film"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

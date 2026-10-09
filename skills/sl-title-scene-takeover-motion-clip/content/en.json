@@ -1,0 +1,50 @@
+{
+  "name": "Title Scene Takeover Motion Clip",
+  "description": "A focused motion clip for title scenes, lesson openers, and recurring editorial posts. It uses a saturated ground, an oversized didone title, a restrained grotesk caption, and one precise accent movement to make a series name feel established without visual noise.",
+  "whatYouGet": [
+    "A 9-second wide title takeover MP4",
+    "Editable HTML and CSS composition",
+    "Grid-aligned title and metadata treatment",
+    "Consistent timing for repeatable series use"
+  ],
+  "goodFit": [
+    "Opening a recurring lesson or editorial series",
+    "Introducing a chapter, topic, or episode before the main content",
+    "Creating a polished transition between social publishing segments"
+  ],
+  "notFor": [
+    "Photo-led storytelling or character animation",
+    "Dense announcements with many facts or calls to action"
+  ],
+  "requiredInputs": [
+    "Exact title or series name",
+    "Optional subtitle or chapter label",
+    "Preferred motion energy and metadata"
+  ],
+  "faq": [
+    {
+      "q": "Can I reuse the same treatment for a series?",
+      "a": "Yes. Replace the title, subtitle, and metadata while preserving the grid, timing, color roles, and accent behavior for a consistent publishing system."
+    },
+    {
+      "q": "Does it require a generation model?",
+      "a": "No. The composition is built with local HTML and CSS and rendered to an MP4, so the output is repeatable and the source remains editable."
+    },
+    {
+      "q": "Can the title be longer?",
+      "a": "Yes, but keep the main title to six words or fewer where possible. Longer titles should use intentional line breaks and remain inside the crop-safe area."
+    }
+  ],
+  "demoPrompt": "/sl-title-scene-takeover-motion-clip Create a 9-second 16:9 opening clip for the lesson series Clearer Thinking. Open with “CLEARER THINKING,” move through “NOTICE,” “NAME,” and “CHOOSE,” then the card “A title can set the pace” with “Give the idea room” and “before the lesson begins,” and close with “Continue with one clear question.” Use the Gridline Takeover style.",
+  "followUpPrompts": [
+    "Make the title entrance brisker while preserving the same grid and color roles.",
+    "Create a companion ending clip using the same typography, with the line Continue with one clear question.",
+    "Swap the metadata for Chapter 05 and keep the title treatment visually identical."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

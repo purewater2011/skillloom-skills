@@ -1,0 +1,45 @@
+{
+  "name": "Sky Glass Deck",
+  "description": "A self-contained executive presentation style for publishing teams. It combines precise reporting, serif action titles, square glass panels, and luminous CSS compositions without relying on images.",
+  "whatYouGet": [
+    "A navigable 16:9 HTML slide deck",
+    "Consistent action titles and executive-ready layouts",
+    "Source-conscious charts, figures, and annotations",
+    "Print-friendly slides that work offline"
+  ],
+  "goodFit": [
+    "Quarterly audience and membership reviews",
+    "Client-facing editorial strategy reports",
+    "Publisher performance and investment briefings"
+  ],
+  "notFor": [
+    "Photo galleries or image-dependent portfolios",
+    "Live dashboards with continuously updating metrics"
+  ],
+  "requiredInputs": [
+    "Audience and decision to support",
+    "Approved figures with periods and units",
+    "Key findings and recommended actions"
+  ],
+  "faq": [
+    {
+      "q": "Does the deck need image files?",
+      "a": "No. Its editorial depth is built with CSS gradients, lines, and translucent shapes, so the finished deck works offline."
+    },
+    {
+      "q": "Will it fill gaps in my reporting data?",
+      "a": "No. Missing sources, periods, or denominators should be identified for review rather than presented as facts."
+    }
+  ],
+  "demoPrompt": "/sl-sky-glass-deck Create exactly 9 slides for Regional Publishing Studio’s Q2 2025 executive review, moving from audience growth and reader behavior to a staged test and three Q3 decisions. Treat all figures as illustrative. Title: “Reader growth is creating a stronger case for membership.” Close: “Approve three decisions to make the next quarter measurable.” Use a restrained Sky Glass editorial style.",
+  "followUpPrompts": [
+    "Make the recommendations more specific without changing any reported figures.",
+    "Add source notes to each chart and check that every metric has a period.",
+    "Tighten the action titles for a board-level audience."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

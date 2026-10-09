@@ -1,0 +1,67 @@
+{
+  "slug": "sl-project-knowledge-graph-web-page",
+  "version": "1.0.9",
+  "output": "html",
+  "family": "web-other",
+  "engine": "web-site",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "business-analyst",
+      "project-manager",
+      "technical-writer"
+    ],
+    "task": [
+      "build-project-knowledge-graph"
+    ],
+    "scenario": [
+      "client-executive-reporting",
+      "research-technical"
+    ],
+    "domain": [
+      "science-research",
+      "tech-software"
+    ],
+    "highlight": [
+      "logic-first",
+      "evidence-first",
+      "source-faithful"
+    ],
+    "style": [
+      "citation-led",
+      "constellation-dark",
+      "knowledge-canvas"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Project Knowledge Graph Web Page",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-project-knowledge-graph-web-page"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

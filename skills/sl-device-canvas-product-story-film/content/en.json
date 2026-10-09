@@ -1,0 +1,42 @@
+{
+  "name": "Device-Canvas Product Story Film",
+  "description": "A locally rendered product-launch film that turns a real user problem into a dimensional device reveal, focused interface moment, and evidence-led ending.",
+  "whatYouGet": [
+    "A 20–45 second wide-canvas MP4 with a hook, problem, product moments, proof, and end card.",
+    "A coordinated HTML/CSS scene composition using a perspective device slab and split-color reveal.",
+    "A concise story shaped around the supplied product promise, audience, interaction, and evidence."
+  ],
+  "goodFit": [
+    "Launching a software product or feature on social channels.",
+    "Showing one valuable interface interaction without live-action production."
+  ],
+  "notFor": [
+    "A cinematic brand film built around live actors or locations.",
+    "A product walkthrough that needs extensive unscripted interface capture."
+  ],
+  "requiredInputs": [
+    "Product promise, audience, and preferred call to action.",
+    "A key interface moment and a verified proof point or an instruction to omit proof."
+  ],
+  "faq": [
+    {
+      "q": "Can the film include a metric?",
+      "a": "Yes. Provide the exact figure, source, and approved wording. The film should omit unsupported claims rather than invent performance evidence."
+    },
+    {
+      "q": "Does this generate product screenshots?",
+      "a": "No. It composes HTML/CSS scenes locally. Supply interface details or approved assets, or request a clearly illustrative fictional interface."
+    }
+  ],
+  "demoPrompt": "/sl-device-canvas-product-story-film Create a 25-second 16:9 launch film for fictional task-planning app Daymark. Open with “TOO MUCH IN MOTION” and close with “Plan your next clear day.” Between them, show requests, notes and deadlines becoming one daily plan, three client priorities and a focused next step; include the proof point “4 hrs / week” and a calmer workday. Use a split-canvas reveal style.",
+  "followUpPrompts": [
+    "Make the opening problem more specific to independent consultants.",
+    "Revise the proof scene to use only the evidence and wording I supplied."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

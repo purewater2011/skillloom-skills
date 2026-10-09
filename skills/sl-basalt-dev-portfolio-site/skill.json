@@ -1,0 +1,69 @@
+{
+  "slug": "sl-basalt-dev-portfolio-site",
+  "version": "1.0.8",
+  "output": "html",
+  "family": "web-site",
+  "engine": "web-site",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "app-developer",
+      "indie-hacker",
+      "job-seeker"
+    ],
+    "task": [
+      "build-website-page",
+      "build-portfolio-site"
+    ],
+    "scenario": [
+      "brand-identity",
+      "web-publishing"
+    ],
+    "domain": [
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "style-locked",
+      "editable-output"
+    ],
+    "style": [
+      "beam-motion",
+      "cyan-accent",
+      "dark-zinc",
+      "developer-minimal",
+      "hover-glow-cards"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Basalt Dev Portfolio Site",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-basalt-dev-portfolio-site"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

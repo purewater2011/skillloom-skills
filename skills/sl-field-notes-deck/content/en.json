@@ -1,0 +1,44 @@
+{
+  "name": "Field Notes Deck",
+  "description": "Create an offline-ready executive presentation with a green field-notes canvas, crisp serif typography, aligned reference grids, and evidence-first charts. Best for publishing teams reporting results and asking clients to make a clear decision.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck",
+    "Action-led titles and a consistent editorial layout system",
+    "Legible charts with units, periods, and target labels",
+    "Keyboard navigation and print-ready slide pages"
+  ],
+  "goodFit": [
+    "Client reporting for a publishing or media team",
+    "Course performance or editorial programme reviews",
+    "A recurring presentation series that needs a locked visual style"
+  ],
+  "notFor": [
+    "A photo-led brand campaign",
+    "A report that needs fabricated evidence to fill gaps"
+  ],
+  "requiredInputs": [
+    "Audience and decision needed",
+    "Approved source copy and metrics",
+    "Reporting period and organisation name"
+  ],
+  "faq": [
+    {
+      "q": "Can the deck use my exact wording?",
+      "a": "Yes. Identify text that must remain verbatim; the deck will preserve it and flag copy that cannot fit cleanly."
+    },
+    {
+      "q": "What happens when a metric has no source?",
+      "a": "It is flagged for confirmation rather than presented as a verified result."
+    }
+  ],
+  "demoPrompt": "/sl-field-notes-deck Create a 9-slide executive review for fictional North District Publishing, moving from quarterly readership growth through newsletter contribution to two experiments and an approval decision. Title slide: “Qualified readership grew, and the next test is ready.” Closing slide: “Approve the tests and review the results in four weeks.” Use a Sage Grid Notes style.",
+  "followUpPrompts": [
+    "Shorten the deck to seven slides while preserving every approved metric.",
+    "Replace the Q4 target with the revised figure in my source notes and update all references."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

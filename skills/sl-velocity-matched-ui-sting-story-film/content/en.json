@@ -1,0 +1,52 @@
+{
+  "name": "Velocity-Matched UI Sting Story Film",
+  "description": "A narrative video skill for turning a software workflow into a fast, memorable social brand film. It choreographs interface fragments, counters, proof bars, and end-card typography around one motion language. Use it for launches, campaign cutdowns, and product stories that need a distinctive visual signature.",
+  "whatYouGet": [
+    "A 20–45 second narrative MP4 with hook, problem, product, proof, and end card",
+    "A multi-scene HTML/CSS source composition rendered locally without generation models",
+    "Velocity-matched cuts with a consistent easing family and directional motion system",
+    "A saturated grid visual system with kinetic UI panels and clear social-safe typography"
+  ],
+  "goodFit": [
+    "Product launches that need a concise, ownable motion identity",
+    "Social campaigns explaining a workflow improvement in under one minute",
+    "Software brands with a measurable outcome and a few visualizable capabilities"
+  ],
+  "notFor": [
+    "Feature inventories that need dense explanatory copy",
+    "Campaigns whose central idea depends on photography, people, or live-action footage",
+    "Quiet editorial films with restrained or ambient motion"
+  ],
+  "requiredInputs": [
+    "A fictional or approved product name and promise",
+    "The workflow problem the film should make tangible",
+    "Two to four product moments or capabilities",
+    "One proof metric, benchmark, or customer outcome"
+  ],
+  "faq": [
+    {
+      "q": "Can the film use a real product interface?",
+      "a": "Yes. Supply approved interface labels and visual references, but keep the composition focused on a few legible states rather than reproducing an entire product."
+    },
+    {
+      "q": "How much copy fits in the film?",
+      "a": "The format favors short headlines, compact UI labels, and one proof statement. Longer explanations should be converted into visual state changes or moved into the accompanying post copy."
+    },
+    {
+      "q": "Can the same film be adapted for other social formats?",
+      "a": "Yes. The source keeps key typography and metrics inside a defined safe zone, making square and portrait reframing practical during finishing."
+    }
+  ],
+  "demoPrompt": "/sl-velocity-matched-ui-sting-story-film Create a 22-second 16:9 brand film for fictional workflow product Relayform. Open with “MOMENTUM, WITHOUT THE MAZE”; show requests, delayed handoffs and a unified review flow, then the “42% shorter” proof, time-back bars and a ready-to-move checklist. Close with “Move the work forward.” Use a saturated orange ground, dark mono UI panels, a fixed technical grid and velocity-matched horizontal cuts.",
+  "followUpPrompts": [
+    "Make the problem scene more tense while keeping all copy under six words per headline.",
+    "Replace the proof bars with a counter and a compact checklist, preserving the same motion direction.",
+    "Create a square-safe reframing plan that keeps the metric and end card fully legible."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

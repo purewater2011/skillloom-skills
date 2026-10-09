@@ -1,0 +1,77 @@
+{
+  "slug": "sl-agent-chorus-capability-reel-story-film",
+  "version": "1.0.4",
+  "output": "video",
+  "family": "video-narrative",
+  "engine": "video-orchestrated",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "solo-founder",
+      "app-developer",
+      "product-marketing-manager"
+    ],
+    "task": [
+      "create-social-brand-video",
+      "create-video-clips",
+      "create-product-launch-film"
+    ],
+    "scenario": [
+      "social-campaign",
+      "product-launch"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "evidence-first",
+      "guided-workflow",
+      "fast-turnaround"
+    ],
+    "style": [
+      "accelerating-repetition",
+      "beat-cut-reel",
+      "four-surface-chorus",
+      "hard-cut-only",
+      "kinetic-mono-prompt"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Agent-Chorus Capability Reel Story Film",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-agent-chorus-capability-reel-story-film"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

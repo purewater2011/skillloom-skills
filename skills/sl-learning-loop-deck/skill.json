@@ -1,0 +1,67 @@
+{
+  "slug": "sl-learning-loop-deck",
+  "version": "1.0.4",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "corporate-trainer",
+      "curriculum-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "teaching-explainer",
+      "client-executive-reporting"
+    ],
+    "domain": [
+      "education"
+    ],
+    "highlight": [
+      "logic-first",
+      "style-locked",
+      "guided-workflow"
+    ],
+    "style": [
+      "bright-editorial",
+      "rounded-card",
+      "geometric",
+      "high-contrast",
+      "learner-centered"
+    ],
+    "model": [
+      "gpt-image"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Learning Loop Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-learning-loop-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

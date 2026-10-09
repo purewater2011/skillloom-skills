@@ -1,0 +1,67 @@
+{
+  "slug": "sl-research-talk-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "warm-neutral",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "academic-researcher",
+      "graduate-student",
+      "technical-writer"
+    ],
+    "task": [
+      "create-research-presentation"
+    ],
+    "scenario": [
+      "teaching-explainer",
+      "research-technical"
+    ],
+    "domain": [
+      "education",
+      "science-research"
+    ],
+    "highlight": [
+      "editable-output",
+      "guided-workflow",
+      "visually-polished"
+    ],
+    "style": [
+      "warm-neutral",
+      "conference-minimal",
+      "formula-friendly"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Research Talk Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-research-talk-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

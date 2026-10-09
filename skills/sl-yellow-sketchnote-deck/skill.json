@@ -1,0 +1,64 @@
+{
+  "slug": "sl-yellow-sketchnote-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "course-creator",
+      "graphic-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "teaching-explainer"
+    ],
+    "domain": [
+      "education"
+    ],
+    "highlight": [
+      "style-locked",
+      "series-consistent",
+      "text-accurate"
+    ],
+    "style": [
+      "bold-explainer",
+      "ink-editorial",
+      "yellow-sketchnote"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Yellow Sketchnote Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-yellow-sketchnote-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

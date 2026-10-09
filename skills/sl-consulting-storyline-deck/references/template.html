@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REPLACE_DECK_TITLE</title>
+<style>
+/* SkillLoom deck engine. Keep the engine CSS and script intact.
+   1. Tokens below come from references/style-guide.md; do not add colors.
+   2. Copy the example slides you need (one per layout is provided), fill every REPLACE_ value,
+      renumber data-slide-id (s1, s2, ...) and the kicker/foot numbers, delete unused examples.
+   3. Add one entry per slide to window.__SLIDE_NOTES__.
+   Keys: arrows/space page, o overview, n notes. Print: one 16:9 slide per page. */
+:root {
+  --bg: #07504A; --surface: #123E3B; --fg: #FFFFFF; --muted: #D5E6E1;
+  --accent: #FFD48A; --accent-2: #9DE0CF; --rule: #769F99;
+  --font-display: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif; --font-body: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --display-weight: 700; --display-case: none; --tracking: 0;
+  --radius: 8px; --radius-ctl: 8px; --border: 1px solid #769F99; --shadow: none;
+  --space: 1;
+  --type-scale: 1;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+body { display: grid; place-items: center; overflow: hidden; background: color-mix(in srgb, var(--bg) 82%, var(--fg)); }
+.deck { position: relative; width: min(100vw, 177.78vh); height: min(56.25vw, 100vh); }
+.slide {
+  --fs-display: calc(5.4cqw * var(--type-scale)); --fs-h2: calc(3.5cqw * var(--type-scale)); --fs-h3: 1.85cqw;
+  --fs-body: 1.5cqw; --fs-small: 1.02cqw; --fs-stat: calc(6.2cqw * var(--type-scale));
+  --pad-x: calc(5.6cqw * var(--space)); --pad-y: calc(4.6cqw * var(--space)); --gap: calc(2.6cqw * var(--space));
+  position: absolute; inset: 0; display: none; container-type: size; overflow: hidden;
+  background-color: var(--bg); padding: var(--pad-y) var(--pad-x); font-size: var(--fs-body); line-height: 1.45;
+}
+.slide.active { display: flex; flex-direction: column; }
+.slide > .body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+.kicker { display: flex; align-items: center; gap: 1.2cqw; font-size: var(--fs-small); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.kicker b { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; }
+.kicker::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.foot { display: flex; justify-content: space-between; font-size: var(--fs-small); color: var(--muted); letter-spacing: 0.06em; padding-top: 1cqw; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--tracking); margin: 0; line-height: 1.06; text-wrap: balance; }
+h1 { font-size: var(--fs-display); }
+h2 { font-size: var(--fs-h2); max-width: 24ch; }
+h1.fit-m { font-size: calc(var(--fs-display) * 0.82); }
+h1.fit-s { font-size: calc(var(--fs-display) * 0.66); max-width: 18ch; }
+h1.fit-xs { font-size: calc(var(--fs-display) * 0.54); max-width: 22ch; }
+h2.fit-m { font-size: calc(var(--fs-h2) * 0.9); max-width: 28ch; }
+h2.fit-s { font-size: calc(var(--fs-h2) * 0.8); max-width: 30ch; }
+h2.fit-xs { font-size: calc(var(--fs-h2) * 0.7); max-width: 34ch; }
+h3 { font-size: var(--fs-h3); line-height: 1.2; }
+p { margin: 0; }
+.lede { color: var(--muted); max-width: 46ch; margin-top: calc(var(--gap) * 0.7); font-size: calc(var(--fs-body) * 1.12); }
+.accent { color: var(--accent); }
+.bar { width: 7cqw; height: 0.5cqw; background: var(--accent); border-radius: var(--radius); margin: calc(var(--gap) * 0.8) 0; }
+.panel { background: var(--surface); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.mark { display: inline-grid; place-items: center; width: 3.4cqw; height: 3.4cqw; border-radius: var(--radius); color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.mark svg { width: 1.9cqw; height: 1.9cqw; }
+.note { margin-top: var(--gap); padding-left: 1.2cqw; border-left: 0.3cqw solid var(--accent); color: var(--muted); font-size: calc(var(--fs-body) * 0.92); max-width: 44ch; }
+
+/* title */
+.l-title > .body { justify-content: flex-end; padding-bottom: 2cqw; max-width: 60%; position: relative; z-index: 1; }
+.l-title > .kicker { max-width: 60%; position: relative; z-index: 1; }
+.l-title h1 { max-width: 14ch; }
+.l-title h1.fit-s { max-width: 18ch; }
+.l-title h1.fit-xs { max-width: 22ch; }
+.l-title .meta { margin-top: calc(var(--gap) * 1.2); font-size: var(--fs-small); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.deco { position: absolute; top: 0; right: 0; bottom: 0; width: 31%; background: var(--accent); z-index: 0; }
+.deco::before { content: ""; position: absolute; left: -6.5cqw; top: 58%; width: 13cqw; aspect-ratio: 1; border-radius: 50%; background: var(--accent-2); }
+.deco::after { content: ""; position: absolute; left: 18%; right: 18%; top: 14%; height: 0; border-top: 0.25cqw solid var(--bg); box-shadow: 0 2.2cqw 0 0 var(--bg), 0 4.4cqw 0 0 var(--bg); opacity: 0.55; }
+.deco.round { top: -8cqw; bottom: auto; right: -10cqw; width: 46cqw; aspect-ratio: 1; border-radius: 50%; }
+.deco.round::before { left: 2cqw; top: auto; bottom: -2cqw; }
+.deco.round::after { display: none; }
+/* v1: tall band with a tilted square */
+.deco.v1, .deco.round.v1 { top: 0; bottom: 0; right: 7%; left: auto; width: 13%; aspect-ratio: auto; border-radius: 0; }
+.deco.v1::before { left: -9cqw; top: 22%; width: 11cqw; border-radius: calc(var(--radius) * 0.5); transform: rotate(12deg); }
+.deco.v1::after { display: none; }
+/* v2: stacked panels */
+.deco.v2, .deco.round.v2 { top: 16%; bottom: auto; right: 6%; width: 26cqw; height: 15cqw; aspect-ratio: auto; border-radius: var(--radius); box-shadow: -3cqw 6cqw 0 0 var(--accent-2), -6cqw 12cqw 0 0 var(--rule); }
+.deco.v2::before, .deco.v2::after { display: none; }
+/* v3: ring and dot */
+.deco.v3, .deco.round.v3 { top: 14%; bottom: auto; right: 6%; width: 21cqw; aspect-ratio: 1; border-radius: 50%; background: transparent; border: 1.5cqw solid var(--accent); }
+.deco.v3::before { left: auto; right: -1cqw; top: auto; bottom: 2.5cqw; width: 5.5cqw; }
+.deco.v3::after { display: none; }
+.l-title .foot { position: relative; z-index: 1; max-width: 60%; }
+/* agenda */
+.l-agenda .body { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: calc(var(--gap) * 2); align-items: center; }
+.l-agenda ol { list-style: none; margin: 0; padding: 0; counter-reset: a; }
+.l-agenda li { counter-increment: a; display: grid; grid-template-columns: 5cqw 1fr; align-items: baseline; padding: 1.15cqw 0; border-bottom: 1px solid var(--rule); font-size: calc(var(--fs-body) * 1.1); }
+.l-agenda li::before { content: counter(a, decimal-leading-zero); font-family: var(--font-display); color: var(--accent); font-weight: var(--display-weight); font-size: var(--fs-h3); }
+
+/* statement */
+.l-statement h2 { font-size: calc(var(--fs-h2) * 1.25); max-width: 20ch; }
+.l-statement h2.fit-m { font-size: calc(var(--fs-h2) * 1.08); max-width: 24ch; }
+.l-statement h2.fit-s { font-size: calc(var(--fs-h2) * 0.95); max-width: 28ch; }
+.l-statement h2.fit-xs { font-size: calc(var(--fs-h2) * 0.82); max-width: 32ch; }
+
+/* bullets */
+.l-bullets .body { display: grid; grid-template-columns: 1fr 1.1fr; gap: calc(var(--gap) * 2); align-items: center; }
+.l-bullets ul { list-style: none; margin: 0; padding: 0; }
+.l-bullets li { position: relative; padding: 1cqw 0 1cqw 3cqw; border-top: 1px solid var(--rule); }
+.l-bullets li:last-child { border-bottom: 1px solid var(--rule); }
+.l-bullets li::before { content: ""; position: absolute; left: 0.4cqw; top: 1.95cqw; width: 1.1cqw; height: 1.1cqw; border-radius: var(--radius); background: var(--accent); }
+
+/* cards */
+.l-cards h2 { margin-bottom: calc(var(--gap) * 1.3); }
+.cards { display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: var(--gap); }
+.card { padding: 2.2cqw; display: flex; flex-direction: column; gap: 1.1cqw; }
+.card p { color: var(--muted); font-size: calc(var(--fs-body) * 0.9); }
+
+/* stats */
+.l-stats h2 { margin-bottom: calc(var(--gap) * 1.6); }
+.stats { display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: var(--gap); }
+.stat { border-top: 0.35cqw solid var(--accent); padding-top: 1.6cqw; }
+.stat .v { font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--fs-stat); line-height: 1; letter-spacing: var(--tracking); }
+.stat .k { margin-top: 1cqw; color: var(--muted); max-width: 22ch; }
+
+/* quote */
+.l-quote .body { position: relative; padding-left: 9cqw; }
+.l-quote .qm { position: absolute; left: 0; top: 50%; transform: translateY(-62%); font-family: var(--font-display); font-size: 16cqw; line-height: 1; color: var(--accent); opacity: 0.9; }
+.l-quote blockquote { margin: 0; font-family: var(--font-display); font-size: calc(var(--fs-h2) * 0.95); line-height: 1.18; max-width: 30ch; font-weight: var(--display-weight); letter-spacing: var(--tracking); }
+.l-quote cite { display: block; margin-top: calc(var(--gap) * 1.1); font-style: normal; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-size: var(--fs-small); }
+
+/* timeline */
+.l-timeline h2 { margin-bottom: calc(var(--gap) * 2); }
+.tl { display: grid; grid-template-columns: repeat(var(--n), 1fr); position: relative; }
+.tl::before { content: ""; position: absolute; left: 0; right: 0; top: 4.15cqw; height: 0.25cqw; background: var(--rule); }
+.tl .step { position: relative; padding-right: 2cqw; }
+.tl .lbl { font-family: var(--font-display); font-weight: var(--display-weight); color: var(--accent); font-size: var(--fs-h3); height: 3.2cqw; }
+.tl .dot { width: 2cqw; height: 2cqw; border-radius: 50%; background: var(--bg); border: 0.45cqw solid var(--accent); margin: 0.2cqw 0 1.6cqw; position: relative; }
+.tl .step p { color: var(--muted); max-width: 22ch; }
+
+/* compare */
+.l-compare h2 { margin-bottom: calc(var(--gap) * 1.3); }
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.cmp .side { padding: 2.4cqw; }
+.cmp .side.b { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); border-color: var(--accent); }
+.cmp ul { list-style: none; margin: 1.4cqw 0 0; padding: 0; }
+.cmp li { display: flex; gap: 1cqw; padding: 0.7cqw 0; align-items: baseline; }
+.cmp li::before { content: "–"; color: var(--muted); }
+.cmp .b li::before { content: "+"; color: var(--accent); font-weight: 700; }
+
+/* chart */
+.l-chart .body { display: grid; grid-template-columns: 1.55fr 0.75fr; gap: calc(var(--gap) * 1.6); align-items: end; }
+.l-chart h2 { grid-column: 1 / -1; align-self: start; margin-top: 1.6cqw; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .unit { font-size: var(--fs-small); color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1cqw; }
+.takeaway { padding: 2.2cqw; }
+.takeaway b { display: block; font-size: var(--fs-small); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8cqw; }
+
+/* visual */
+.l-visual .body { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--gap) * 1.6); align-items: center; }
+.l-visual .art { aspect-ratio: 4 / 3; width: 100%; }
+.l-visual .art svg { width: 100%; height: 100%; display: block; }
+.l-visual .art { position: relative; }
+.l-visual .art-tag { position: absolute; left: 1.2cqw; bottom: 1.2cqw; font-size: var(--fs-small); color: var(--fg); background: color-mix(in srgb, var(--bg) 85%, transparent); padding: 0.4cqw 0.9cqw; border-radius: var(--radius-ctl); }
+
+/* closing */
+.l-closing .body { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--gap) * 2); align-items: center; }
+.l-closing ol { list-style: none; margin: 0; padding: 0; counter-reset: c; }
+.l-closing li { counter-increment: c; display: flex; gap: 1.6cqw; align-items: baseline; padding: 1.2cqw 1.6cqw; margin-bottom: 1cqw; }
+.l-closing li::before { content: counter(c); font-family: var(--font-display); font-weight: var(--display-weight); color: var(--accent); font-size: var(--fs-h3); }
+
+/* chrome */
+.counter { display: none; }
+.notes { position: fixed; left: 0; right: 0; bottom: 0; background: var(--fg); color: var(--bg); font: 15px/1.5 var(--font-body); padding: 12px 20px; display: none; z-index: 5; }
+.notes.open { display: block; }
+.deck.overview { width: 100vw; height: 100vh; overflow: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; padding: 22px; align-content: start; }
+.deck.overview .slide { display: flex; flex-direction: column; position: relative; inset: auto; aspect-ratio: 16 / 9; cursor: pointer; outline: 1px solid var(--rule); }
+body:has(.deck.overview) { overflow: auto; }
+
+@media (max-width: 640px) {
+  body { overflow: auto; display: block; background: var(--bg); }
+  .deck { width: 100vw; height: auto; min-height: 100vh; }
+  .slide { --fs-display: 34px; --fs-h2: 27px; --fs-h3: 19px; --fs-body: 16px; --fs-small: 12px; --fs-stat: 42px;
+    --pad-x: 22px; --pad-y: 26px; --gap: 18px; position: relative; inset: auto; min-height: 100vh; container-type: inline-size; overflow: hidden; }
+  .slide > .body { justify-content: center; align-content: center; gap: var(--gap); }
+  .slide.active { display: flex; }
+  .l-agenda .body, .l-bullets .body, .l-chart .body, .l-visual .body, .l-closing .body, .cmp { grid-template-columns: 1fr; }
+  .cards, .stats { grid-template-columns: 1fr 1fr; }
+  .tl { grid-template-columns: 1fr; gap: 14px; }
+  .tl::before { display: none; }
+  .tl .lbl { height: auto; }
+  .l-title > .body, .l-title > .kicker, .l-title .foot { max-width: none; }
+  .deco, .deco.round, .deco.v1, .deco.v2, .deco.v3, .deco.round.v1, .deco.round.v2, .deco.round.v3 { top: -40px; right: -60px; left: auto; bottom: auto; width: 170px; height: 170px; aspect-ratio: 1; box-shadow: none; transform: none; }
+  .deco.v3 { border-width: 14px; }
+  .deco::before { width: 70px; left: -30px; top: 110px; } .deco::after { display: none; }
+  .l-title h1 { padding-top: 120px; }
+  .l-quote .body { padding-left: 0; }
+  .l-quote .qm { position: static; transform: none; font-size: 90px; height: 60px; }
+  .mark { width: 40px; height: 40px; } .mark svg { width: 22px; height: 22px; }
+  .bar { width: 64px; height: 5px; }
+  .kicker { gap: 10px; }
+}
+
+@media print {
+  @page { size: 1600px 900px; margin: 0; }
+  html, body { height: auto; overflow: visible; display: block; background: var(--bg); }
+  .deck { width: 1600px; height: auto; }
+  .slide { display: flex !important; flex-direction: column; position: relative; inset: auto; width: 1600px; height: 900px; page-break-after: always; break-after: page; }
+  .counter, .notes { display: none !important; }
+}
+
+
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+<!-- LAYOUT title: Opening slide. One per deck. -->
+<section class="slide l-title" data-slide-id="s1" data-layout="title"><div class="deco v2" aria-hidden="true"></div>
+  <div class="kicker"><b>01</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h1>REPLACE_ACTION_TITLE</h1>
+    <p class="lede">REPLACE_SUBTITLE</p>
+    <div class="meta">REPLACE_DATE · REPLACE_AUTHOR</div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>01 / 12</span></div>
+</section>
+<!-- LAYOUT agenda: Agenda: 3-6 items, under 6 words each. -->
+<section class="slide l-agenda" data-slide-id="s2" data-layout="agenda">
+  <div class="kicker"><b>02</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_AGENDA_TITLE</h2>
+    <ol><li>REPLACE_ITEM</li><li>REPLACE_ITEM</li><li>REPLACE_ITEM</li></ol>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>02 / 12</span></div>
+</section>
+<!-- LAYOUT statement: One statement, under 18 words, plus one supporting note. -->
+<section class="slide l-statement" data-slide-id="s3" data-layout="statement">
+  <div class="kicker"><b>03</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_STATEMENT</h2>
+    <div class="bar"></div>
+    <p class="note">REPLACE_NOTE</p>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>03 / 12</span></div>
+</section>
+<!-- LAYOUT bullets: Title + 2-5 bullets (under 14 words each) + a margin note. -->
+<section class="slide l-bullets" data-slide-id="s4" data-layout="bullets">
+  <div class="kicker"><b>04</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <div><h2>REPLACE_TITLE</h2><p class="note">REPLACE_NOTE</p></div>
+    <ul><li>REPLACE_POINT</li><li>REPLACE_POINT</li><li>REPLACE_POINT</li></ul>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>04 / 12</span></div>
+</section>
+<!-- LAYOUT cards: 3-4 cards; icon names: spark chart shield clock users layers bolt globe check star heart book camera cube message target leaf rocket map lock. -->
+<section class="slide l-cards" data-slide-id="s5" data-layout="cards">
+  <div class="kicker"><b>05</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_TITLE</h2>
+    <div class="cards" style="--n:3"><div class="card panel"><span class="mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></span><h3>REPLACE_HEADING</h3><p>REPLACE_BODY</p></div><div class="card panel"><span class="mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>REPLACE_HEADING</h3><p>REPLACE_BODY</p></div><div class="card panel"><span class="mark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.8c1.6.8 2.7 2.5 3 5.2"/></svg></span><h3>REPLACE_HEADING</h3><p>REPLACE_BODY</p></div></div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>05 / 12</span></div>
+</section>
+<!-- LAYOUT stats: 2-4 numbers from the source. Never invent figures. -->
+<section class="slide l-stats" data-slide-id="s6" data-layout="stats">
+  <div class="kicker"><b>06</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_TITLE</h2>
+    <div class="stats" style="--n:3"><div class="stat"><div class="v">REPLACE_VALUE</div><div class="k">REPLACE_LABEL</div></div><div class="stat"><div class="v">REPLACE_VALUE</div><div class="k">REPLACE_LABEL</div></div><div class="stat"><div class="v">REPLACE_VALUE</div><div class="k">REPLACE_LABEL</div></div></div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>06 / 12</span></div>
+</section>
+<!-- LAYOUT quote: A real quote with its source. Mark sample quotes as sample content. -->
+<section class="slide l-quote" data-slide-id="s7" data-layout="quote">
+  <div class="kicker"><b>07</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <div class="qm">&ldquo;</div>
+    <blockquote>REPLACE_QUOTE</blockquote>
+    <cite>REPLACE_SOURCE</cite>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>07 / 12</span></div>
+</section>
+<!-- LAYOUT timeline: 3-5 steps, label under 3 words. -->
+<section class="slide l-timeline" data-slide-id="s8" data-layout="timeline">
+  <div class="kicker"><b>08</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_TITLE</h2>
+    <div class="tl" style="--n:3"><div class="step"><div class="lbl">REPLACE_LABEL</div><div class="dot"></div><p>REPLACE_TEXT</p></div><div class="step"><div class="lbl">REPLACE_LABEL</div><div class="dot"></div><p>REPLACE_TEXT</p></div><div class="step"><div class="lbl">REPLACE_LABEL</div><div class="dot"></div><p>REPLACE_TEXT</p></div></div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>08 / 12</span></div>
+</section>
+<!-- LAYOUT compare: Before/after or option A/B; the right side is the recommendation. -->
+<section class="slide l-compare" data-slide-id="s9" data-layout="compare">
+  <div class="kicker"><b>09</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_TITLE</h2>
+    <div class="cmp">
+      <div class="side a panel"><h3>REPLACE_HEADING</h3><ul><li>REPLACE_POINT</li><li>REPLACE_POINT</li></ul></div>
+      <div class="side b panel"><h3>REPLACE_HEADING</h3><ul><li>REPLACE_POINT</li><li>REPLACE_POINT</li></ul></div>
+    </div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>09 / 12</span></div>
+</section>
+<!-- LAYOUT chart: 3-6 bars: edit the SVG rects (height = value / max), the last bar is highlighted (put the point you are making last). -->
+<section class="slide l-chart" data-slide-id="s10" data-layout="chart">
+  <div class="kicker"><b>10</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_TITLE</h2>
+    <div class="chart"><div class="unit">REPLACE_UNIT</div><svg viewBox="0 0 640 300" role="img" aria-label="Bar chart"><line x1="0" y1="266" x2="640" y2="266" stroke="var(--rule)" stroke-width="1.5"/><rect x="0.0" y="162.9" width="201.3" height="103.1" rx="3" fill="var(--muted)" fill-opacity="0.32"/><text x="100.7" y="152.9" text-anchor="middle" font-size="18" font-weight="700" fill="var(--fg)" font-family="var(--font-display)">40</text><text x="100.7" y="290" text-anchor="middle" font-size="14" fill="var(--muted)" font-family="var(--font-body)">REPLACE_A</text><rect x="219.3" y="98.4" width="201.3" height="167.6" rx="3" fill="var(--muted)" fill-opacity="0.32"/><text x="320.0" y="88.4" text-anchor="middle" font-size="18" font-weight="700" fill="var(--fg)" font-family="var(--font-display)">65</text><text x="320.0" y="290" text-anchor="middle" font-size="14" fill="var(--muted)" font-family="var(--font-body)">REPLACE_B</text><rect x="438.7" y="34.0" width="201.3" height="232.0" rx="3" fill="var(--accent)" fill-opacity="1"/><text x="539.3" y="24.0" text-anchor="middle" font-size="18" font-weight="700" fill="var(--fg)" font-family="var(--font-display)">90</text><text x="539.3" y="290" text-anchor="middle" font-size="14" fill="var(--muted)" font-family="var(--font-body)">REPLACE_C</text></svg></div>
+    <div class="takeaway panel"><b>Takeaway</b>REPLACE_TAKEAWAY</div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>10 / 12</span></div>
+</section>
+<!-- LAYOUT visual: A breather slide: abstract token-colored illustration (inline SVG only). -->
+<section class="slide l-visual" data-slide-id="s11" data-layout="visual">
+  <div class="kicker"><b>11</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <div><h2>REPLACE_TITLE</h2><p class="lede">REPLACE_CAPTION</p></div>
+    <div class="art" role="img" aria-label="Image slot: REPLACE_CAPTION"><svg viewBox="0 0 400 300" role="img" aria-label="Illustration"><path d="M40 260 A 160 160 0 0 1 360 260 Z" fill="var(--accent)"/>
+     <path d="M90 260 A 110 110 0 0 1 310 260" stroke="var(--bg)" stroke-width="10" fill="none"/>
+     <rect x="250" y="40" width="120" height="120" rx="14" fill="var(--accent-2)" fill-opacity=".8"/>
+     <circle cx="90" cy="90" r="30" fill="none" stroke="var(--fg)" stroke-width="3"/></svg><span class="art-tag">Image slot · replace with your photo or diagram</span></div>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>11 / 12</span></div>
+</section>
+<!-- LAYOUT closing: Close with 2-4 concrete actions, each with an owner. -->
+<section class="slide l-closing" data-slide-id="s12" data-layout="closing">
+  <div class="kicker"><b>12</b>REPLACE_DECK_NAME</div>
+  <div class="body">
+    <h2>REPLACE_TITLE</h2>
+    <ol><li class="panel">REPLACE_ACTION</li><li class="panel">REPLACE_ACTION</li></ol>
+  </div>
+  <div class="foot"><span>REPLACE_DECK_NAME</span><span>12 / 12</span></div>
+</section>
+</main>
+<div class="counter" id="counter"></div>
+<div class="notes" id="notes"></div>
+<script>
+  window.__SLIDE_NOTES__ = {"s1":"REPLACE_NOTES","s2":"REPLACE_NOTES","s3":"REPLACE_NOTES","s4":"REPLACE_NOTES","s5":"REPLACE_NOTES","s6":"REPLACE_NOTES","s7":"REPLACE_NOTES","s8":"REPLACE_NOTES","s9":"REPLACE_NOTES","s10":"REPLACE_NOTES","s11":"REPLACE_NOTES","s12":"REPLACE_NOTES"};
+
+(function () {
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var counter = document.getElementById("counter");
+  var notes = document.getElementById("notes");
+  var i = Math.max(0, Math.min(slides.length - 1, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, k) { s.classList.toggle("active", k === i); });
+    counter.textContent = (i + 1) + " / " + slides.length;
+    notes.textContent = (window.__SLIDE_NOTES__ || {})[slides[i].dataset.slideId] || "";
+    if (location.hash !== "#" + (i + 1)) history.replaceState(null, "", "#" + (i + 1));
+  }
+  window.addEventListener("hashchange", function () { show((parseInt(location.hash.slice(1), 10) || 1) - 1); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") show(i + 1);
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") show(i - 1);
+    else if (e.key === "Home") show(0);
+    else if (e.key === "End") show(slides.length - 1);
+    else if (e.key === "o") deck.classList.toggle("overview");
+    else if (e.key === "n") notes.classList.toggle("open");
+  });
+  var x0 = null;
+  document.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  slides.forEach(function (s, k) { s.addEventListener("click", function () { if (deck.classList.contains("overview")) { deck.classList.remove("overview"); show(k); } }); });
+  show(i);
+})();
+
+</script>
+</body>
+</html>

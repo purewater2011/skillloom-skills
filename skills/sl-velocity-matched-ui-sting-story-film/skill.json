@@ -1,0 +1,76 @@
+{
+  "slug": "sl-velocity-matched-ui-sting-story-film",
+  "version": "2.0.4",
+  "output": "video",
+  "family": "video-narrative",
+  "engine": "video-orchestrated",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "product-marketing-manager",
+      "brand-designer",
+      "art-director"
+    ],
+    "task": [
+      "create-social-brand-video",
+      "create-video-clips",
+      "create-motion-graphics"
+    ],
+    "scenario": [
+      "brand-identity",
+      "social-campaign"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "style-locked",
+      "guided-workflow"
+    ],
+    "style": [
+      "clean-product-motion",
+      "kinetic-ui",
+      "no-idle-motion",
+      "single-ease-family",
+      "velocity-matched-cuts"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Velocity-Matched UI Sting Story Film",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-velocity-matched-ui-sting-story-film"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

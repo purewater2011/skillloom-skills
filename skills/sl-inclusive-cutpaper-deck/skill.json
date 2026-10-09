@@ -1,0 +1,64 @@
+{
+  "slug": "sl-inclusive-cutpaper-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "course-creator",
+      "graphic-designer"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "client-executive-reporting"
+    ],
+    "domain": [
+      "media-publishing"
+    ],
+    "highlight": [
+      "style-locked",
+      "series-consistent",
+      "text-accurate"
+    ],
+    "style": [
+      "colorful-workshop",
+      "editorial-photo-collage",
+      "inclusive-cutpaper"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Inclusive Cutpaper Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-inclusive-cutpaper-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

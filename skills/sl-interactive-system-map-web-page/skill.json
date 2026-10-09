@@ -1,0 +1,66 @@
+{
+  "slug": "sl-interactive-system-map-web-page",
+  "version": "1.0.17",
+  "output": "html",
+  "family": "web-other",
+  "engine": "web-site",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "app-developer",
+      "software-architect",
+      "technical-writer"
+    ],
+    "task": [
+      "build-interactive-system-map"
+    ],
+    "scenario": [
+      "teaching-explainer",
+      "research-technical"
+    ],
+    "domain": [
+      "tech-software"
+    ],
+    "highlight": [
+      "logic-first",
+      "evidence-first",
+      "editable-output"
+    ],
+    "style": [
+      "technical-blueprint",
+      "dark-grid",
+      "semantic-signal"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Interactive System Map Web Page",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-interactive-system-map-web-page"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Code-Change Explainer Story Film",
+  "description": "A short, locally rendered video that turns a verified software fix into a clear narrative: the failure, the change, the proof, and the result. Framed code evidence and restrained editorial motion make it suitable for launch updates and changelogs.",
+  "whatYouGet": [
+    "A 20-45 second wide MP4 with a complete story arc",
+    "Readable, syntax-tinted evidence frames",
+    "Scene copy and an evidence-to-claim mapping",
+    "An end card ready for a product update"
+  ],
+  "goodFit": [
+    "Explaining a bug fix in a release update",
+    "Showing the impact of a small product change",
+    "Making a technical changelog easier to share"
+  ],
+  "notFor": [
+    "A full feature walkthrough or coding tutorial",
+    "Claims that cannot be checked against the supplied change"
+  ],
+  "requiredInputs": [
+    "Code diff or precise change summary",
+    "Before and after behavior",
+    "Test result or reproducible proof",
+    "Product label, if one should appear"
+  ],
+  "faq": [
+    {
+      "q": "Does this need generated video footage?",
+      "a": "No. The film is composed in HTML and CSS and rendered to MP4 locally."
+    },
+    {
+      "q": "Can it use a test result as proof?",
+      "a": "Yes. Supply the test name and result; the film will show only claims supported by that evidence."
+    }
+  ],
+  "demoPrompt": "/sl-code-change-explainer-story-film Create a 30-second, 16:9 changelog film for Export Queue. Open with “The export that forgot its filters” and close with “Retries keep the original scope.” Show the lost filter on retry, the patch retaining filters, and the passing filtered-export regression test. Use a restrained Evidence Frame style, grounding each beat in the diff and test.",
+  "followUpPrompts": [
+    "Make the problem scene shorter and give the regression test more screen time.",
+    "Adapt the same verified story for a silent social post with larger captions."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

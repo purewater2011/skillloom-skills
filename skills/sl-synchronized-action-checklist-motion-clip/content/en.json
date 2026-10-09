@@ -1,0 +1,50 @@
+{
+  "name": "Synchronized Action Checklist Motion Clip",
+  "description": "A focused wide-format b-roll animation for showing a short publishing workflow moving from pending to complete in one controlled visual rhythm. It is built for social creators and educators who need polished, editable motion without a generation model.",
+  "whatYouGet": [
+    "Wide HTML/CSS composition rendered to a local MP4",
+    "Synchronized checklist reveal and completion motion",
+    "Minimal dark editorial styling with one accent color",
+    "Editable copy, timing, rows, and palette values"
+  ],
+  "goodFit": [
+    "Social posts explaining a repeatable publishing routine",
+    "Educational clips that turn process steps into visual rhythm",
+    "Series content that needs a consistent motion language"
+  ],
+  "notFor": [
+    "Detailed software walkthroughs with screenshots",
+    "Brand campaigns requiring logos or licensed visual assets"
+  ],
+  "requiredInputs": [
+    "Two to four short publishing actions",
+    "Target social channel or crop context",
+    "Optional closing line",
+    "Desired duration from 6 to 12 seconds"
+  ],
+  "faq": [
+    {
+      "q": "Can I change the checklist copy after rendering?",
+      "a": "Yes. The deliverable keeps the action labels, timing, accent color, and closing line in editable HTML and CSS so the same motion system can be reused."
+    },
+    {
+      "q": "Does this use a video generation model?",
+      "a": "No. The agent builds a deterministic HTML/CSS composition and renders the MP4 locally, which keeps the output consistent and easy to revise."
+    },
+    {
+      "q": "How many actions should the clip contain?",
+      "a": "Two to four short actions work best. Each line should describe one observable publishing task and remain concise enough to scan during the final hold."
+    }
+  ],
+  "demoPrompt": "/sl-synchronized-action-checklist-motion-clip Create a 9-second 16:9 video for Publishing rhythm. Open with “PUBLISH WITH INTENT”; show the Release rhythm checklist, then “Everything aligned” with READY, and close with “Small checks. Stronger releases.” Keep the dark editorial blocks and synchronized timing, with one acid-lime accent.",
+  "followUpPrompts": [
+    "Change the checklist to a three-step lesson planning workflow while preserving the timing and visual system.",
+    "Make the final hold longer and replace the closing line with \"Small checks. Stronger releases.\""
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

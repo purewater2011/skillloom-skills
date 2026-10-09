@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slate Admin Console UI Block — demo</title>
+<style>
+:root {
+  --bg: #F4F6F7; --surface: #FFFFFF; --fg: #172126; --muted: #505C62;
+  --accent: #176B58; --accent-2: #DCEBE5; --rule: #CDD5D8;
+  --font-display: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", Quicksand, Nunito, ui-sans-serif, sans-serif; --font-body: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", Quicksand, Nunito, ui-sans-serif, sans-serif;
+  --display-weight: 600; --display-case: none; --tracking: 0;
+  --radius: 8px; --radius-ctl: 8px; --border: 1px solid #CDD5D8; --shadow: none;
+  --space: 0.8;
+  --type-scale: 0.88;
+}
+:root { --on-accent: #ffffff; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.section{padding-block:calc(88px * var(--space))}
+.section + .section{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.sec-head{display:grid;gap:14px;margin-bottom:calc(44px * var(--space));max-width:720px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--radius-ctl);font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:inherit}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--fg);border:var(--border-strong)}
+.card{background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.muted{color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.block-frame{padding:clamp(20px,4vw,48px) 0}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);overflow:hidden}
+.block-stage .section{padding-block:calc(72px * var(--space))}
+@media (max-width:640px){.section{padding-block:calc(64px * var(--space))}
+[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+.block-stage .section h1{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+@keyframes sheen{to{background-position:-150% 0}}
+.chart-panel{padding:calc(26px * var(--space));display:grid;gap:22px}
+.chart-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px}
+.chart-kpis div{display:grid;gap:2px}
+.chart-kpis strong{font-family:var(--font-display);font-size:1.9rem;letter-spacing:var(--tracking)}
+.chart-kpis small{color:var(--muted)}
+.chart-svg{width:100%;height:auto;color:var(--accent)}
+.chart-svg .axis{stroke:var(--rule)}
+.chart-svg text{fill:var(--muted);font-size:11px;font-family:var(--font-body)}
+.dgrid{width:100%;border-collapse:collapse;font-size:.92rem}
+.dgrid th{text-align:left;font-weight:600;color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 14px;border-bottom:1px solid var(--rule);background:color-mix(in srgb,var(--surface) 70%,var(--bg))}
+.dgrid td{padding:13px 14px;border-bottom:1px solid color-mix(in srgb,var(--rule) 60%,transparent)}
+.dgrid tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.dgrid .num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.76rem;font-weight:600;background:color-mix(in srgb,var(--accent) 16%,transparent);color:color-mix(in srgb,var(--accent) 75%,var(--fg))}
+.pill.warn{background:color-mix(in srgb,var(--accent-2) 22%,transparent);color:color-mix(in srgb,var(--accent-2) 70%,var(--fg))}
+.dgrid-wrap{position:relative;overflow-x:auto;border-radius:var(--radius);border:var(--border);background:var(--surface)}
+.dgrid-tools{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.dgrid-tools span{padding:8px 14px;border:1px solid var(--rule);border-radius:var(--radius);font-size:.85rem;color:var(--muted);background:var(--surface)}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:720px}
+.app-main{padding:24px clamp(16px,3vw,36px);display:grid;grid-template-columns:minmax(0,1fr);gap:22px;align-content:start;min-width:0}
+.app-main > *{min-width:0}
+.app .section{padding:0;border:0}
+.app .wrap{width:100%}
+.app .sec-head{margin-bottom:16px}
+.app h1{font-size:1.6rem}
+.app h2{font-size:1.25rem}
+@media (max-width:900px){.app{grid-template-columns:minmax(0,1fr)}
+}
+.bf-field{display:grid;gap:6px;min-width:0}
+.bf-field label{font-size:.78rem;color:var(--muted);letter-spacing:.04em}
+.bf-field input{min-height:44px;border:1px solid var(--rule);border-radius:var(--radius-ctl);padding:0 12px;font:inherit;background:var(--bg);color:var(--fg);min-width:0}
+.bf-field:last-child{grid-column:1/-1}
+.chart-note{margin:14px 0 0;font-size:.92rem;color:var(--muted)}
+.chart-note b{color:var(--fg);margin-right:6px}
+.chart-svg text.val{fill:var(--fg);font-size:13px;font-weight:600}
+.dgrid-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px;font-size:.85rem}
+.dgrid-tools select{min-height:38px;border:1px solid var(--rule);border-radius:var(--radius-ctl);padding:0 10px;background:var(--surface);color:var(--fg);font:inherit}
+.dgrid tbody th{font-weight:inherit;text-align:left}
+.app-solo{grid-template-columns:minmax(0,1fr)}
+.chart-data{margin-top:14px;font-size:.88rem}
+.chart-data summary{cursor:pointer;font-weight:600}
+.chart-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:10px}
+.chart-form input{min-height:38px;border:1px solid var(--rule);border-radius:var(--radius-ctl);padding:0 10px;background:var(--bg);color:var(--fg);font:inherit;min-width:0}
+.bf-field select{min-height:44px;border:1px solid var(--rule);border-radius:var(--radius-ctl);padding:0 10px;font:inherit;background:var(--bg);color:var(--fg);min-width:0}
+.chart-mobile{display:none;list-style:none;margin:12px 0 0;padding:0;gap:6px}
+.chart-mobile li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding:6px 0;font-size:.9rem}
+.dgrid-tools input[type=search]{min-height:38px;border:1px solid var(--rule);border-radius:var(--radius-ctl);padding:0 10px;background:var(--surface);color:var(--fg);font:inherit;min-width:0;width:min(240px,100%)}
+.dg-edit{min-height:32px;padding:0 12px;font-size:.8rem}
+@media (max-width:640px){.chart-mobile{display:grid}
+}
+.block-stage{ background-image: repeating-linear-gradient(0deg, transparent 0 31px, #CDD5D855 31px 32px); }
+
+</style>
+</head>
+<body class="block-frame">
+<div class="block-stage"><div class="app app-solo" id="top"><main class="app-main"><section class="section" id="workspace-pulse"><div class="wrap"><div class="sec-head"><h1>Workspace pulse</h1></div><div class="card chart-panel"><div class="chart-kpis"><div><small>Active accounts</small><strong>1,284</strong></div><div><small>Monthly recurring revenue</small><strong>$48.2k</strong></div><div><small>Open support cases</small><strong>18</strong></div><div><small>Service availability, last 30 days</small><strong>96.4%</strong></div></div><svg class="chart-svg" viewBox="0 0 720 240" role="img" aria-label="Workspace pulse"><line class="axis" x1="0" x2="720" y1="163.5" y2="163.5" stroke-dasharray="3 5"/><line class="axis" x1="0" x2="720" y1="121.0" y2="121.0" stroke-dasharray="3 5"/><line class="axis" x1="0" x2="720" y1="78.5" y2="78.5" stroke-dasharray="3 5"/><line class="axis" x1="0" y1="206" x2="720" y2="206"/><rect x="79.2" y="36.0" width="201.6" height="170.0" rx="3" fill="currentColor"/><text x="180.0" y="28.0" text-anchor="middle" class="val">1,284</text><text x="180.0" y="228" text-anchor="middle">Active accounts</text><rect x="439.2" y="203.6" width="201.6" height="2.4" rx="3" fill="currentColor"/><text x="540.0" y="195.6" text-anchor="middle" class="val">18</text><text x="540.0" y="228" text-anchor="middle">Open support cases</text></svg><ul class="chart-mobile" aria-hidden="true"><li><span>Active accounts</span><b>1,284</b></li><li><span>Monthly recurring revenue</span><b>$48.2k</b></li><li><span>Open support cases</span><b>18</b></li><li><span>Service availability, last 30 days</span><b>96.4%</b></li></ul><p class="chart-note"><b>Takeaway</b> Active accounts is the largest figure shown, at 1,284.</p><details class="chart-data"><summary>Edit chart data</summary><form class="chart-form" aria-label="Chart data"><div class="bf-field"><label for="cd-0">Active accounts</label><input id="cd-0" name="v0" value="1,284"></div><div class="bf-field"><label for="cd-1">Monthly recurring revenue</label><input id="cd-1" name="v1" value="$48.2k"></div><div class="bf-field"><label for="cd-2">Open support cases</label><input id="cd-2" name="v2" value="18"></div><div class="bf-field"><label for="cd-3">Service availability, last 30 days</label><input id="cd-3" name="v3" value="96.4%"></div></form></details><div class="sr-only"><table><caption>Workspace pulse</caption><tbody><tr><th scope="row">1,284</th><td>Active accounts</td></tr><tr><th scope="row">$48.2k</th><td>Monthly recurring revenue</td></tr><tr><th scope="row">18</th><td>Open support cases</td></tr><tr><th scope="row">96.4%</th><td>Service availability, last 30 days</td></tr></tbody></table></div></div></div></section>
+<section class="section" id="records"><div class="wrap"><div class="sec-head"><h2>Account records</h2></div>
+<form class="dgrid-tools" aria-label="Table controls"><label for="dg-filter">Status</label><select id="dg-filter" name="filter"><option>All</option><option>Active</option><option>Review</option><option>Paused</option></select><label for="dg-sort">Sort by</label><select id="dg-sort" name="sort"><option>Name</option><option>ID</option><option>Owner</option><option>Status</option><option>Updated</option><option>Amount</option><option>Version</option></select><label for="dg-search">Search records</label><input id="dg-search" type="search" name="q" placeholder="Name, owner or status"><span class="muted">6 records</span><button class="btn btn-primary dg-new" type="button">New record</button></form>
+<div class="dgrid-wrap"><table class="dgrid"><thead><tr><th scope="col">Name</th><th scope="col">ID</th><th scope="col">Owner</th><th scope="col">Status</th><th scope="col">Updated</th><th scope="col" class="num">Amount</th><th scope="col">Version</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody><tr data-status="Active"><th scope="row"><b>Pine Works</b></th><td class="muted">PW-104</td><td class="muted">Iona Vale</td><td><span class="pill">Active</span></td><td class="muted">12 Mar</td><td class="num">$480</td><td class="muted">v2</td><td><button class="btn btn-ghost dg-edit" type="button" aria-label="Edit Pine Works">Edit</button></td></tr><tr data-status="Review"><th scope="row"><b>Cedar Field</b></th><td class="muted">CF-219</td><td class="muted">Neri Sol</td><td><span class="pill">Review</span></td><td class="muted">11 Mar</td><td class="num">$120</td><td class="muted">v1</td><td><button class="btn btn-ghost dg-edit" type="button" aria-label="Edit Cedar Field">Edit</button></td></tr><tr data-status="Active"><th scope="row"><b>Harbor Supply</b></th><td class="muted">HS-337</td><td class="muted">Tavi Reed</td><td><span class="pill">Active</span></td><td class="muted">10 Mar</td><td class="num">$640</td><td class="muted">v3</td><td><button class="btn btn-ghost dg-edit" type="button" aria-label="Edit Harbor Supply">Edit</button></td></tr><tr data-status="Active"><th scope="row"><b>Morrow Systems</b></th><td class="muted">MS-408</td><td class="muted">Edda Lin</td><td><span class="pill">Active</span></td><td class="muted">9 Mar</td><td class="num">$920</td><td class="muted">v2</td><td><button class="btn btn-ghost dg-edit" type="button" aria-label="Edit Morrow Systems">Edit</button></td></tr><tr data-status="Paused"><th scope="row"><b>Juniper Studio</b></th><td class="muted">JS-512</td><td class="muted">Orin Bell</td><td><span class="pill warn">Paused</span></td><td class="muted">8 Mar</td><td class="num">$160</td><td class="muted">v1</td><td><button class="btn btn-ghost dg-edit" type="button" aria-label="Edit Juniper Studio">Edit</button></td></tr><tr data-status="Active"><th scope="row"><b>Westline Labs</b></th><td class="muted">WL-681</td><td class="muted">Mira Senn</td><td><span class="pill">Active</span></td><td class="muted">7 Mar</td><td class="num">$880</td><td class="muted">v4</td><td><button class="btn btn-ghost dg-edit" type="button" aria-label="Edit Westline Labs">Edit</button></td></tr></tbody></table></div></div></section></main></div></div>
+<script>
+document.querySelectorAll(".dgrid-tools").forEach(function (f) {
+  var table = f.parentNode.querySelector(".dgrid");
+  var body = table.tBodies[0];
+  var heads = Array.prototype.map.call(table.tHead.rows[0].cells, function (c) { return c.textContent; });
+  function apply() {
+    var v = f.querySelector("#dg-filter").value;
+    var q = f.querySelector("#dg-search").value.toLowerCase();
+    Array.prototype.forEach.call(body.rows, function (r) {
+      var statusOk = v === "All" || r.getAttribute("data-status") === v;
+      r.hidden = !statusOk || (q && r.textContent.toLowerCase().indexOf(q) < 0);
+    });
+  }
+  f.querySelector("#dg-filter").addEventListener("change", apply);
+  f.querySelector("#dg-search").addEventListener("input", apply);
+  f.querySelector("#dg-sort").addEventListener("change", function (e) {
+    var i = Math.max(0, heads.indexOf(e.target.value));
+    var rows = Array.prototype.slice.call(body.rows);
+    rows.sort(function (a, b) { return a.cells[i].textContent.localeCompare(b.cells[i].textContent, undefined, { numeric: true }); });
+    rows.forEach(function (r) { body.appendChild(r); });
+  });
+});
+</script>
+</body>
+</html>

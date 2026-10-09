@@ -1,0 +1,76 @@
+{
+  "slug": "sl-liquid-rupture-logo-reveal-story-film",
+  "version": "1.0.4",
+  "output": "video",
+  "family": "video-narrative",
+  "engine": "video-orchestrated",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "social-media-creator",
+      "brand-designer",
+      "art-director"
+    ],
+    "task": [
+      "create-social-brand-video",
+      "create-motion-graphics",
+      "create-logo-animation"
+    ],
+    "scenario": [
+      "brand-identity",
+      "social-campaign"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "media-publishing",
+      "tech-software"
+    ],
+    "highlight": [
+      "style-locked",
+      "identity-preserving"
+    ],
+    "style": [
+      "abstract-colour-fields",
+      "glass-fringe",
+      "liquid-refraction",
+      "metaball-merge",
+      "single-event-reveal"
+    ],
+    "model": [
+      "host-llm"
+    ],
+    "tool": [
+      "playwright",
+      "ffmpeg"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "ffmpeg": true,
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Liquid-Rupture Logo Reveal Story Film",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-liquid-rupture-logo-reveal-story-film"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "video",
+    "entry": "preview/demo.html"
+  }
+}

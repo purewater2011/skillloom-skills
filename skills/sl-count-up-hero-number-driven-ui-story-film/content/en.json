@@ -1,0 +1,50 @@
+{
+  "name": "Count Up Hero Number Driven Ui Story Film",
+  "description": "A guided video-narrative skill for turning one measurable product promise into a sharp launch film. It combines count-up typography, cursor-led UI choreography, editorial answer lines, and near-black interface panels on a white field.",
+  "whatYouGet": [
+    "A 20–45 second wide MP4 with a clear hook, product arc, proof beat, and end card.",
+    "Count-up hero typography tied to one defensible product outcome.",
+    "Cursor-driven HTML/CSS UI scenes with staged state changes.",
+    "Monochrome interface chrome with a single red accent for focus and momentum."
+  ],
+  "goodFit": [
+    "Launching a focused software product with one memorable outcome.",
+    "Explaining a workflow where the result matters more than a feature list.",
+    "Creating a concise social or product-marketing film from a structured brief."
+  ],
+  "notFor": [
+    "A full product walkthrough with many independent features.",
+    "Claims that require legal review, live data, or photographic evidence."
+  ],
+  "requiredInputs": [
+    "Product promise and target audience",
+    "One measurable outcome with unit or label",
+    "Three interface actions to stage",
+    "Proof point and final call to action"
+  ],
+  "faq": [
+    {
+      "q": "What makes the count credible?",
+      "a": "The central number is treated as a supplied product claim, not invented by the skill. Provide a defensible value, unit, and context so the counter, proof scene, and end card stay consistent."
+    },
+    {
+      "q": "Can the film show a real interface?",
+      "a": "Yes. Provide labels, actions, and representative rows. The renderer builds an editable fictional interface in HTML/CSS without external screenshots or generated footage."
+    },
+    {
+      "q": "How much copy belongs in each scene?",
+      "a": "Keep the hook and end card extremely short. Use one concise sentence for the problem, three staged actions for the UI, and one proof statement tied to the same outcome."
+    }
+  ],
+  "demoPrompt": "/sl-count-up-hero-number-driven-ui-story-film Create a 28-second 16:9 launch film for fictional workspace Briefline. Open with “From rough to ready.” and “One brief. Three clear decisions.” Count 0 to 3 clear decisions, then show a rough ask shaped into one clear brief around audience, outcome and proof, fewer clarification loops, and the quote “Three clear decisions, and we stop circling.” Close with “Turn the ask into the next clear move.” Use Countline Editorial style.",
+  "followUpPrompts": [
+    "Make the proof beat more editorial and reduce the interface copy by half.",
+    "Change the outcome from three clear decisions to 18 minutes saved per brief while keeping the same visual rhythm."
+  ],
+  "dependencies": [
+    "Node.js 20+",
+    "FFmpeg",
+    "Chromium (npx playwright install chromium)"
+  ],
+  "externalCostNote": "No external services or generation models. Renders locally."
+}

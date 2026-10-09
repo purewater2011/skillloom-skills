@@ -1,0 +1,52 @@
+{
+  "name": "Article Brief Deck",
+  "description": "Turn an article or research packet into a clear, evidence-first presentation for teaching, curriculum planning, or editorial review. The deck keeps claims accurate while making the argument easy to scan and explain.",
+  "whatYouGet": [
+    "A structured 16:9 HTML slide deck with an editorial modular-grid layout",
+    "Action titles that turn research findings into teachable decisions",
+    "Visible evidence cues, limitations, and source notes near each claim",
+    "Charts, comparisons, timelines, and cards selected for narrative clarity",
+    "A polished sample deck that can be adapted to a real article"
+  ],
+  "goodFit": [
+    "K-12 lesson explainers and curriculum planning meetings",
+    "Research-backed content briefs for education publishers",
+    "Client reviews where evidence and next actions must be explicit"
+  ],
+  "notFor": [
+    "Brand marketing decks or product sales presentations",
+    "Full academic papers or exhaustive literature reviews",
+    "Projects that depend on live web research or external fonts"
+  ],
+  "requiredInputs": [
+    "Article text, abstract, or research notes",
+    "Audience and grade level",
+    "Learning or publishing objective",
+    "Citation and terminology constraints"
+  ],
+  "faq": [
+    {
+      "q": "Can the deck simplify technical research?",
+      "a": "Yes. It can translate specialized findings into audience-appropriate language while preserving the original claim, evidence boundary, and important qualifications."
+    },
+    {
+      "q": "Does it include source details?",
+      "a": "Yes. Source cues, dates, sample sizes, and limitations can appear beside the relevant statistic or claim so the evidence remains visible during presentation."
+    },
+    {
+      "q": "Can it support a teaching workflow?",
+      "a": "Yes. The deck can connect the article to learner outcomes, discussion prompts, misconceptions, and practical next actions without pretending those ideas came from the source."
+    }
+  ],
+  "demoPrompt": "/sl-article-brief-deck Create exactly 9 slides for Northfield Learning Lab on a fictional review of classroom retrieval practice. Move from claim and evidence to teaching moves, limits, and a three-week Grade 7 pilot. Title: “Retrieval practice can make science learning more durable”. Close: “Start with three minutes, measure what students can explain later”. Use concise action titles and a strict black, white, and red modular grid.",
+  "followUpPrompts": [
+    "Adapt this deck for a parent-facing workshop while preserving the evidence qualifications.",
+    "Turn the research implications into a one-page teacher implementation brief.",
+    "Replace the fictional evidence with my article and flag every unsupported claim."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

@@ -1,0 +1,44 @@
+{
+  "name": "天空玻璃演示文稿",
+  "description": "为出版团队制作可离线使用的高管汇报演示文稿。以衬线结论标题、直角玻璃面板和纯 CSS 光影构图呈现清晰的数据与建议，无需图片素材。",
+  "whatYouGet": [
+    "可导航的 16:9 HTML 演示文稿",
+    "统一的结论式标题和高管汇报版式",
+    "标明口径与来源的数据图表",
+    "适合打印且可离线使用的页面"
+  ],
+  "goodFit": [
+    "季度受众与会员业务复盘",
+    "面向客户的编辑策略报告",
+    "出版业务绩效与投资简报"
+  ],
+  "notFor": [
+    "依赖真实照片的作品集或图库",
+    "需要实时更新指标的仪表盘"
+  ],
+  "requiredInputs": [
+    "汇报对象及需要支持的决策",
+    "已确认的数字、统计期间和单位",
+    "主要发现与建议行动"
+  ],
+  "faq": [
+    {
+      "q": "需要提供图片文件吗？",
+      "a": "不需要。画面的层次由 CSS 渐变、线条和半透明形状构成，成品可离线使用。"
+    },
+    {
+      "q": "资料缺少数据时会自动补齐吗？",
+      "a": "不会。缺失的来源、统计期间或分母应明确标注并提交核对，不能当作事实展示。"
+    }
+  ],
+  "demoPrompt": "/sl-sky-glass-deck 为 Regional Publishing Studio 制作恰好 9 页的 2025 年第二季度高管汇报，从受众增长和读者行为讲到分阶段测试及第三季度的三项决策。所有数据均为示例。标题：“Reader growth is creating a stronger case for membership.” 结尾标题：“Approve three decisions to make the next quarter measurable.” 采用克制的 Sky Glass 编辑风格。",
+  "followUpPrompts": [
+    "不改动任何已报告的数据，把建议写得更具体。",
+    "为每张图表补充来源说明，并检查每项指标是否标明统计期间。",
+    "把结论式标题改得更适合董事会阅读。"
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ]
+}

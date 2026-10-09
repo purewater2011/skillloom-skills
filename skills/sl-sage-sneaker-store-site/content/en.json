@@ -1,0 +1,46 @@
+{
+  "name": "Sage Sneaker Store Site",
+  "description": "Create an editable sneaker storefront with a bold citron identity, a compact product-led hero, scannable listings, practical fit details, and a clear shopping path.",
+  "whatYouGet": [
+    "Responsive storefront page with product hero and collection listings",
+    "Editable product details, prices, colors, and size options",
+    "Fit, materials, shipping, and returns content",
+    "Accessible navigation and purchase controls"
+  ],
+  "goodFit": [
+    "Independent sneaker labels launching a small collection",
+    "Direct-to-consumer sellers refreshing their storefront",
+    "Brand designers presenting a shoppable site concept"
+  ],
+  "notFor": [
+    "Multi-vendor marketplace operations",
+    "Payment processing or fulfillment infrastructure"
+  ],
+  "requiredInputs": [
+    "Brand name and product catalog",
+    "Product images or approved placeholders",
+    "Sizes, prices, and availability",
+    "Shipping and returns policies"
+  ],
+  "faq": [
+    {
+      "q": "Can I replace the sample products?",
+      "a": "Yes. Product names, images, colors, prices, and sizes should be stored in clearly editable data."
+    },
+    {
+      "q": "Does the site include checkout?",
+      "a": "It can link to an existing commerce checkout or implement the supplied platform integration; it should not imply that payments are supported without one."
+    }
+  ],
+  "demoPrompt": "/sl-sage-sneaker-store-site Build Sage Steps for everyday sneaker shoppers: a split hero titled “The Vale Runner” with sample price $118, four sample styles, three material benefits, Vale details, a three-step buying guide, FAQ, newsletter and shop/help/about links, in that order. End with “First look at what's next” and “Join the list.” Use the citron shoebox grid style.",
+  "followUpPrompts": [
+    "Add a product-detail view with a size guide and multiple image angles.",
+    "Connect the cart to my existing commerce checkout.",
+    "Replace the sample catalog with my product data and photography."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

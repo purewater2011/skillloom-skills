@@ -1,0 +1,67 @@
+{
+  "slug": "sl-atmospheric-cinematic-svg-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "signature",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "science-communicator",
+      "content-marketer",
+      "art-director"
+    ],
+    "task": [
+      "create-presentation"
+    ],
+    "scenario": [
+      "content-publishing",
+      "creative-exploration"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "media-publishing"
+    ],
+    "highlight": [
+      "editable-output",
+      "guided-workflow",
+      "visually-polished"
+    ],
+    "style": [
+      "atmospheric",
+      "cinematic-svg",
+      "full-bleed"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Atmospheric Cinematic Svg Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-atmospheric-cinematic-svg-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

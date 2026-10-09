@@ -1,0 +1,46 @@
+{
+  "name": "Basalt Dev Portfolio Site",
+  "description": "A polished developer portfolio built around clear project proof, a dark basalt palette, and restrained cyan beam details. Made for developers who need an editable site that presents their work with confidence.",
+  "whatYouGet": [
+    "A complete responsive portfolio page with navigation, hero, project work, and footer.",
+    "Project descriptions structured around the problem, contribution, stack, and outcome.",
+    "A cohesive dark-zinc and cyan visual system with subtle, accessible motion.",
+    "Editable HTML or a requested React, Vue, or Tailwind implementation."
+  ],
+  "goodFit": [
+    "Developers applying for roles who need their strongest work to scan quickly.",
+    "Indie hackers and app developers presenting shipped products or technical case studies."
+  ],
+  "notFor": [
+    "A generic agency site or product sales page.",
+    "A portfolio that needs fabricated credentials or testimonials."
+  ],
+  "requiredInputs": [
+    "Name, role, short bio, and a working contact destination.",
+    "Project details, including the developer's contribution and any verified outcomes."
+  ],
+  "faq": [
+    {
+      "q": "Can I use this for a multi-page portfolio?",
+      "a": "Yes. Keep the shared navigation and visual system consistent, and give each requested page a clear purpose and active navigation state."
+    },
+    {
+      "q": "What if I do not have measured project outcomes?",
+      "a": "Describe what changed or shipped without inventing numbers. A concrete contribution and honest context are stronger than unsupported metrics."
+    },
+    {
+      "q": "Can the style be adapted to an existing brand?",
+      "a": "Yes. Preserve the basalt structure and restrained beam motif while adjusting the accent and details to match supplied brand requirements."
+    }
+  ],
+  "demoPrompt": "/sl-basalt-dev-portfolio-site Build a responsive portfolio for fictional full-stack developer Rowan Vale, aimed at prospective product teams. In order, show a split hero, three proof stats, three selected projects, a work philosophy section, three contribution areas, two collaborator quotes, then a contact CTA and linked footer. Quote “I build useful software with a clear point of view.” and end with “Have a useful problem to solve?” and “Start a conversation”. Use dark basalt and cyan beams.",
+  "followUpPrompts": [
+    "Make the project summaries more concise while keeping each contribution and outcome clear.",
+    "Port the page to React and preserve responsive behavior, accessible focus states, and reduced motion."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

@@ -1,0 +1,72 @@
+{
+  "slug": "sl-masonry-testimonial-wall-ui-block",
+  "version": "1.0.8",
+  "output": "html",
+  "family": "web-block",
+  "engine": "web-block",
+  "styleFamily": "warm-neutral",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "content-marketer",
+      "solo-founder",
+      "ui-designer"
+    ],
+    "task": [
+      "create-marketing-visuals",
+      "build-website-page",
+      "build-landing-page"
+    ],
+    "scenario": [
+      "social-campaign",
+      "product-launch",
+      "web-publishing"
+    ],
+    "domain": [
+      "marketing-advertising",
+      "tech-software",
+      "startup"
+    ],
+    "highlight": [
+      "editable-output",
+      "visually-polished",
+      "beginner-friendly"
+    ],
+    "style": [
+      "warm-neutral",
+      "teal-accent",
+      "kinetic",
+      "generative-backdrop"
+    ],
+    "model": [
+      "host-llm"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Masonry Testimonial Wall UI Block",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-masonry-testimonial-wall-ui-block"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

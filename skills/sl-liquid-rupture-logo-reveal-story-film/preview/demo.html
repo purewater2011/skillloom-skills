@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" data-duration="28.8" data-fps="30">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liquid-Rupture Logo Reveal Story Film</title>
+<!--
+  Composition engine (SkillLoom video kit).
+  - Stage: 1280x720. Safe area: 72px on every side.
+  - Timeline: every scene is <section class="scene" data-start data-duration> and every animation is a
+    CSS animation whose delay is an absolute time on the film's clock. No JS timers, no network.
+  - <html data-duration> must equal the sum of scene durations. scripts/render.mjs reads it.
+  - Ease family: soft (cubic-bezier(.22,1,.36,1)). Scene transition: fade.
+-->
+<style>
+:root {
+  --bg: #F5F0E8; --surface: #FFFDF8; --fg: #1E1A17; --muted: #5B5148;
+  --accent: #8F2D56; --accent-2: #1B6B68; --rule: #C9BBAA;
+  --font-display: ui-serif, Georgia, Cambria, "Times New Roman", serif; --font-body: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --display-weight: 700; --display-case: none; --tracking: -0.02em;
+  --radius: 28px; --radius-ctl: 999px; --border: 1px solid #C9BBAA; --shadow: 0 10px 30px -12px rgba(0,0,0,.25);
+  --space: 1.35;
+  --type-scale: 1.3;
+}
+@property --n { syntax: "<integer>"; inherits: false; initial-value: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+body { display: grid; place-items: center; }
+.stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); transform-origin: center; --amb: 10%; }
+.stage { background-image: radial-gradient(#C9BBAA55 1px, transparent 1px); background-size: 4px 4px; }
+.ambient { position: absolute; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) var(--amb, 16%), transparent), transparent 62%);
+  left: -260px; top: -300px; animation: drift 28.8s linear 0s both; pointer-events: none; }
+.ambient.two { background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) var(--amb, 16%), transparent), transparent 60%); left: auto; right: -320px; top: auto; bottom: -380px; animation-name: drift2; }
+@keyframes drift { from { transform: translate(0, 0); } to { transform: translate(71%, 140px); } }
+@keyframes drift2 { from { transform: translate(0, 0); } to { transform: translate(-260px, -120px); } }
+.progress { position: absolute; left: 72px; right: 72px; bottom: 34px; height: 3px; background: color-mix(in srgb, var(--fg) 12%, transparent); border-radius: 3px; overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--accent); transform-origin: left; animation: grow 28.8s linear 0s both; }
+.scene { position: absolute; inset: 0; padding: 72px; display: flex; align-items: center; justify-content: center; opacity: 0; will-change: opacity, transform; }
+.display { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--tracking); line-height: 1.02; }
+.big { font-size: calc(96px * var(--type-scale)); max-width: 15ch; overflow-wrap: anywhere; }
+.mid { font-size: calc(54px * var(--type-scale)); max-width: 20ch; overflow-wrap: anywhere; }
+.sub { font-size: 30px; color: var(--muted); margin-top: calc(26px * var(--space)); max-width: 34ch; }
+.w { display: inline-block; opacity: 0; animation: rise .7s cubic-bezier(.22,1,.36,1) both; }
+.rise { opacity: 0; animation: rise .7s cubic-bezier(.22,1,.36,1) both; }
+.pop { opacity: 0; animation: pop .8s cubic-bezier(.22,1,.36,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: none; } }
+@keyframes pop { from { opacity: 0; transform: translateY(60px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes growY { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+/* title */
+.k-title { width: 100%; }
+.eyebrow-bar { width: 120px; height: 10px; background: var(--accent); border-radius: var(--radius); margin-bottom: calc(34px * var(--space)); transform-origin: left; animation: grow .7s cubic-bezier(.22,1,.36,1) both; }
+.sweep { margin-top: calc(40px * var(--space)); height: 2px; width: 62%; background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent); transform-origin: left; animation: grow 1.1s cubic-bezier(.22,1,.36,1) both; }
+/* words */
+.k-words { width: 100%; display: flex; flex-direction: column; gap: calc(6px * var(--space)); }
+.word { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--tracking);
+  font-size: var(--wsize, 120px); line-height: 1; color: var(--fg); opacity: 0; animation: slideIn .6s cubic-bezier(.22,1,.36,1) both; }
+.word.last { color: var(--accent); }
+@keyframes slideIn { from { opacity: 0; transform: translateY(70%); } to { opacity: 1; transform: none; } }
+/* card */
+.k-card { position: relative; width: 100%; height: 100%; display: grid; place-items: center; }
+.card { position: relative; z-index: 2; width: 720px; background: var(--surface); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow), 0 40px 80px -40px rgba(0,0,0,.35);
+  padding: calc(40px * var(--space)) calc(48px * var(--space)); }
+.card-top { display: flex; align-items: center; gap: 8px; margin-bottom: calc(26px * var(--space)); }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--fg) 18%, transparent); }
+.chip { margin-left: auto; font-size: 18px; padding: 6px 14px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); letter-spacing: .04em; text-transform: uppercase; }
+.line { display: flex; align-items: center; gap: 14px; font-size: 26px; color: var(--muted); margin-top: calc(16px * var(--space)); }
+.tick { width: 14px; height: 14px; border-radius: 4px; background: var(--accent-2); flex: none; }
+.metric { margin-top: calc(26px * var(--space)); font-family: var(--font-display); font-weight: var(--display-weight); font-size: 64px; color: var(--accent); letter-spacing: var(--tracking); }
+.ghost-card { position: absolute; width: 640px; height: 360px; border-radius: var(--radius); border: 1px solid var(--rule); background: color-mix(in srgb, var(--surface) 70%, transparent); z-index: 1; }
+.ghost-a { transform: rotate(-4deg); left: 18%; top: 22%; } .ghost-b { right: 14%; bottom: 16%; }
+.k-card .ghost-a.pop { animation-name: popTiltA; } .k-card .ghost-b.pop { animation-name: popTiltB; }
+@keyframes popTiltA { from { opacity: 0; transform: translateY(60px) rotate(-4deg); } to { opacity: .7; transform: rotate(-6deg); } }
+@keyframes popTiltB { from { opacity: 0; transform: translateY(60px) rotate(3deg); } to { opacity: .5; transform: rotate(5deg); } }
+/* counter */
+.k-counter { position: relative; display: grid; place-items: center; text-align: center; }
+.ring { position: absolute; width: 520px; height: 520px; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 6; }
+.ring-track { stroke: color-mix(in srgb, var(--fg) 10%, transparent); }
+.ring-fill { stroke: var(--accent); stroke-linecap: round; stroke-dasharray: 553; stroke-dashoffset: 553; }
+@keyframes ring { to { stroke-dashoffset: 60; } }
+.count { position: relative; font-size: calc(150px * var(--type-scale)); color: var(--fg); animation-name: count; counter-reset: n var(--n); }
+.count::before { content: counter(n); }
+.count .suffix { color: var(--accent); }
+@keyframes count { from { --n: var(--from); } to { --n: var(--to); } }
+.label { position: relative; font-size: 30px; color: var(--muted); margin-top: 12px; max-width: 24ch; }
+/* bars */
+.k-bars { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.bars { display: flex; align-items: flex-end; gap: calc(40px * var(--space)); height: 290px; margin-top: 78px; margin-bottom: 44px; border-bottom: 2px solid var(--rule); }
+.bar-col { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.bar { position: relative; background: color-mix(in srgb, var(--fg) 16%, var(--surface)); border-radius: var(--radius) var(--radius) 0 0; transform-origin: bottom; animation: growY .9s cubic-bezier(.22,1,.36,1) both; }
+.bar.max { background: var(--accent); }
+.val { position: absolute; top: -46px; left: 0; right: 0; text-align: center; font-size: 28px; font-weight: 600; }
+.bar-label { position: absolute; left: 0; right: 0; bottom: -44px; text-align: center; font-size: 22px; color: var(--muted); }
+.bar-col { position: relative; }
+/* checklist */
+.k-check { width: auto; min-width: 640px; max-width: 980px; padding: calc(44px * var(--space)) calc(52px * var(--space)); background: color-mix(in srgb, var(--surface) 80%, transparent);
+  border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.k-check ul { list-style: none; margin-top: calc(34px * var(--space)); display: grid; gap: calc(24px * var(--space)); }
+.k-check li { display: flex; align-items: center; gap: 24px; font-size: 42px; font-family: var(--font-display); font-weight: 500; }
+.k-check svg { width: 54px; height: 54px; flex: none; }
+.k-check circle { fill: color-mix(in srgb, var(--accent) 14%, transparent); stroke: var(--accent); stroke-width: 2; }
+.k-check path { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw .5s cubic-bezier(.22,1,.36,1) both; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+/* quote */
+.k-quote { width: 100%; max-width: 1000px; }
+.qmark { font-family: var(--font-display); font-size: 220px; line-height: .6; color: var(--accent); height: 110px; }
+.k-quote blockquote { font-size: calc(52px * var(--type-scale)); line-height: 1.15; text-transform: none; }
+.k-quote cite { display: block; margin-top: calc(30px * var(--space)); font-style: normal; font-size: 26px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+/* marquee */
+.k-marquee { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: calc(26px * var(--space)); transform: rotate(-4deg) scale(1.1); }
+.mq-row { display: flex; gap: 22px; white-space: nowrap; width: max-content; }
+.pill { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 46px; padding: 18px 36px; border-radius: var(--radius-ctl); border: 2px solid var(--rule); background: var(--surface); }
+.pill.hot { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+@keyframes mq-l { from { transform: translateX(0); } to { transform: translateX(-34%); } }
+@keyframes mq-r { from { transform: translateX(-34%); } to { transform: translateX(0); } }
+/* device */
+.k-device { width: 100%; display: grid; place-items: center; }
+.window { position: relative; width: 900px; height: 500px; background: var(--surface); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow), 0 50px 90px -50px rgba(0,0,0,.45); overflow: hidden; }
+.win-bar { display: flex; align-items: center; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--rule); }
+.win-title { margin-left: 18px; font-size: 22px; font-weight: 600; }
+.win-body { display: grid; grid-template-columns: 170px 1fr; height: calc(100% - 56px); }
+.win-body aside { border-right: 1px solid var(--rule); padding: 22px 18px; display: grid; gap: 14px; align-content: start; }
+.win-body aside span { height: 14px; border-radius: 7px; background: color-mix(in srgb, var(--fg) 12%, transparent); }
+.win-body aside span.on { background: var(--accent); width: 80%; }
+.rows { padding: 22px 26px; display: grid; gap: 14px; align-content: start; }
+.row { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: calc(var(--radius) * .6); border: 1px solid var(--rule); font-size: 24px; }
+.row.sel { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.av { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-2); flex: none; }
+.rt { flex: 1; }
+.badge { width: 70px; height: 22px; border-radius: 11px; background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.cursor { position: absolute; width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--fg); background: color-mix(in srgb, var(--bg) 60%, transparent); left: 70%; top: 80%; animation: cursor 2s cubic-bezier(.22,1,.36,1) both; }
+@keyframes cursor { from { left: 80%; top: 90%; opacity: 0; } 30% { opacity: 1; } to { left: 46%; top: 28%; opacity: 1; } }
+/* end */
+.k-end { text-align: center; display: grid; justify-items: center; }
+.mark { width: 110px; height: 110px; border-radius: var(--radius); background: var(--accent); display: grid; place-items: center; margin-bottom: calc(34px * var(--space)); box-shadow: var(--shadow); }
+.mark span { width: 40px; height: 40px; border-radius: 50%; background: var(--bg); }
+.brand { font-size: calc(92px * var(--type-scale)); }
+.k-end .sub { margin-left: auto; margin-right: auto; }
+@keyframes sc0 { 0% { opacity:0 } 9.143% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 90.857% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc1 { 0% { opacity:0 } 10% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 90% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc2 { 0% { opacity:0 } 8% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 92% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc3 { 0% { opacity:0 } 8% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 92% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc4 { 0% { opacity:0 } 8.421% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 91.579% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc5 { 0% { opacity:0 } 9.143% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 90.857% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc6 { 0% { opacity:0 } 10.667% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 89.333% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:0 } }
+@keyframes sc7 { 0% { opacity:0 } 8.421% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } 100% { opacity:1;transform:none;clip-path:inset(0 0 0 0) } }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="ambient"></div><div class="ambient two"></div>
+
+  <section class="scene s-title" data-kind="title" data-start="0" data-duration="3.5" style="animation:sc0 3.5s cubic-bezier(.22,1,.36,1) 0s both">
+  <div class="k-title">
+    <div class="eyebrow-bar" style="animation-delay:0.05s"></div>
+    <h1 class="display big"><span class="w" style="animation-delay:0.12s">Before</span> <span class="w" style="animation-delay:0.21s">the</span> <span class="w" style="animation-delay:0.3s">signal</span></h1>
+    <p class="sub rise" style="animation-delay:0.55s">Every identity starts as a pressure in the field.</p>
+    <div class="sweep" style="animation-delay:0.4s"></div>
+  </div>
+  </section>
+
+  <section class="scene s-words" data-kind="words" data-start="3.5" data-duration="3.2" style="animation:sc1 3.2s cubic-bezier(.22,1,.36,1) 3.5s both">
+  <div class="k-words" style="--wsize:148px"><div class="word" style="animation-delay:3.6s">Separate</div><div class="word" style="animation-delay:4.02s">Unsettled</div><div class="word last" style="animation-delay:4.44s">Unformed</div></div>
+  </section>
+
+  <section class="scene s-card" data-kind="card" data-start="6.7" data-duration="4" style="animation:sc2 4s cubic-bezier(.22,1,.36,1) 6.7s both">
+  <div class="k-card">
+    <div class="card pop" style="animation-delay:6.75s">
+      <div class="card-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="chip">When</span></div>
+      <h2 class="display mid rise" style="animation-delay:6.95s">When the parts do not connect</h2>
+      <div class="line rise" style="animation-delay:7.1s"><span class="tick"></span>Colour drifts without a centre.</div><div class="line rise" style="animation-delay:7.24s"><span class="tick"></span>The mark stays out of reach.</div>
+      <div class="metric rise" style="animation-delay:7.45s">01 / tension</div>
+    </div>
+    <div class="ghost-card ghost-a pop" style="animation-delay:6.85s"></div>
+    <div class="ghost-card ghost-b pop" style="animation-delay:6.95s"></div>
+  </div>
+  </section>
+
+  <section class="scene s-device" data-kind="device" data-start="10.7" data-duration="4" style="animation:sc3 4s cubic-bezier(.22,1,.36,1) 10.7s both">
+  <div class="k-device">
+    <div class="window pop" style="animation-delay:10.75s">
+      <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win-title">A system begins to hold</span></div>
+      <div class="win-body">
+        <aside><span></span><span class="on"></span><span></span><span></span></aside>
+        <div class="rows"><div class="row rise sel" style="animation-delay:11.05s"><span class="av"></span><span class="rt">Fields find an edge</span><span class="badge"></span></div><div class="row rise" style="animation-delay:11.21s"><span class="av"></span><span class="rt">Edges find a rhythm</span><span class="badge"></span></div><div class="row rise" style="animation-delay:11.37s"><span class="av"></span><span class="rt">Rhythm finds a shape</span><span class="badge"></span></div></div>
+      </div>
+      <div class="cursor" style="animation-delay:11.1s;animation-duration:3.4s"></div>
+    </div>
+  </div>
+  </section>
+
+  <section class="scene s-bars" data-kind="bars" data-start="14.7" data-duration="3.8" style="animation:sc4 3.8s cubic-bezier(.22,1,.36,1) 14.7s both">
+  <div class="k-bars">
+    <h2 class="display mid rise" style="animation-delay:14.75s">Clarity rises when form is shared</h2>
+    <div class="bars"><div class="bar-col">
+        <div class="bar" style="height:46%;animation-delay:15s"><span class="val rise" style="animation-delay:15.4s">42</span></div>
+        <div class="bar-label">signal</div>
+      </div><div class="bar-col">
+        <div class="bar" style="height:75%;animation-delay:15.12s"><span class="val rise" style="animation-delay:15.52s">68</span></div>
+        <div class="bar-label">structure</div>
+      </div><div class="bar-col">
+        <div class="bar max" style="height:100%;animation-delay:15.24s"><span class="val rise" style="animation-delay:15.64s">91</span></div>
+        <div class="bar-label">recognition</div>
+      </div></div>
+  </div>
+  </section>
+
+  <section class="scene s-quote" data-kind="quote" data-start="18.5" data-duration="3.5" style="animation:sc5 3.5s cubic-bezier(.22,1,.36,1) 18.5s both">
+  <div class="k-quote">
+    <div class="qmark pop" style="animation-delay:18.55s">&ldquo;</div>
+    <blockquote class="display"><span class="w" style="animation-delay:18.7s">The</span> <span class="w" style="animation-delay:18.76s">identity</span> <span class="w" style="animation-delay:18.82s">is</span> <span class="w" style="animation-delay:18.88s">not</span> <span class="w" style="animation-delay:18.94s">added.</span> <span class="w" style="animation-delay:19s">It</span> <span class="w" style="animation-delay:19.06s">is</span> <span class="w" style="animation-delay:19.12s">revealed.</span></blockquote>
+    <cite class="rise" style="animation-delay:19.6s">Rillform / launch note</cite>
+  </div>
+  </section>
+
+  <section class="scene s-marquee" data-kind="marquee" data-start="22" data-duration="3" style="animation:sc6 3s cubic-bezier(.22,1,.36,1) 22s both">
+  <div class="k-marquee"><div class="mq-row mq-l" style="animation:mq-l 3.6s linear 21.7s both"><span class="pill">gather</span><span class="pill hot">refract</span><span class="pill">rupture</span><span class="pill">resolve</span><span class="pill hot">gather</span><span class="pill">refract</span><span class="pill">rupture</span><span class="pill hot">resolve</span><span class="pill">gather</span><span class="pill">refract</span><span class="pill hot">rupture</span><span class="pill">resolve</span></div><div class="mq-row mq-r" style="animation:mq-r 3.6s linear 21.7s both"><span class="pill">gather</span><span class="pill hot">refract</span><span class="pill">rupture</span><span class="pill">resolve</span><span class="pill hot">gather</span><span class="pill">refract</span><span class="pill">rupture</span><span class="pill hot">resolve</span><span class="pill">gather</span><span class="pill">refract</span><span class="pill hot">rupture</span><span class="pill">resolve</span></div><div class="mq-row mq-l" style="animation:mq-l 3.6s linear 21.7s both"><span class="pill">gather</span><span class="pill hot">refract</span><span class="pill">rupture</span><span class="pill">resolve</span><span class="pill hot">gather</span><span class="pill">refract</span><span class="pill">rupture</span><span class="pill hot">resolve</span><span class="pill">gather</span><span class="pill">refract</span><span class="pill hot">rupture</span><span class="pill">resolve</span></div></div>
+  </section>
+
+  <section class="scene s-end" data-kind="end" data-start="25" data-duration="3.8" style="animation:sc7 3.8s cubic-bezier(.22,1,.36,1) 25s both">
+  <div class="k-end">
+    <div class="mark pop" style="animation-delay:25.05s"><span></span></div>
+    <div class="brand display"><span class="w" style="animation-delay:25.2s">Rillform</span></div>
+    <p class="sub rise" style="animation-delay:25.55s">Shape finds signal.</p>
+  </div>
+  </section>
+  <div class="progress"><i></i></div>
+</div>
+<script>
+  // Fit the fixed stage into the window (no timers; resize only). Rendering uses the exact stage size.
+  (function () {
+    var st = document.getElementById("stage");
+    function fit() { st.style.transform = "scale(" + Math.min(innerWidth / 1280, innerHeight / 720) + ")"; }
+    addEventListener("resize", fit); fit();
+  })();
+</script>
+</body>
+</html>

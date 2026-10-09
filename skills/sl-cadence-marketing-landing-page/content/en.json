@@ -1,0 +1,50 @@
+{
+  "name": "Cadence Marketing Landing Page",
+  "description": "A conversion-focused software landing page with a campaign-grid visual system, CSS product mockups, concrete launch copy, pricing, and purchase-focused FAQs.",
+  "whatYouGet": [
+    "A complete responsive page from navigation through footer",
+    "A product-led hero and legible campaign workspace preview",
+    "Feature, workflow, pricing, and FAQ sections",
+    "Accessible interactions and reduced-motion styling"
+  ],
+  "goodFit": [
+    "A founder launching a campaign coordination tool",
+    "A growth marketer replacing a generic product page",
+    "A small team that can supply real pricing and product details"
+  ],
+  "notFor": [
+    "A brand campaign without a software product",
+    "A page dependent on fabricated testimonials or results"
+  ],
+  "requiredInputs": [
+    "Product name and buyer",
+    "Core workflow and real capabilities",
+    "Primary CTA and destination",
+    "Pricing and trial terms"
+  ],
+  "faq": [
+    {
+      "q": "Can this use screenshots from my product?",
+      "a": "Yes. Supply screenshots and the page can incorporate them while preserving the grid layout and device framing."
+    },
+    {
+      "q": "Will it invent conversion statistics?",
+      "a": "No. The page uses only approved results and customer proof; otherwise it explains capabilities without numerical claims."
+    },
+    {
+      "q": "Can I use it without a build step?",
+      "a": "Yes. The default deliverable is a self-contained HTML file with system fonts and no required external assets."
+    }
+  ],
+  "demoPrompt": "/sl-cadence-marketing-landing-page Create a Launch Grid-style launch page for Pacefield, for solo founders coordinating their first launch. Show a hero headed “Pacefield,” features, a readable campaign-plan split section, three launch steps, a campaign gallery, Free ($0 forever) and Studio ($24/month) pricing, an FAQ, and a closing CTA headed “Make the next launch easier to see” with “Start free.”",
+  "followUpPrompts": [
+    "Replace the CSS preview with these approved product screenshots while keeping the same layout.",
+    "Adapt the page for a paid acquisition campaign with a shorter mobile hero.",
+    "Audit every CTA, pricing statement, and FAQ answer against this product brief."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

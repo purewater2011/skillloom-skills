@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sage Sneaker Store Site — demo</title>
+<style>
+:root {
+  --bg: #D8EE35; --surface: #FFFEF2; --fg: #142219; --muted: #34422B;
+  --accent: #17453B; --accent-2: #8D292E; --rule: #536332;
+  --font-display: Didot, "Bodoni 72", "Bodoni MT", ui-serif, Georgia, serif; --font-body: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", ui-sans-serif, sans-serif;
+  --display-weight: 700; --display-case: none; --tracking: 0;
+  --radius: 8px; --radius-ctl: 8px; --border: 1px solid #536332; --shadow: none;
+  --space: 0.8;
+  --type-scale: 1;
+}
+:root { --on-accent: #ffffff; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.section{padding-block:calc(88px * var(--space))}
+.section + .section{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.sec-head{display:grid;gap:14px;margin-bottom:calc(44px * var(--space));max-width:720px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--radius-ctl);font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:inherit}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--fg);border:var(--border-strong)}
+.card{background:var(--surface);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.icon-tile{display:grid;place-items:center;width:44px;height:44px;border-radius:calc(var(--radius) * .6 + 4px);background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent)}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:calc(22px * var(--space))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:var(--tracking)}
+.brand-mark{width:28px;height:28px;border-radius:calc(var(--radius) * .5 + 3px);background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.nav-links{display:flex;gap:24px;margin:0 0 0 auto;padding:0;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.95rem}
+.nav-links a:hover{color:var(--fg)}
+.nav .btn{min-height:40px;padding:0 16px}
+.nav-toggle{display:none;margin-left:auto;background:none;border:var(--border-strong);border-radius:var(--radius);width:42px;height:42px;color:var(--fg)}
+.hero{position:relative;overflow:hidden;padding-block:calc(96px * var(--space)) calc(88px * var(--space))}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:22px;align-content:start}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.feature{padding:calc(26px * var(--space));display:grid;gap:12px;align-content:start}
+.feature p{color:var(--muted)}
+.stat{display:grid;gap:6px;padding:calc(22px * var(--space)) 0;border-top:2px solid var(--fg)}
+.stat strong{font-family:var(--font-display);font-weight:var(--display-weight);font-size:clamp(2.2rem,4.4vw,3.4rem);letter-spacing:var(--tracking);line-height:1;color:var(--fg)}
+.stat span{color:var(--muted)}
+.steps{counter-reset:step}
+.step{padding:calc(26px * var(--space));display:grid;gap:10px;align-content:start;position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:.95rem;letter-spacing:.08em}
+.faq-list{display:grid;gap:12px;max-width:820px}
+.faq-list details{background:var(--surface);border:var(--border);border-radius:var(--radius);padding:4px 22px}
+.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font-weight:600}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--accent);transition:transform .2s ease}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list details p{padding:0 0 18px;color:var(--muted)}
+.tile{overflow:hidden;display:grid}
+.tile-art{aspect-ratio:4/3;position:relative;overflow:hidden}
+.tile-body{padding:16px 18px;display:grid;gap:4px}
+.tile-body small{color:var(--muted)}
+.news{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:calc(44px * var(--space));}
+.news form{display:flex;gap:10px}
+.news input{flex:1;min-width:0;min-height:48px;padding:0 16px;border-radius:var(--radius-ctl);border:1px solid var(--rule);background:var(--bg);color:var(--fg);font:inherit}
+.footer{padding-block:calc(64px * var(--space)) 36px;border-top:1px solid var(--rule)}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(4,minmax(0,1fr));gap:32px}
+.footer h3{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-family:var(--font-body);font-weight:600}
+.footer ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.footer a{text-decoration:none;color:var(--fg);opacity:.85}
+.footer a:hover{opacity:1;color:var(--accent)}
+.legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);font-size:.85rem;color:var(--muted)}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{border-radius:calc(var(--radius) + 10px);width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);border:1px solid var(--rule);overflow:hidden}
+.block-stage .section{padding-block:calc(72px * var(--space))}
+@media (max-width:900px){.hero-grid,.news{grid-template-columns:1fr}
+.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-grid > :first-child{grid-column:1/-1}
+}
+@media (max-width:640px){.g2,.g3{grid-template-columns:1fr}
+.nav-links,.nav .btn{display:none}
+.nav-toggle{display:grid;place-items:center}
+.nav.open .nav-links{display:grid;position:absolute;top:68px;left:0;right:0;padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--rule)}
+.news form{flex-direction:column}
+.section{padding-block:calc(64px * var(--space))}
+[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+.brand{min-width:0;overflow-wrap:anywhere}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+.block-stage .section h1{font-size:clamp(1.8rem,3.6vw,2.8rem)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+@keyframes sheen{to{background-position:-150% 0}}
+.img-slot{margin:0;position:relative;display:grid;place-items:center;align-content:center;gap:10px;min-height:180px;aspect-ratio:4/3;border-radius:var(--radius);border:1.5px dashed color-mix(in srgb,var(--fg) 30%,transparent);background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--surface)) 0 14px,color-mix(in srgb,var(--accent) 4%,var(--surface)) 14px 28px);color:var(--muted);text-align:center;padding:16px;overflow:hidden}
+.img-slot figcaption{font-size:.8rem;letter-spacing:.04em;max-width:26ch;color:var(--fg);opacity:.75}
+.img-slot svg{color:var(--accent)}
+.hv-slots{display:grid;gap:14px}
+.hv-slots-3{grid-template-columns:repeat(3,1fr)}
+.hv-slots-3 .img-slot{aspect-ratio:3/4;min-height:0}
+.tile-art .img-slot{border-radius:0;border-width:0 0 1.5px 0;aspect-ratio:4/3;min-height:0}
+@media (max-width:900px){.hv-slots-3{grid-template-columns:repeat(2,1fr)}
+.hv-slots-3 .img-slot:nth-child(3){display:none}
+}
+body{ background-image: linear-gradient(#53633266 1px, transparent 1px), linear-gradient(90deg, #53633266 1px, transparent 1px); background-size: 48px 48px; }
+
+</style>
+</head>
+<body>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Sage Steps</a>
+    <nav aria-label="Primary"><ul class="nav-links"><li><a href="#work">Shop</a></li><li><a href="#split">Our Fit</a></li><li><a href="#features">Materials</a></li><li><a href="#sample-vale-details">Journal</a></li></ul></nav>
+    <a class="btn btn-primary" href="#main">Bag (0)</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<section class="hero split" id="split" aria-label="Introduction"><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">Sample collection / No. 01</span><h1>The Vale Runner</h1><p class="lede">A light, grounded sneaker for the long way home. Sample price $118. Moss, Chalk, and Ink.</p><div class="hero-actions"><a class="btn btn-primary" href="#main">Shop the Vale</a><a class="btn btn-ghost" href="#split">View all styles</a></div></div><div class="hv-slots hv-slots-3"><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo 1"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo 1</figcaption></figure><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo 2"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo 2</figcaption></figure><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo 3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo 3</figcaption></figure></div></div></div></section>
+<section class="section" id="work"><div class="wrap"><div class="sec-head"><h2>The collection / sample products</h2></div>
+<div class="grid g2"><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo: Vale Runner"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo: Vale Runner</figcaption></figure></div><div class="tile-body"><h3>Vale Runner</h3><small>Moss · $118 · 3 colors</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo: Field Low"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo: Field Low</figcaption></figure></div><div class="tile-body"><h3>Field Low</h3><small>Chalk · $104 · 2 colors</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo: Arc Court"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo: Arc Court</figcaption></figure></div><div class="tile-body"><h3>Arc Court</h3><small>Ink · $112 · 3 colors</small></div></article><article class="card tile"><div class="tile-art"><figure class="img-slot" role="img" aria-label="Image placeholder: Product photo: Daybreak Slip"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Product photo: Daybreak Slip</figcaption></figure></div><div class="tile-body"><h3>Daybreak Slip</h3><small>Clay · $96 · 2 colors</small></div></article></div></div></section>
+<section class="section" id="features"><div class="wrap"><div class="sec-head"><h2>Considered from sole to lace</h2></div>
+<div class="grid g3"><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>Cushioned underfoot</h3><p>Sample specification: a removable foam footbed adds comfort without bulk.</p></article><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15"/><path d="M5 19c3-4 6-6 9-7"/></svg></span><h3>Textured canvas</h3><p>Sample specification: a woven upper gives the shoe structure and a soft finish.</p></article><article class="card feature"><span class="icon-tile"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Everyday grip</h3><p>Sample specification: a patterned rubber outsole is intended for pavement.</p></article></div></div></section>
+<section class="section" id="sample-vale-details"><div class="wrap"><div class="sec-head"><h2>Sample Vale details</h2></div>
+<div class="grid g3"><div class="stat"><strong>6–12</strong><span>Whole sizes</span></div><div class="stat"><strong>3</strong><span>Color options</span></div><div class="stat"><strong>1</strong><span>Removable footbed per shoe</span></div></div></div></section>
+<section class="section steps" id="steps"><div class="wrap"><div class="sec-head"><h2>Choose your pair</h2></div>
+<ol class="grid g3" style="list-style:none;margin:0;padding:0"><li class="card step"><h3>Pick a color</h3><p class="muted">Compare each available shade against a clear side-profile image.</p></li><li class="card step"><h3>Check your fit</h3><p class="muted">Use the verified size guide and product-specific fit notes before selecting a size.</p></li><li class="card step"><h3>Add to bag</h3><p class="muted">Review your selection, quantity, and subtotal before checkout.</p></li></ol></div></section>
+<section class="section" id="faq"><div class="wrap"><div class="sec-head"><h2>Good to know</h2></div>
+<div class="faq-list"><details open><summary>How does the Vale Runner fit?</summary><p>Sample fit note: standard width. Confirm measurements against a verified size chart before ordering.</p></details><details><summary>Can I remove the footbed?</summary><p>The sample Vale specification includes a removable footbed; verify this before publication.</p></details><details><summary>When will my order ship?</summary><p>Shipping times depend on the seller and carrier. Add the store's verified dispatch policy before launch.</p></details><details><summary>What is the return window?</summary><p>Add the seller's verified return window, item-condition requirements, and instructions before accepting orders.</p></details></div></div></section>
+<section class="section" id="first-look-what"><div class="wrap"><div class="card news"><div style="display:grid;gap:10px"><h2>First look at what's next</h2><p class="muted">Get new color releases and restock notices from Sage Steps.</p></div>
+<form action="mailto:hello@example.com" method="post" enctype="text/plain" aria-label="Newsletter"><label class="sr-only" for="news-email">Email address</label><input id="news-email" type="email" placeholder="Email address" autocomplete="email"><button class="btn btn-primary" type="submit">Join the list</button></form></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-grid"><div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Sage Steps</a></div>
+<div class="footer-col"><h3>Shop</h3><ul><li><a href="#top">All sneakers</a></li><li><a href="#split">Vale Runner</a></li><li><a href="#top">Size guide</a></li></ul></div><div class="footer-col"><h3>Help</h3><ul><li><a href="#top">Shipping</a></li><li><a href="#top">Returns</a></li><li><a href="mailto:hello@example.com">Contact</a></li></ul></div><div class="footer-col"><h3>About</h3><ul><li><a href="#split">Our story</a></li><li><a href="#top">Materials</a></li><li><a href="#work">Journal</a></li></ul></div></div>
+<p class="legal">© Sage Steps. Sample catalog and policies; verify before publication.</p></div></footer>
+<script>
+document.querySelectorAll(".nav-toggle").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var nav = b.closest(".nav");
+    var open = nav.classList.toggle("open");
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+});
+</script>
+</body>
+</html>

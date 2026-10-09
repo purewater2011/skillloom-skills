@@ -1,0 +1,51 @@
+{
+  "name": "Atmospheric Cinematic Svg Deck",
+  "description": "Build an image-led presentation that gives research and campaign material a cinematic sense of place. The deck uses editable SVG frames, restrained editorial typography, and deliberate pacing for professional storytelling.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck with editable SVG compositions",
+    "A cinematic frame system for titles, evidence, quotes, and transitions",
+    "Action-led headlines with concise presenter-ready supporting copy",
+    "A varied 8-10 slide narrative with consistent alignment and pacing",
+    "System-font output that works offline and remains easy to revise"
+  ],
+  "goodFit": [
+    "Science, culture, and public-interest storytelling",
+    "Campaign concepts, editorial briefings, and creative strategy presentations",
+    "Audiences that need memorable visual framing around credible evidence"
+  ],
+  "notFor": [
+    "Data-heavy operational reporting with dense tables",
+    "Product demos that require live application screenshots or interaction"
+  ],
+  "requiredInputs": [
+    "The source material or a concise narrative brief",
+    "Audience, setting, and intended response",
+    "Verified facts, metrics, and quotations",
+    "Desired closing action or decision"
+  ],
+  "faq": [
+    {
+      "q": "Can I revise the deck after it is generated?",
+      "a": "Yes. The output is a self-contained HTML file with editable text, inline SVG geometry, and CSS variables for the palette, spacing, and typography."
+    },
+    {
+      "q": "How does the cinematic style work without external images?",
+      "a": "The visual language is built from layered SVG frames, contour lines, translucent planes, crop marks, and controlled accent color, so the deck remains atmospheric while staying portable and editable."
+    },
+    {
+      "q": "Can the deck include real data?",
+      "a": "Yes. Provide verified values and units. The skill will place them in concise chart or stats layouts and add an explicit takeaway without inventing evidence."
+    }
+  ],
+  "demoPrompt": "/sl-atmospheric-cinematic-svg-deck Create exactly 9 slides for fictional Northfield Civic Lab explaining how shaded routes reduce heat stress, moving from unsafe daily walks through a conceptual 1.2 km corridor, three design moves, and field evidence to a six-week municipal pilot. Include the four route stats and fictional coordinator quote shown. Title “Shade can turn a hot walk into a viable route” and close “Start with one route people already want to use”. Use a cinematic SVG frame system.",
+  "followUpPrompts": [
+    "Rework the evidence slides so the visual rhythm feels quieter and the charts use fewer labels.",
+    "Turn this deck into a shorter 6-slide briefing while preserving the central argument and closing action.",
+    "Replace the terracotta accent with a restrained blue accent and rebalance the SVG frame hierarchy."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Brand Story Deck",
+  "description": "An editable, browser-ready 16:9 presentation that turns brand strategy into a polished story using bold, grounded color blocks and an editorial type pairing.",
+  "whatYouGet": [
+    "A self-contained HTML deck with 8–10 slides and editable text.",
+    "A coherent narrative from audience need to brand promise and launch action.",
+    "A consistent color-block visual system with restrained, purposeful emphasis.",
+    "A realistic sample deck to demonstrate the format and pacing."
+  ],
+  "goodFit": [
+    "Brand identity and positioning presentations for internal or client review.",
+    "Product launch narratives for marketing and cross-functional teams."
+  ],
+  "notFor": [
+    "Detailed financial reporting or technical documentation.",
+    "Final production artwork, logos, or a complete brand guidelines package."
+  ],
+  "requiredInputs": [
+    "Brand or product context and intended audience.",
+    "Available positioning, proof points, and launch objectives."
+  ],
+  "faq": [
+    {
+      "q": "Can I edit the deck after it is generated?",
+      "a": "Yes. The deliverable is a self-contained HTML slide deck with editable text and presentation-friendly 16:9 layouts."
+    },
+    {
+      "q": "What if I do not have final brand guidelines?",
+      "a": "Provide the context and any known preferences. The deck can use a proposed visual direction and clearly distinguish recommendations from established brand facts."
+    }
+  ],
+  "demoPrompt": "/sl-brand-story-deck Create exactly 8 slides for fictional Alder Row, a neighborhood refill shop. Move from waste-reduction friction through the current routine, service idea, three-part promise, refill-station visual, four-step launch, to practical actions. Title: “Alder Row makes refilling fit real life.” Close: “Lead with ease, then prove the routine works.” Use restrained Moss & Signal styling; label assumptions illustrative.",
+  "followUpPrompts": [
+    "Tighten the story for a five-minute leadership presentation without adding claims.",
+    "Turn the launch message framework into a concise campaign brief."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

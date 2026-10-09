@@ -1,0 +1,51 @@
+{
+  "name": "Yellow Sketchnote Deck",
+  "description": "Turn a lesson, workshop, or explainer into a bold yellow sketchnote presentation with editorial typography, ink gestures, clean structure, and exact teaching content.",
+  "whatYouGet": [
+    "A complete 16:9 HTML deck with a coherent teaching narrative",
+    "Signature yellow annotation marks and hand-drawn ink cues",
+    "Action-title hierarchy designed for projection and fast comprehension",
+    "Offline-safe system fonts and self-contained styling",
+    "Content checks for wording, metrics, and slide-to-slide consistency"
+  ],
+  "goodFit": [
+    "Teaching a method, framework, or behavior change",
+    "Making complex educational material memorable without childish visuals",
+    "Building a repeatable visual series for courses or workshops"
+  ],
+  "notFor": [
+    "Photo-led storytelling or cinematic brand campaigns",
+    "Dense financial reporting or legal presentations",
+    "Decks that need realistic portraits or external web assets"
+  ],
+  "requiredInputs": [
+    "The source lesson, outline, or research notes",
+    "Audience, duration, and desired learning outcome",
+    "Exact facts, numbers, terms, and quotes to preserve"
+  ],
+  "faq": [
+    {
+      "q": "Can I use this for a serious professional audience?",
+      "a": "Yes. The hand-drawn language is controlled and editorial rather than playful clip art. Strong contrast, disciplined spacing, and precise copy keep the deck credible for classrooms, workshops, and internal learning sessions."
+    },
+    {
+      "q": "Will the deck preserve my exact wording and numbers?",
+      "a": "The workflow treats supplied terminology, metrics, quotations, and sequence labels as locked content. The agent may improve hierarchy and line breaks, but it should not alter factual meaning or silently invent evidence."
+    },
+    {
+      "q": "Does it work without internet access?",
+      "a": "Yes. The output is a self-contained HTML deck using only approved system font stacks, inline styles, and simple CSS drawing techniques."
+    }
+  ],
+  "demoPrompt": "/sl-yellow-sketchnote-deck Create exactly 9 slides for Northfield Learning Circle, teaching adult learners a four-step weekly reading habit. Show the pilot figures: 42 learners and 68% completion; move from intention to routine, evidence and a next action. Title: \"Small reading rituals can change a whole week.\" Close: \"Tomorrow, choose the cue before you choose the book.\" Use energetic yellow-ink sketchnote style, clear on a projector.",
+  "followUpPrompts": [
+    "Make the sketchnote marks more restrained while keeping the yellow series identity.",
+    "Rework the evidence slide so the 68% completion figure is the visual focus.",
+    "Create a second deck in the same style for a fictional workshop on giving useful peer feedback."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Slate Admin Console UI Block",
+  "description": "A reusable operations console block with key metrics, searchable account records, and working record editing. Designed for product teams that need a focused admin surface.",
+  "whatYouGet": [
+    "A scannable row of operational metrics with clear labels.",
+    "A realistic records grid with search, sorting, and working edit controls.",
+    "Responsive layout guidance and consistent neutral styling."
+  ],
+  "goodFit": [
+    "Launching a product with an operational dashboard preview.",
+    "Creating a focused internal tool or admin page section."
+  ],
+  "notFor": [
+    "A complete multi-page dashboard with live integrations.",
+    "A promotional homepage or brand campaign."
+  ],
+  "requiredInputs": [
+    "Workspace name and operational purpose.",
+    "Metrics, account fields, editable fields, and relevant statuses."
+  ],
+  "faq": [
+    {
+      "q": "Does this create a complete dashboard application?",
+      "a": "No. It creates one reusable page block with metric summaries and locally editable records; backend behavior and full application routing are out of scope."
+    },
+    {
+      "q": "Can I adapt the visual accent to an existing product?",
+      "a": "Yes. Keep the neutral foundation and replace the single accent with an accessible brand color."
+    }
+  ],
+  "demoPrompt": "/sl-slate-admin-console-ui-block Create a Slate Console-style account page for Vela Thread’s subscription software team. In order, show “Workspace pulse” with 1,284 active accounts, $48.2k monthly recurring revenue, 18 open support cases, and 96.4% service availability, last 30 days; then “Account records” with six entries: Pine Works, Cedar Field, Harbor Supply, Morrow Systems, Juniper Studio, and Westline Labs, each showing ID, owner, status, date, revenue, and version.",
+  "followUpPrompts": [
+    "Add account status and plan filters without crowding the editable records grid.",
+    "Adapt the same console block for an inventory operations team."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}

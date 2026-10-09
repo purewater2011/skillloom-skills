@@ -1,0 +1,69 @@
+{
+  "slug": "sl-article-brief-deck",
+  "version": "1.0.5",
+  "output": "presentation",
+  "family": "deck",
+  "engine": "deck",
+  "styleFamily": "modular-grid",
+  "tier": "free",
+  "tags": {
+    "target_user": [
+      "k12-teacher",
+      "course-creator",
+      "curriculum-designer"
+    ],
+    "task": [
+      "create-presentation",
+      "prepare-client-deck",
+      "build-content-brief-deck"
+    ],
+    "scenario": [
+      "content-publishing",
+      "teaching-explainer"
+    ],
+    "domain": [
+      "education",
+      "science-research"
+    ],
+    "highlight": [
+      "evidence-first",
+      "text-accurate",
+      "visually-polished"
+    ],
+    "style": [
+      "modular-grid",
+      "article-brief",
+      "editorial-deck"
+    ],
+    "model": [
+      "gpt-image"
+    ]
+  },
+  "agents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode"
+  ],
+  "requires": {
+    "node": ">=20",
+    "apiKey": "none"
+  },
+  "licenses": [
+    {
+      "name": "Article Brief Deck",
+      "license": "MIT",
+      "url": "https://skillloom.dev/skills/sl-article-brief-deck"
+    }
+  ],
+  "include": [
+    "SKILL.md",
+    "references/**",
+    "scripts/**"
+  ],
+  "preview": {
+    "kind": "html",
+    "entry": "preview/demo.html"
+  }
+}

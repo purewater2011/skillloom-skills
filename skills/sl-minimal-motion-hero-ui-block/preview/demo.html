@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minimal Motion Hero UI Block — demo</title>
+<style>
+:root {
+  --bg: #00534D; --surface: #17645D; --fg: #F6F0E5; --muted: #D7E4DC;
+  --accent: #F0B77A; --accent-2: #B6D7CA; --rule: #6F9B91;
+  --font-display: ui-serif, Georgia, Cambria, "Times New Roman", serif; --font-body: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --display-weight: 600; --display-case: none; --tracking: 0;
+  --radius: 8px; --radius-ctl: 8px; --border: 1px solid #6F9B91; --shadow: none;
+  --space: 1.35;
+  --type-scale: 1.3;
+}
+:root { --on-accent: #111111; --border-strong: 1.5px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:calc(17px * var(--type-scale,1));line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--display-weight);text-transform:var(--display-case);letter-spacing:var(--tracking);line-height:1.08;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,4.4rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem);text-wrap:balance}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.lede{font-size:1.15rem;color:var(--muted);max-width:56ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--radius-ctl);font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease;font-family:inherit}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:transparent;color:var(--fg);border:var(--border-strong)}
+.hero{position:relative;overflow:hidden;padding-block:calc(96px * var(--space)) calc(88px * var(--space))}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:22px;align-content:start}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero-deco{position:absolute;inset:0;pointer-events:none;z-index:0}
+.block-frame{padding:clamp(20px,4vw,48px) 0}
+.block-label{width:min(1160px,100% - 40px);margin:0 auto 18px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.block-stage{border-radius:calc(var(--radius) + 10px);width:min(1220px,100% - 24px);margin-inline:auto;background:var(--bg);border:1px solid var(--rule);overflow:hidden}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){[class^="hv-"],[class*=" hv-"]{overflow:hidden;max-width:100%}
+}
+html,body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes drift{to{background-position:380px 190px,-300px 420px}}
+@keyframes float{to{transform:translate(18px,-22px) rotate(25deg)}}
+.deco-motion{background:linear-gradient(110deg,transparent 30%,color-mix(in srgb,var(--accent) 22%,transparent) 50%,transparent 70%);background-size:250% 100%;animation:sheen 8s ease-in-out infinite}
+@keyframes sheen{to{background-position:-150% 0}}
+.img-slot{margin:0;position:relative;display:grid;place-items:center;align-content:center;gap:10px;min-height:180px;aspect-ratio:4/3;border-radius:var(--radius);border:1.5px dashed color-mix(in srgb,var(--fg) 30%,transparent);background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--surface)) 0 14px,color-mix(in srgb,var(--accent) 4%,var(--surface)) 14px 28px);color:var(--muted);text-align:center;padding:16px;overflow:hidden}
+.img-slot figcaption{font-size:.8rem;letter-spacing:.04em;max-width:26ch;color:var(--fg);opacity:.75}
+.img-slot svg{color:var(--accent)}
+.hv-hero-slot{aspect-ratio:4/3;min-height:320px}
+.hero:not(.split) .hv-hero-slot{aspect-ratio:16/7;max-width:1000px;margin-inline:auto}
+.block-stage{ background-image: linear-gradient(#6F9B9166 1px, transparent 1px), linear-gradient(90deg, #6F9B9166 1px, transparent 1px); background-size: 48px 48px; }
+
+</style>
+</head>
+<body class="block-frame">
+<div class="block-label"><span>Minimal Motion Hero UI Block</span><span>Block preview</span></div><div class="block-stage">
+<main id="main">
+<section class="hero split" id="split" aria-label="Introduction"><div class="hero-deco deco-motion" aria-hidden="true"></div><div class="wrap"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">A clearer way to listen</span><h1>Make every customer note count</h1><p class="lede">Gather feedback, spot the patterns, and decide what to build next. Keep your team close to the people who use your product.</p><div class="hero-actions"><a class="btn btn-primary" href="#main">Join the early list</a><a class="btn btn-ghost" href="#split">See how it works</a></div></div><figure class="img-slot hv-hero-slot" role="img" aria-label="Image placeholder: Hero image"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><figcaption>Hero image</figcaption></figure></div></div></section>
+</main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "name": "Cobalt System Deck",
+  "description": "A self-contained HTML deck for executive reporting in media and publishing. Its locked cobalt-and-lemon system keeps data, decisions, and exact wording consistent across slides.",
+  "whatYouGet": [
+    "A self-contained 16:9 HTML slide deck",
+    "Consistent cobalt-and-lemon layouts with a restrained dot motif",
+    "Editable text, labeled charts, and clear decision slides",
+    "Source and illustration notes alongside reported figures"
+  ],
+  "goodFit": [
+    "Quarterly publishing performance reviews",
+    "Editorial strategy updates for client executives",
+    "Course business reports with approved metrics"
+  ],
+  "notFor": [
+    "Brand explorations with multiple competing visual directions",
+    "Reports that require invented results to fill gaps"
+  ],
+  "requiredInputs": [
+    "Audience and decision required",
+    "Approved narrative and key messages",
+    "Metrics, periods, units, and sources",
+    "Organisation name and presentation date"
+  ],
+  "faq": [
+    {
+      "q": "Can I provide rough notes instead of a slide outline?",
+      "a": "Yes. Provide the decision, audience, notes, and evidence. The skill will structure the story and flag facts that need confirmation."
+    },
+    {
+      "q": "Will the deck invent missing performance figures?",
+      "a": "No. Missing figures are left out or clearly marked as illustrative when a sample is requested."
+    },
+    {
+      "q": "Can I revise the text after delivery?",
+      "a": "Yes. Headings, body copy, data labels, and notes remain editable HTML text."
+    }
+  ],
+  "demoPrompt": "/sl-cobalt-system-deck Create a 9-slide Q4 2025 executive review for fictional Regional Publishing Office, moving from audience evidence and channel performance to editorial priorities and three decisions. Title: “Direct audience growth gives us a clearer next move.” Close: “Approve the test, owners, and review date.” Use the Cobalt Dot System style.",
+  "followUpPrompts": [
+    "Shorten the narrative for a ten-minute executive meeting without changing any figures.",
+    "Add source notes to every data slide and flag claims that lack evidence.",
+    "Reframe the closing slide around decisions, owners, and dates."
+  ],
+  "dependencies": [
+    "A modern browser",
+    "Node.js 20+ for the validator"
+  ],
+  "externalCostNote": "No external services. Runs entirely on your agent."
+}
